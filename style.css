@@ -46,6 +46,8 @@ body, html {
     color: var(--text-main);
     font-size: 10px;
     transition: background-color 0.3s, color 0.3s;
+    overscroll-behavior: none;
+    touch-action: none;
 }
 
 /* Effet CRT (Scanlines) */
@@ -114,6 +116,7 @@ body::after {
     padding: 20px; padding-bottom: 40px;
     display: none; flex-direction: column; align-items: center; width: 100%;
     touch-action: pan-y; -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
 }
 .tab-content.active { display: flex; }
 
@@ -493,6 +496,8 @@ body::after {
     overflow-y: auto;
     margin-top: 20px;
     padding: 10px;
+    touch-action: pan-y;
+    overscroll-behavior: contain;
 }
 
 .leaderboard-item {
@@ -776,6 +781,8 @@ body.no-ads .ad-banner { display: none; }
     padding: 20px;
     overflow-y: auto;
     flex: 1;
+    touch-action: pan-y;
+    overscroll-behavior: contain;
 }
 
 /* PROFILE RIBBON (Dynamic) */
@@ -805,4 +812,9 @@ body.profile-open #profile-toggle {
 }
 .pixel-icon.rotate-90 {
     transform: rotate(90deg);
+}
+
+#brain-inventory {
+    touch-action: pan-y;
+    overscroll-behavior: contain;
 }
