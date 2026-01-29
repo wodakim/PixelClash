@@ -2,6 +2,7 @@ import { AUDIO } from '../engine/audio.js';
 import { CARDS, RARITY_INFOS } from '../data/cards.js';
 import { MODULES } from '../data/modules.js';
 import { SKINS } from '../data/skins.js';
+import { SKINS_16BIT_DATA } from '../data/16bit/main.js';
 import { SPRITE_CACHE } from '../engine/sprites.js';
 import { saveData } from '../core/storage.js';
 import { t } from '../core/utils.js';
@@ -331,6 +332,152 @@ function showSkinResult(key) {
     ctx.clearRect(0,0,64,64);
     ctx.fillStyle = SKINS[key].bg;
     ctx.fillRect(0,0,64,64);
+}
+
+export function start16BitRoulette() {
+    const modal = document.getElementById('roulette-modal');
+    const tape = document.getElementById('roulette-tape');
+    const resultDiv = document.getElementById('roulette-result');
+    const title = document.getElementById('roulette-title');
+
+    modal.style.display = 'flex';
+    resultDiv.style.display = 'none';
+    tape.style.transition = 'none';
+    tape.style.transform = 'translateX(0px)';
+    tape.innerHTML = '';
+    title.textContent = "EVOLUTION...";
+
+    // Collect all possible keys and check which are unlocked
+    let pool = [];
+
+    ['arena', 'units', 'ui', 'deck', 'kingdom'].forEach(cat => {
+        if(SKINS_16BIT_DATA[cat]) {
+            Object.keys(SKINS_16BIT_DATA[cat]).forEach(key => {
+                if(!window.PLAYER.unlocked_16bit.includes(key)) {
+                    pool.push({ key: key, cat: cat, data: SKINS_16BIT_DATA[cat][key] });
+                }
+            });
+        }
+    });
+
+    // Fallback if complete
+    if(pool.length === 0) {
+        showNotif("EVOLUTION", "COLLECTION COMPLÈTE !");
+        window.PLAYER.gems += 50;
+        saveData();
+        closeRoulette();
+        return;
+    }
+
+    const winnerItem = pool[Math.floor(Math.random() * pool.length)];
+    const winnerKey = winnerItem.key;
+
+    // Fill Tape
+    const WIN_INDEX = 45;
+    const TOTAL_ITEMS = 55;
+    const CARD_WIDTH = 90;
+
+    for(let i=0; i < TOTAL_ITEMS; i++) {
+        let item = (i === WIN_INDEX) ? winnerItem : pool[Math.floor(Math.random() * pool.length)];
+        const cardDiv = document.createElement('div');
+        cardDiv.className = 'roulette-card';
+        cardDiv.setAttribute('data-rarity', 'legendary');
+
+        const preview = document.createElement('div');
+        preview.style.cssText = "width:48px; height:48px; border:2px solid #fff; box-shadow:0 0 5px rgba(0,0,0,0.5); display:flex; justify-content:center; align-items:center; background:#222;";
+
+        // Render preview based on cat
+        if(item.cat === 'arena') {
+            preview.style.background = item.data.bg;
+        } else if(item.cat === 'units') {
+            // Draw sprite
+            const c = document.createElement('canvas'); c.width=48; c.height=48;
+            const cx = c.getContext('2d');
+            // Try to find sprite
+            const s = SPRITE_CACHE[item.key + '_16bit_blue_0'] || SPRITE_CACHE[item.key + '_16bit_blue'] || SPRITE_CACHE[item.key + '_16bit'] || SPRITE_CACHE[item.key];
+            if(s) {
+                 // Calculate aspect ratio fit
+                 cx.drawImage(s, 0, 0, s.width, s.height, 0, 0, 48, 48);
+            }
+            preview.appendChild(c);
+        } else {
+             preview.innerHTML = `<span style="font-size:20px; color:white;">?</span>`;
+        }
+
+        cardDiv.appendChild(preview);
+        tape.appendChild(cardDiv);
+    }
+
+    const jitter = Math.floor(Math.random() * 60) - 30;
+    const targetPos = (WIN_INDEX * CARD_WIDTH) + (CARD_WIDTH/2) + jitter;
+    const centerOffset = document.querySelector('.roulette-container').clientWidth / 2;
+    const finalTranslate = -(targetPos - centerOffset);
+
+    tape.offsetHeight;
+    if(AUDIO.isOn) AUDIO.playSFX('spawn');
+
+    setTimeout(() => {
+        tape.style.transition = 'transform 5s cubic-bezier(0.1, 0, 0.2, 1)';
+        tape.style.transform = `translateX(${finalTranslate}px)`;
+        let ticks = 0;
+        const tickInt = setInterval(() => {
+            ticks++;
+            if(ticks > 25) clearInterval(tickInt);
+            if(AUDIO.isOn) AUDIO.playSFX('tick');
+        }, 150 + (ticks*10));
+    }, 100);
+
+    setTimeout(() => {
+        show16BitResult(winnerItem);
+    }, 5500);
+}
+
+function show16BitResult(item) {
+    const resultDiv = document.getElementById('roulette-result');
+    const title = document.getElementById('roulette-title');
+
+    window.PLAYER.unlocked_16bit.push(item.key);
+    title.innerHTML = `EVOLUTION !`;
+    spawnConfetti(window.innerWidth/2, window.innerHeight/2);
+    if(AUDIO.isOn) AUDIO.playMusic('victory', () => AUDIO.playMusic('menu'));
+
+    // Check Total Completion
+    let totalItems = 0;
+    ['arena', 'units', 'ui', 'deck'].forEach(cat => {
+        if(SKINS_16BIT_DATA[cat]) totalItems += Object.keys(SKINS_16BIT_DATA[cat]).length;
+    });
+
+    if(window.PLAYER.unlocked_16bit.length >= totalItems) {
+        setTimeout(() => {
+            showNotif("16-BIT UNIVERSE", "TRANSITION COMPLÈTE !");
+        }, 1000);
+    }
+
+    saveData();
+    if(window.updateMetaUI) window.updateMetaUI();
+
+    resultDiv.style.display = 'flex';
+    document.getElementById('roulette-name').textContent = item.data.name;
+    document.getElementById('roulette-rarity').textContent = item.cat.toUpperCase();
+    document.getElementById('roulette-rarity').style.color = "#f1c40f";
+
+    const c = document.getElementById('roulette-canvas');
+    const ctx = c.getContext('2d');
+    ctx.clearRect(0,0,64,64);
+
+    if(item.cat === 'arena') {
+        ctx.fillStyle = item.data.bg;
+        ctx.fillRect(0,0,64,64);
+    } else if(item.cat === 'units') {
+        const s = SPRITE_CACHE[item.key + '_16bit_blue_0'] || SPRITE_CACHE[item.key + '_16bit_blue'] || SPRITE_CACHE[item.key + '_16bit'];
+        if(s) ctx.drawImage(s, 0, 0, s.width, s.height, 0, 0, 64, 64);
+    } else {
+        ctx.fillStyle = '#555';
+        ctx.fillRect(0,0,64,64);
+        ctx.fillStyle = '#fff';
+        ctx.font = '30px Arial';
+        ctx.fillText("?", 20, 42);
+    }
 }
 
 window.closeRoulette = closeRoulette;

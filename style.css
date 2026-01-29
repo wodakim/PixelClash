@@ -824,3 +824,44 @@ body.profile-open #profile-toggle {
 .pixel-icon.rotate-90 {
     transform: rotate(90deg);
 }
+
+/* --- 16-BIT SKINS --- */
+
+/* UI Skin: Retro HD */
+body.skin-ui-16bit .pixel-btn {
+    border-width: 2px;
+    border-style: outset;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+    border-radius: 4px;
+    text-shadow: 1px 1px 2px black;
+    background-image: linear-gradient(rgba(255,255,255,0.1), rgba(0,0,0,0.1));
+}
+body.skin-ui-16bit .pixel-btn:active {
+    border-style: inset;
+    transform: translateY(2px);
+}
+body.skin-ui-16bit .navbar {
+    background: #1a1a1a;
+    border-top: 2px solid #444;
+    box-shadow: 0 -5px 15px rgba(0,0,0,0.7);
+}
+body.skin-ui-16bit .tab-content {
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPgo8cmVjdCB3aWR0aD0iNCIgaGVpZ2h0PSI0IiBmaWxsPSIjMjIyIi8+CjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiMzMzMiLz4KPC9zdmc+');
+}
+
+/* Deck Skin: Gold/Diamond */
+body.skin-deck-16bit .battle-card,
+body.skin-deck-16bit .pixel-card {
+    border-width: 3px;
+    border-style: double; /* Double border for "premium" look */
+    border-color: #f1c40f !important; /* Gold default override */
+    box-shadow: 0 0 10px rgba(241, 196, 15, 0.3);
+}
+body.skin-deck-16bit .battle-card.ready {
+    box-shadow: 0 0 15px rgba(241, 196, 15, 0.6);
+}
+/* Adjust card items specifically if they have rarity colors */
+body.skin-deck-16bit .pixel-card[data-rarity="common"] { border-color: #bdc3c7 !important; }
+body.skin-deck-16bit .pixel-card[data-rarity="rare"] { border-color: #f1c40f !important; box-shadow: 0 0 10px #f1c40f; }
+body.skin-deck-16bit .pixel-card[data-rarity="epic"] { border-color: #9b59b6 !important; box-shadow: 0 0 10px #9b59b6; }
+body.skin-deck-16bit .pixel-card[data-rarity="legendary"] { border-color: #e67e22 !important; box-shadow: 0 0 15px #e67e22; }

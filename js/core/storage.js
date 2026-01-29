@@ -37,6 +37,10 @@ export function loadData() {
             if(typeof window.PLAYER.tutorial_inspect === 'undefined') window.PLAYER.tutorial_inspect = false;
             if(typeof window.PLAYER.tutorial_brain_ui === 'undefined') window.PLAYER.tutorial_brain_ui = false;
             if(typeof window.PLAYER.tutorial_brain_drag === 'undefined') window.PLAYER.tutorial_brain_drag = false;
+
+            // 16-BIT SYSTEM INIT
+            if(!window.PLAYER.unlocked_16bit) window.PLAYER.unlocked_16bit = [];
+            if(!window.PLAYER.active_16bit) window.PLAYER.active_16bit = { arena: null, units: [], ui: false, deck: false };
             
         } catch(e) {
             console.error("Save Error", e);

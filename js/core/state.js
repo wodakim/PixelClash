@@ -42,7 +42,16 @@ export const DEFAULT_PLAYER = {
     tutorial_levelup: false,
     tutorial_inspect: false,
     tutorial_brain_ui: false,
-    tutorial_brain_drag: false
+    tutorial_brain_drag: false,
+
+    // 16-BIT TRANSITION SYSTEM
+    unlocked_16bit: [],
+    active_16bit: {
+        arena: null,
+        units: [],
+        ui: false,
+        deck: false
+    }
 };
 
 export let LANG = 'fr';
