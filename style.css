@@ -1,0 +1,808 @@
+@font-face {
+    font-family: 'Press Start 2P';
+    font-style: normal;
+    font-weight: 400;
+    src: url('fonts/PressStart2P.ttf') format('truetype');
+}
+
+:root {
+    --primary: #f1c40f;
+    --accent: #e67e22;
+    --bg-dark: #202020;
+    --text-main: white;
+    --font: 'Press Start 2P', cursive;
+
+    /* Couleurs de Rareté Officielles */
+    --rarity-common: #bdc3c7;   /* Gris */
+    --rarity-uncommon: #2ecc71; /* Vert */
+    --rarity-rare: #f1c40f;     /* Jaune */
+    --rarity-legendary: #e67e22;/* Orange */
+    --rarity-god: #e74c3c;      /* Rouge */
+}
+
+body.light-mode {
+    --bg-dark: #95a5a6;
+    --text-main: #2c3e50;
+}
+body.light-mode #settings-modal h2,
+body.light-mode #game-over-modal h1 {
+    text-shadow: 2px 2px 0 #fff;
+}
+
+* {
+    box-sizing: border-box;
+    user-select: none;
+    -webkit-user-select: none;
+    font-family: var(--font);
+    image-rendering: pixelated;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body, html {
+    margin: 0; padding: 0;
+    width: 100%; height: 100%;
+    overflow: hidden;
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-size: 10px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Effet CRT (Scanlines) */
+body::after {
+    content: " ";
+    display: block; position: absolute; top: 0; left: 0; bottom: 0; right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+                linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    z-index: 9999; pointer-events: none;
+    background-size: 100% 2px, 3px 100%;
+}
+
+.screen {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    display: flex; flex-direction: column; background: var(--bg-dark);
+    z-index: 10; transition: background 0.3s;
+}
+.hidden { display: none !important; }
+
+/* --- UI COMPONENTS --- */
+.pixel-btn {
+    background: #e74c3c; color: white;
+    border: 4px solid #c0392b; padding: 15px 20px; font-size: 1rem;
+    text-transform: uppercase; cursor: pointer;
+    box-shadow: 0 6px 0 #96281b; margin: 10px auto; /* Auto margin for centering in flex containers */
+    touch-action: manipulation; transition: transform 0.1s, box-shadow 0.1s;
+    text-shadow: 2px 2px 0 #000;
+    display: block; /* Ensure width works correctly */
+}
+.pixel-btn:active { transform: translateY(6px); box-shadow: 0 0 0 #96281b; }
+.pixel-btn.green { background: #2ecc71; border-color: #27ae60; box-shadow: 0 6px 0 #1e8449; }
+.pixel-btn.green:active { transform: translateY(6px); box-shadow: 0 0 0 #1e8449; }
+.pixel-btn.blue { background: #3498db; border-color: #2980b9; box-shadow: 0 6px 0 #1f618d; }
+.pixel-btn.blue:active { transform: translateY(6px); box-shadow: 0 0 0 #1f618d; }
+.pixel-btn.purple { background: #9b59b6; border-color: #8e44ad; box-shadow: 0 6px 0 #6c3483; }
+.pixel-btn.purple:active { transform: translateY(6px); box-shadow: 0 0 0 #6c3483; }
+
+/* Bouton désactivé (Grisé) */
+.pixel-btn:disabled, .pixel-btn.disabled {
+    background: #7f8c8d; border-color: #555;
+    box-shadow: none; transform: translateY(6px);
+    cursor: not-allowed; filter: grayscale(1);
+}
+
+/* NAVBAR */
+.navbar {
+    height: 100px; background: #2c3e50;
+    display: flex; justify-content: space-around; align-items: center;
+    border-top: 4px solid #34495e;
+    position: absolute; bottom: 0; width: 100%; z-index: 100;
+    box-shadow: 0 -4px 10px rgba(0,0,0,0.5);
+    padding-bottom: 20px; padding-bottom: env(safe-area-inset-bottom);
+}
+.nav-btn {
+    background: none; border: none; color: #7f8c8d;
+    font-size: 0.6rem; cursor: pointer;
+    display: flex; flex-direction: column; align-items: center; gap: 5px;
+    transition: transform 0.2s;
+    flex: 1; height: 100%; justify-content: center;
+    touch-action: manipulation;
+}
+.nav-btn.active { color: var(--primary); transform: scale(1.1); text-shadow: 0 0 5px var(--primary); }
+
+.tab-content {
+    height: calc(100% - 100px); overflow-y: auto;
+    padding: 20px; padding-bottom: 40px;
+    display: none; flex-direction: column; align-items: center; width: 100%;
+    touch-action: pan-y; -webkit-overflow-scrolling: touch;
+}
+.tab-content.active { display: flex; }
+
+/* --- COLLECTION & CARTES --- */
+.card-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 15px; width: 100%; max-width: 600px; padding-bottom: 20px;
+}
+.pixel-card {
+    width: 90px; height: 120px;
+    background: #ecf0f1;
+    border: 4px solid var(--rarity-common);
+    position: relative;
+    display: flex; flex-direction: column; align-items: center;
+    cursor: pointer; transition: transform 0.1s;
+    box-shadow: 0 4px 0 rgba(0,0,0,0.2);
+    border-radius: 12px;
+    overflow: visible;
+}
+/* Styles de rareté */
+.pixel-card[data-rarity="uncommon"] {
+    border-color: var(--rarity-uncommon);
+    background: linear-gradient(to bottom, #abebc6, #ecf0f1);
+}
+.pixel-card[data-rarity="rare"] {
+    border-color: var(--rarity-rare);
+    background: linear-gradient(to bottom, #f9e79f, #ecf0f1);
+}
+.pixel-card[data-rarity="legendary"] {
+    border-color: var(--rarity-legendary);
+    background: linear-gradient(to bottom, #fad7a0, #ecf0f1);
+    box-shadow: 0 0 5px var(--rarity-legendary);
+}
+.pixel-card[data-rarity="god"] {
+    border-color: var(--rarity-god);
+    background: linear-gradient(to bottom, #f5b7b1, #ecf0f1);
+    box-shadow: 0 0 15px var(--rarity-god), 0 0 30px red;
+    animation: legendaryShine 1s infinite linear;
+    z-index: 1;
+}
+@keyframes legendaryShine { 0% { filter: brightness(1); } 50% { filter: brightness(1.3); } 100% { filter: brightness(1); } }
+
+.pixel-card:active { transform: translateY(4px); box-shadow: 0 0 0 rgba(0,0,0,0.2); }
+.pixel-card.locked { 
+    filter: grayscale(1) brightness(0.5); 
+    pointer-events: none; 
+    opacity: 0.7; 
+    animation: none !important; /* Prevent legendary shine from overriding filter */
+}
+
+/* Carte sélectionnée dans le deck */
+.pixel-card.in-deck {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 0 rgba(0,0,0,0.3), 0 0 15px var(--primary);
+    z-index: 5;
+    border-color: white;
+}
+/* Indicateur visuel "Check" */
+.pixel-card.in-deck::after {
+    content: "✔️"; position: absolute; top: -10px; right: -10px;
+    background: #2ecc71; color: white; border-radius: 50%;
+    width: 20px; height: 20px; font-size: 10px;
+    display: flex; justify-content: center; align-items: center;
+    border: 2px solid white; box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.card-cost {
+    position: absolute; top: -8px; left: -8px;
+    background: #9b59b6;
+    color: white; width: 28px; height: 32px;
+    display: flex; justify-content: center; align-items: center;
+    font-size: 0.9rem; z-index: 10;
+    text-shadow: 1px 1px 0 #000;
+    border: 2px solid #fff;
+    border-radius: 50% 50% 5px 5px;
+    box-shadow: 0 3px 0 #6c3483;
+}
+.card-preview { width: 70px; height: 70px; margin-top: 30%; image-rendering: pixelated; }
+.card-name {
+    /* Positionnement */
+    position: absolute;
+    top: 94%;               /* En haut */
+    z-index: 20;            /* Au-dessus de tout */
+
+    /* Apparence */
+    font-size: 0.5rem;
+    color: #2c3e50;         /* TEXTE FONCÉ (pour être visible sur fond blanc) */
+    font-weight: bold;
+    text-transform: uppercase;
+
+    /* Mise en page */
+    width: 65px;            /* Largeur max */
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Ajoute "..." si le nom est trop long */
+
+    /* Reset des anciennes marges/ombres */
+    margin: 0;
+    text-shadow: none;
+    background: none;
+}
+
+/* --- BOUTIQUE --- */
+.shop-item {
+    display: flex;
+    justify-content: space-between; /* Pousse le texte à gauche et le bouton à droite */
+    align-items: center;            /* Centre verticalement */
+    width: 95%;
+    max-width: 400px;
+    background: rgba(0,0,0,0.2);
+    padding: 10px 15px;
+    margin-bottom: 8px;
+    border: 2px solid #555;
+    border-radius: 4px;
+}
+.shop-item .pixel-btn {
+    width: 160px;       /* Largeur FIXE pour tous les boutons */
+    min-width: 160px;   /* Empêche le bouton de rétrécir */
+    height: 40px;       /* Hauteur fixe pour l'uniformité */
+    margin: 0;          /* Enlève les marges automatiques */
+    font-size: 0.55rem; /* Ajuste la police pour que "DÉBLOQUER" rentre */
+    padding: 0;         /* Reset du padding pour utiliser flexbox */
+
+    /* Centre le texte parfaitement dans le bouton */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.shop-item.sold-out { opacity: 0.5; filter: grayscale(1); pointer-events: none; border-color: #333; }
+.shop-new-badge { background: #e74c3c; color: white; font-size: 0.5rem; padding: 2px 4px; border-radius: 4px; margin-left: 5px; animation: pop 1s infinite; }
+.shop-item.locked-by-trophy { opacity: 0.6; background: rgba(0,0,0,0.4); border-color: #e74c3c; }
+
+/* --- MODALS & NOTIFICATIONS --- */
+#notification-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.85); z-index: 2000;
+    display: flex; justify-content: center; align-items: center;
+}
+.notification-box {
+    background: #2c3e50; border: 4px solid #fff;
+    padding: 20px; text-align: center;
+    width: 80%; max-width: 320px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.8), 0 0 0 1000px rgba(0,0,0,0.5);
+    animation: pop 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+    display: flex; flex-direction: column; gap: 15px;
+}
+
+#card-info-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.9); z-index: 600; /* Higher than Brain Modal (300) */
+    display: none; flex-direction: column; justify-content: center; align-items: center;
+    color: white; pointer-events: auto;
+}
+#info-card-preview { width: 128px; height: 128px; border: 4px solid white; margin-bottom: 20px; background: #222; image-rendering: pixelated; }
+
+/* MODALE SKINS & ROULETTE */
+#skin-modal, #roulette-modal, #game-over-modal {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    background: #1a0b2e; color: white; border: 6px solid #f1c40f;
+    padding: 20px; text-align: center;
+    display: none; z-index: 300;
+    width: 95%; max-width: 400px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.8);
+    flex-direction: column; gap: 15px; align-items: center;
+}
+/* Override spécifique pour game over en blanc */
+#game-over-modal { background: white; color: black; border-color: black; }
+
+.roulette-container {
+    width: 100%; height: 100px;
+    background: #111; border: 4px solid #fff;
+    overflow: hidden; position: relative;
+    margin: 10px 0; box-shadow: inset 0 0 20px #000;
+    border-radius: 4px;
+}
+.roulette-tape { display: flex; height: 100%; align-items: center; will-change: transform; }
+.roulette-card {
+    width: 80px; height: 80px; margin: 0 5px;
+    flex-shrink: 0; border: 3px solid #555; background: #222;
+    display: flex; justify-content: center; align-items: center; position: relative;
+}
+.roulette-card[data-rarity="common"] { border-color: var(--rarity-common); box-shadow: inset 0 0 10px var(--rarity-common); }
+.roulette-card[data-rarity="uncommon"] { border-color: var(--rarity-uncommon); box-shadow: inset 0 0 10px var(--rarity-uncommon); }
+.roulette-card[data-rarity="rare"] { border-color: var(--rarity-rare); box-shadow: inset 0 0 10px var(--rarity-rare); }
+.roulette-card[data-rarity="legendary"] { border-color: var(--rarity-legendary); box-shadow: inset 0 0 15px var(--rarity-legendary); }
+.roulette-card[data-rarity="god"] { border-color: var(--rarity-god); box-shadow: inset 0 0 20px var(--rarity-god); background: #333; animation: legendaryShine 1s infinite linear; }
+
+.roulette-cursor {
+    position: absolute; top: 0; left: 50%;
+    width: 4px; height: 100%;
+    background: #e74c3c;
+    transform: translateX(-50%);
+    z-index: 10;
+    box-shadow: 0 0 5px red;
+    pointer-events: none;
+}
+
+/* --- VUE JEU --- */
+#game-view {
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 100%; background: #111;
+    display: none; flex-direction: column; touch-action: none;
+}
+#game-arena-wrapper { flex: 1; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center; background-color: #222; }
+
+#game-overlay-ui { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+.hud-top {
+    position: absolute; top: 10px; left: 0; width: 100%;
+    padding: 0 10px; display: flex; justify-content: space-between; align-items: flex-start;
+    font-size: 1.2rem; text-shadow: 2px 2px 0 black; z-index: 20; pointer-events: auto;
+}
+.score-board { text-align: center; }
+
+.elixir-bar-wrap {
+    width: 90%; height: 20px; background: #1a252f; border: 2px solid white;
+    margin-bottom: 8px; position: relative; border-radius: 4px;
+    box-shadow: 4px 4px 0 rgba(0,0,0,0.5);
+}
+.elixir-fill { height: 100%; background: #9b59b6; width: 50%; transition: width 0.1s; box-shadow: inset 0 -4px rgba(0,0,0,0.3); }
+.elixir-txt { position: absolute; right: 8px; top: 2px; font-size: 0.8rem; text-shadow: 1px 1px 0 black; }
+
+.elixir-mini-wrap {
+    width: 80px; height: 10px; background: #1a252f; border: 1px solid white;
+    position: relative; margin-bottom: 5px;
+}
+.elixir-mini-fill { height: 100%; width: 0%; transition: width 0.1s; }
+.elixir-mini-fill.red { background: #e74c3c; }
+
+#game-controls-dock {
+    height: 180px; background: #2c3e50; border-top: 6px solid #34495e;
+    display: flex; flex-direction: column; align-items: center; padding: 5px; z-index: 100;
+    padding-bottom: 25px; padding-bottom: max(10px, env(safe-area-inset-bottom));
+}
+#g-msg { color:#e74c3c; height:15px; margin-bottom:2px; font-size: 0.7rem; text-align: center; text-shadow: 1px 1px 0 #000; }
+
+.battle-hand { display: flex; gap: 10px; height: 100px; width: 100%; justify-content: center; align-items: center; }
+.battle-card {
+    width: 70px; height: 95px; background: #ecf0f1; border: 3px solid #7f8c8d;
+    position: relative; transition: transform 0.1s; border-radius: 4px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; padding-top: 10px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+}
+.battle-card.ready { border-color: var(--primary); cursor: grab; background: #fff; }
+.battle-card:active { transform: scale(0.95); }
+.battle-card.selected { border-color: #f1c40f; transform: translateY(-15px); box-shadow: 0 0 15px #f1c40f; z-index: 50; }
+.battle-card.dim { filter: brightness(0.5) grayscale(0.8); border-color: #555; cursor: not-allowed; }
+.battle-card-name {
+    font-size: 0.5rem; color: #333; margin-top: auto; margin-bottom: 4px;
+    text-align: center; width: 100%; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
+}
+
+#drag-ghost {
+    position: absolute; width: 64px; height: 64px;
+    pointer-events: none; opacity: 0.8; z-index: 999;
+    display: none; transform: translate(-50%, -50%);
+}
+
+.skin-item {
+    width: 90%; background: #34495e; margin: 5px; padding: 10px;
+    border: 2px solid #2c3e50; display: flex; align-items: center; gap: 10px;
+    cursor: pointer; transition: background 0.2s;
+}
+.skin-item.active { border-color: #f1c40f; background: #2980b9; }
+
+/* ANIMATIONS */
+.spinner {
+    width: 40px; height: 40px; border: 5px solid #fff;
+    border-top: 5px solid var(--primary); border-radius: 50%;
+    animation: spin 1s linear infinite; margin: 0 auto;
+}
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+@keyframes pop { from { transform: scale(0.8); opacity:0; } to { transform: scale(1); opacity:1; } }
+
+#pause-menu-overlay { pointer-events: auto !important; }
+#pause-menu-overlay button { width: 150px; margin: 5px; position: relative; z-index: 101; cursor: pointer; }
+
+/* FORCER LE CLIC SUR LES BOUTONS DU JEU */
+#btn-game-menu, #btn-audio-game {
+    pointer-events: auto !important;
+    cursor: pointer;
+}/* AJOUTS V2 - UPGRADE & PROGRESSION */
+
+.card-level {
+    position: absolute; bottom: 35px; right: 5px;
+    background: #34495e; color: #fff;
+    font-size: 0.5rem; padding: 2px 4px; border-radius: 4px;
+    border: 1px solid #fff; z-index: 5;
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.card-progress-wrap {
+    position: absolute; bottom: 20px; left: 5px; right: 5px;
+    height: 6px; background: #555; border: 1px solid #fff;
+    border-radius: 3px; z-index: 5;
+}
+
+.card-progress-fill {
+    height: 100%; background: #2ecc71;
+    width: 0%; transition: width 0.3s;
+}
+
+.upgrade-btn-mini {
+    position: absolute; bottom: 10px; left: 50%;
+    transform: translateX(-50%);
+    background: #f1c40f; color: #c0392b;
+    border: 2px solid #fff; font-size: 0.5rem;
+    padding: 2px 5px; cursor: pointer; z-index: 10;
+    animation: bounce 1s infinite;
+    white-space: nowrap;
+}
+@keyframes bounce { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(-3px); } }
+
+/* Ajustement pour que le nom ne soit pas caché */
+.pixel-card .card-name { margin-bottom: 25px; }
+
+/* LEVEL UP MODAL */
+#levelup-modal {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.9); z-index: 700;
+    display: none; flex-direction: column; justify-content: center; align-items: center;
+    text-align: center;
+}
+#levelup-card-container {
+    position: relative; margin: 20px;
+}
+#levelup-canvas {
+    width: 128px; height: 128px; border: 4px solid #f1c40f; 
+    background: #222; image-rendering: pixelated;
+    box-shadow: 0 0 50px #f1c40f;
+    animation: pulse 1s infinite;
+}
+@keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+
+.firework {
+    position: absolute; width: 10px; height: 10px; background: transparent;
+    box-shadow: 0 0 10px #fff; border-radius: 50%;
+    animation: firework 1s ease-out infinite;
+}
+@keyframes firework { 
+    0% { transform: scale(0); opacity: 1; } 
+    100% { transform: scale(3); opacity: 0; } 
+}
+#info-card-preview {
+    width: 128px; height: 128px; 
+    border: 4px solid white; 
+    margin-bottom: 20px; 
+    background: #222; 
+    image-rendering: pixelated;
+    box-shadow: 0 0 15px rgba(0,0,0,0.8);
+    transform: scale(1.5); /* Make it pop */
+    margin-top: 30px;
+}
+
+#info-card-stats {
+    font-size: 0.9rem; 
+    line-height: 1.6; 
+    text-align: center; 
+    background: #111; 
+    padding: 20px; 
+    border: 4px solid #fff; 
+    max-width: 300px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.8);
+    border-radius: 8px;
+    color: #fff;
+}
+
+/* LEADERBOARD */
+.leaderboard-container {
+    width: 90%;
+    max-width: 400px;
+    height: 60%;
+    background: #2c3e50;
+    border: 4px solid #fff;
+    overflow-y: auto;
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.leaderboard-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #555;
+    font-size: 0.7rem;
+    color: #fff;
+}
+
+.leaderboard-item.me {
+    background: rgba(46, 204, 113, 0.3);
+    border: 1px solid #2ecc71;
+}
+
+.lb-rank {
+    width: 40px;
+    font-weight: bold;
+    color: #f1c40f;
+}
+
+.lb-flag {
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+
+.lb-name {
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.lb-score {
+    color: #f1c40f;
+    font-weight: bold;
+}
+
+/* LEADERBOARD DRAWER (PARCHEMIN) */
+#leaderboard-drawer {
+    position: fixed;
+    /* Positionnement de base pour être caché derrière le menu */
+    /* La navbar fait 100px. Pour que le drawer soit caché DERRIÈRE, on le met au fond (bottom: 0) */
+    /* On utilise z-index pour le mettre entre le jeu et la navbar */
+    bottom: 0; 
+    left: 5%;
+    width: 90%;
+    height: 75%; /* Prend une bonne partie de l'écran quand ouvert */
+    
+    /* Style Parchemin 8-bits */
+    background: #f1c27d; /* Couleur papier */
+    border: 4px solid #d35400; /* Bordure foncée */
+    box-shadow: 
+        inset 0 0 20px rgba(0,0,0,0.2), /* Ombre intérieure */
+        0 -4px 0 #e67e22, /* 3D effect top */
+        0 4px 0 #c0392b, /* 3D effect bottom */
+        0 0 10px rgba(0,0,0,0.5); /* Drop shadow */
+
+    /* 
+       État FERMÉ (Défaut) :
+       On veut qu'il soit caché derrière la navbar (qui fait 100px), mais que la poignée (40px) dépasse.
+       Donc on translate vers le bas pour que le top du drawer soit à (100px - 40px) = 60px du bas.
+       Si le drawer fait 75vh... c'est complexe à calculer en statique.
+       
+       Approche Z-INDEX :
+       Navbar z-index = 100.
+       Game z-index = 10.
+       Drawer z-index = 50.
+       
+       Ainsi, le drawer est physiquement derrière la navbar.
+       Si on le place à bottom: 0, le bas du drawer est caché par la navbar.
+       On doit le translater pour que le haut (la poignée) dépasse juste au dessus de la navbar.
+       Hauteur Navbar = 100px. Hauteur Poignée = 40px.
+       Position fermée = La poignée est à bottom: 100px.
+       Donc le haut du drawer est à 100px du bas.
+       
+       Si on utilise transform, on part de "Ouvert" (bottom: 0) vers "Fermé" (descendu).
+       Fermé : On veut cacher tout sauf les 40px du haut, MAIS la navbar cache déjà les 100px du bas.
+       Donc on veut que le HAUT du drawer soit à 100px du bas de l'écran.
+       
+       Si height = 75vh.
+       Ouvert : translateY(0) -> Le bas est à 0. Le haut est à 75vh.
+       Fermé : On veut que le haut soit à 100px.
+       Donc on doit descendre de (75vh - 100px).
+       
+       MAIS ATTENTION: Si z-index < Navbar, on ne peut pas cliquer sur la poignée si elle est DERRIERE la navbar.
+       L'utilisateur veut : "se remettra derriere les menus du jeu en ne laissant apparaitre que le haut du parchemin avec ecrit classement"
+       Cela implique que la poignée DOIT être visible (donc au dessus ou non couverte).
+       
+       Si la navbar est en bas, et la poignée au dessus, elle n'est pas cachée.
+       Donc:
+       z-index: 90 (Navbar est 100).
+       La poignée doit être positionnée physiquement au dessus de la zone de la navbar (bottom > 100px).
+       
+       Nouvelle logique :
+       Drawer position: bottom: 100px (pile au dessus navbar).
+       Z-Index: 150 (Au dessus de la navbar pour le drag, mais visuellement on dirait qu'il sort de derrière si on ajuste le design).
+       
+       Attente: "Le classement est encore au dessus des boutons". 
+       Ah! L'utilisateur veut dire que le drawer *recouvre* les boutons.
+       Donc il faut qu'il soit *derrière* ou qu'il ne descende pas sur les boutons.
+       
+       Si on le met à bottom: 100px, il ne touche pas aux boutons (qui sont dans les 100px du bas).
+       C'est ce que j'ai fait au patch précédent mais l'image montre qu'il est "sur" les boutons.
+       Pourquoi ?
+       Peut-être que la navbar a un fond transparent ou que le layout a changé ?
+       Navbar height: 100px. Background #2c3e50.
+       
+       Regardons l'image. Le drawer semble "flotter" très bas.
+       Si je le mets à bottom: 100px, il commence à 100px du bas.
+       Mais l'état "Fermé" était calculé avec translateY(calc(100% - 40px)).
+       Si height = 75%, 100% = 75vh.
+       Si je translate de 100% - 40px vers le bas, le haut du drawer se retrouve à (bottom + 40px).
+       Si bottom = 100px, le haut est à 140px.
+       
+       Si l'utilisateur dit qu'il est "au dessus", c'est peut être qu'il veut qu'il soit caché *derrière* la navbar (z-index < 100) mais que la poignée dépasse.
+       Essayons Z-Index 50 (Navbar 100).
+       Et position bottom: 0.
+       Hauteur Navbar = 100px.
+       On veut que la poignée (40px) dépasse. Donc le haut du drawer à 140px ? Non, 100px (bord navbar) + 40px (poignée) ?
+       Ou juste 100px + un bout.
+       
+       Si Z-Index < 100, la partie du drawer qui est en bas (0-100px) sera cachée par la navbar.
+       La partie > 100px sera visible.
+       Donc, si on veut voir juste la poignée :
+       On positionne le drawer pour que son haut soit à 140px du bas (100px navbar + 40px poignée).
+       Et on le laisse descendre derrière.
+    */
+    z-index: 50; /* DERRIÈRE LA NAVBAR (100) */
+    
+    /* On veut que l'effet "Ouvert" monte le drawer pour qu'il prenne l'écran. */
+    /* On fixe le drawer en bas de l'écran */
+    bottom: 0;
+    
+    /* Mais on veut qu'il soit décalé vers le bas par défaut */
+    /* Calcul:
+       Hauteur totale = 75vh.
+       On veut que le haut (poignée) soit visible au dessus de la navbar (100px).
+       Donc le haut doit être à 100px + 40px = 140px du bas ?
+       Ou juste au ras de la navbar (100px) + 40px de poignée visible ?
+       Disons qu'on veut voir la poignée.
+       La poignée fait 40px.
+       La navbar cache les 100 premiers pixels.
+       Si on veut voir la poignée, il faut que le haut du drawer soit à 140px du bas.
+       (100px cachés + 40px visibles).
+       
+       Translation nécessaire :
+       Position de base (0 translation) : Le bas est à 0. Le haut est à 75vh.
+       Position fermée : Le haut doit être à 140px.
+       Donc on doit descendre de (75vh - 140px).
+       
+       CSS calc: translateY(calc(75vh - 140px));
+       MAIS 75vh est dynamique sur mobile (barre URL).
+       Mieux vaut utiliser des pourcentages si height est en %.
+       height: 75%.
+       translateY(calc(100% - 140px)); -> Le haut sera à 140px du bas.
+    */
+    transform: translateY(calc(100% - 140px)); 
+    
+    /* Animation curve updated for "elasticity" */
+    transition: transform 0.5s cubic-bezier(0.5, 1.6, 0.4, 0.7);
+    
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+#leaderboard-drawer.open {
+    transform: translateY(0%);
+}
+
+#leaderboard-handle {
+    width: 100%;
+    height: 40px;
+    background: #e67e22;
+    border-bottom: 2px solid #d35400;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: grab;
+    flex-shrink: 0;
+}
+
+/* Icone de poignée */
+.pixel-scroll-icon {
+    width: 30px; height: 4px;
+    background: #5d4037;
+    border-radius: 2px;
+    margin-right: 10px;
+}
+
+#leaderboard-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+    /* Reset styles from previous modal container */
+    max-width: none;
+    width: 100%; 
+    height: auto;
+    border: none;
+    margin-top: 0;
+    background: transparent;
+    box-sizing: border-box;
+}
+
+/* Override items for scroll look */
+#leaderboard-content .leaderboard-item {
+    color: #5d4037; /* Encre foncée */
+    border-bottom: 1px dashed #d35400;
+}
+
+#leaderboard-content .leaderboard-item.me {
+    background: rgba(255, 255, 255, 0.3);
+    border: 2px solid #c0392b;
+}
+
+#leaderboard-content .lb-rank { color: #c0392b; }
+#leaderboard-content .lb-score { color: #d35400; }
+
+/* Hide scrollbar but keep functionality */
+#leaderboard-content::-webkit-scrollbar {
+    width: 8px;
+}
+#leaderboard-content::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0.1);
+}
+#leaderboard-content::-webkit-scrollbar-thumb {
+    background: #d35400;
+}
+
+/* ADS */
+.ad-banner {
+    width: 100%;
+    height: 50px;
+    background: #222;
+    color: #555;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.6rem;
+    border: 2px dashed #444;
+    position: relative; /* Changed from absolute to flow in flex col */
+    z-index: 5;
+    flex-shrink: 0;
+}
+/* No absolute positioning needed for flex layout */
+/* .ad-banner.top { top: 0; } */
+/* .ad-banner.bottom { bottom: 0; } */
+
+body.no-ads .ad-banner { display: none; }
+
+/* PROFILE DRAWER */
+#profile-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5); z-index: 499;
+    display: none;
+}
+
+#profile-drawer {
+    position: fixed;
+    top: 0; right: 0;
+    width: 60%; max-width: 250px;
+    height: 100%;
+    background: #2c3e50;
+    border-left: 4px solid #fff;
+    box-shadow: -10px 0 20px rgba(0,0,0,0.5);
+    z-index: 500;
+    transform: translateX(100%);
+    /* Retraction (closing) transition - Back In */
+    transition: transform 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+    display: flex; flex-direction: column;
+}
+#profile-drawer.open {
+    transform: translateX(0);
+    /* Deployment (opening) transition - Elastic Out */
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.profile-content {
+    padding: 20px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+/* PROFILE RIBBON (Dynamic) */
+#profile-toggle {
+    transition: transform 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+/* When drawer is open, move the toggle with it */
+body.profile-open #profile-toggle {
+    transform: translateX(-300px); /* Approximate width of drawer */
+}
+/* On mobile it might be different width, handled by JS sync */
+
+.pixel-icon {
+    width: 1.2em;
+    height: 1.2em;
+    vertical-align: middle;
+    image-rendering: pixelated;
+    margin: 0 2px;
+}
+.pixel-icon.large {
+    width: 2em;
+    height: 2em;
+}
+.pixel-icon.small {
+    width: 0.8em;
+    height: 0.8em;
+}
+.pixel-icon.rotate-90 {
+    transform: rotate(90deg);
+}
