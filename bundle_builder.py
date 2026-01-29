@@ -40,6 +40,7 @@ ORDERED_FILES = [
     'js/game/kingdom.js',
     'js/game/battle.js',
     'js/window_expose.js',
+    'js/system/admin.js',
     'js/main.js'
 ]
 

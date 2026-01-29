@@ -1,69 +1,70 @@
 // 16-BIT KINGDOM SKINS (24x24 Resolution)
-// More details, depth, and shading characters.
+// Enhanced detail and shading
 
 export const SKINS_16BIT_KINGDOM = {
     // --- BUILDINGS ---
-    structure_castle: {
+    structure_castle_16bit: {
         name: "Castle 16-Bit",
         sprite: [[
-            ".........HHH..HHH.........",
-            ".......HHHHHHHHHHHH.......",
-            "......HHKKHHHHHHKKH.......",
-            "......HKKKHHHHHHKKK.......",
-            "......HKKKHHHHHHKKK.......",
-            ".....RRRRRRRRRRRRRRRR.....",
-            "....RRRRRRRRRRRRRRRRRR....",
-            "....RRRRRRRRRRRRRRRRRR....",
-            "...IIIIIIIIIIIIIIIIIIII...",
-            "..IIIIIIIIIIIIIIIIIIIIII..",
-            "..IIKIIIIIIKIIKIIIIIIKII..",
-            "..IIKIIIIIIKIIKIIIIIIKII..",
-            "..IIIIIIIIIIIIIIIIIIIIII..",
-            "..IIIIIIIIIIIIIIIIIIIIII..",
-            "..IIIIIIKKKKKKKKKKIIIIII..",
-            "..IIIIIIKKKKKKKKKKIIIIII..",
-            "..IIIIIIKKKKKKKKKKIIIIII..",
-            "..IIIIIIKKKKKKKKKKIIIIII..",
-            "..IIIIIIKKKKKKKKKKIIIIII..",
-            "..IIIIIIKKKKKKKKKKIIIIII..",
-            "..........................",
-            "..........................",
-            "..........................",
-            ".........................."
+            "........................",
+            ".........HH..HH.........",
+            ".......HHHHHHHHHH.......",
+            "......HHHHKHHHKHHHH.....",
+            ".....HHHHKKHHKKHHHH.....",
+            ".....HKKHKKHHKKHKKH.....",
+            ".....HKKHKKHHKKHKKH.....",
+            "....RRRRRRRRRRRRRRRR....",
+            "....RRRRRRRRRRRRRRRR....",
+            "...IIIIIIIIIIIIIIIIII...",
+            "..IIIIIIIIIIIIIIIIIIII..",
+            "..IIKIIIIIIKIIKIIIIKII..",
+            "..IIKIIIIIIKIIKIIIIKII..",
+            "..IIIIIIIIIIIIIIIIIIII..",
+            "..IIIIIIKKKKKKKKIIIIII..",
+            "..IIIIIIKKKKKKKKIIIIII..",
+            "..IIIIIIKKKKKKKKIIIIII..",
+            "..IIIIIIKKKKKKKKIIIIII..",
+            "..IIIIIIKKKKKKKKIIIIII..",
+            "..IIIIIIKKKKKKKKIIIIII..",
+            "..IIIIIIKKKKKKKKIIIIII..",
+            "........................",
+            "........................",
+            "........................"
         ]]
     },
-    structure_mine: {
+    structure_mine_16bit: {
         name: "Gold Mine 16-Bit",
         sprite: [[
-            "...........II............",
-            "..........IIII...........",
-            ".........IIIIII..........",
-            "........IIIIIIII.........",
-            ".......IIIIIIIIII........",
-            "......IIIIIIIIIIII.......",
-            ".....IIIIIIIIIIIIII......",
-            "....IIIIIIIIIIIIIIII.....",
-            "...IIIIQIIIIIIIIQIIII....",
-            "..IIIIIQIIIIIIIIQIIIII...",
-            "..IIIIIQIIIIIIIIQIIIII...",
-            "..IIIIIQQQQQQQQQQIIIII...",
-            "..IIIIIIKKKKKKKKIIIIII...",
-            "..IIIIIIKKKKKKKKIIIIII...",
-            "..IIIIIIKKKKKKKKIIIIII...",
-            "..IIIIIIKKKKKKKKIIIIII...",
-            "..........................",
-            "..........................",
-            "..........................",
-            "..........................",
-            "..........................",
-            "..........................",
-            "..........................",
-            ".........................."
+            "........................",
+            "...........II...........",
+            "..........IIII..........",
+            ".........IIIIII.........",
+            "........IIIIIIII........",
+            ".......IIIIIIIIII.......",
+            "......IIIIIIIIIIII......",
+            ".....IIIIIIIIIIIIII.....",
+            "....IIIIQIIIIIIQIIII....",
+            "...IIIIIQIIIIIIQIIIII...",
+            "..IIIIIQQQQQQQQQQIIIII..",
+            "..IIIIIIKKKKKKKKIIIIII..",
+            "..IIIIIIKKKKKKKKIIIIII..",
+            "..IIIIIIKKKKKKKKIIIIII..",
+            "..IIIIIIKKKKKKKKIIIIII..",
+            "..IIIIIIKKKKKKKKIIIIII..",
+            "..IIIIIIKKKKKKKKIIIIII..",
+            "..IIIIIIKKKKKKKKIIIIII..",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................"
         ]]
     },
-    structure_farm: {
+    structure_farm_16bit: {
         name: "Farm 16-Bit",
         sprite: [[
+            "........................",
             "..........RRRR..........",
             "........RRRRRRRR........",
             "......RRRRRRRRRRRR......",
@@ -72,7 +73,6 @@ export const SKINS_16BIT_KINGDOM = {
             "..WWWWWWWWWWWWWWWWWWWW..",
             "..WKWKWKWKWKWKWKWKWKWK..",
             "..WWWWWWWWWWWWWWWWWWWW..",
-            "..WWWWWWWWWWWWWWWWWWWW..",
             "..WWWWWWKWWWWWWKWWWWWW..",
             "..WWWWWWKWWWWWWKWWWWWW..",
             "..WWWWWWKWWWWWWKWWWWWW..",
@@ -80,7 +80,7 @@ export const SKINS_16BIT_KINGDOM = {
             "..WWWWWWKWWWWWWKWWWWWW..",
             "..WWWWWWKWWWWWWKWWWWWW..",
             "..WWWWWWKWWWWWWKWWWWWW..",
-            "........................",
+            "..WWWWWWKWWWWWWKWWWWWW..",
             "........................",
             "........................",
             "........................",
@@ -90,16 +90,17 @@ export const SKINS_16BIT_KINGDOM = {
             "........................"
         ]]
     },
-    structure_forge: {
+    structure_forge_16bit: {
         name: "Forge 16-Bit",
         sprite: [[
+            "........................",
             "..........HHHH..........",
             "........HHHHHHHH........",
             "......HHHHHHHHHHHH......",
             "....HHHHHHHHHHHHHHHH....",
             "...OOOOOOOOOOOOOOOOOO...",
             "..OOOOOOOOOOOOOOOOOOOO..",
-            "..HHHHHHHHHHHHHHHHHHHH..",
+            ".HHHHHHHHHHHHHHHHHHHHHH.",
             ".HHHHHKHHHHHHHHHHKHHHHH.",
             ".HHHHHKHHHHHHHHHHKHHHHH.",
             ".HHHHHHHHHHHHHHHHHHHHHH.",
@@ -115,13 +116,12 @@ export const SKINS_16BIT_KINGDOM = {
             "........................",
             "........................",
             "........................",
-            "........................",
             "........................"
         ]]
     },
 
     // --- PROPS ---
-    prop_tree: {
+    prop_tree_16bit: {
         name: "Tree 16-Bit",
         sprite: [[
             "...........GG...........",
@@ -141,8 +141,8 @@ export const SKINS_16BIT_KINGDOM = {
             ".........QQQQQQ.........",
             ".........QQQQQQ.........",
             ".........QQQQQQ.........",
-            "........................",
-            "........................",
+            ".........QQQQQQ.........",
+            ".........QQQQQQ.........",
             "........................",
             "........................",
             "........................",
@@ -150,9 +150,10 @@ export const SKINS_16BIT_KINGDOM = {
             "........................"
         ]]
     },
-    prop_rock: {
+    prop_rock_16bit: {
         name: "Rock 16-Bit",
         sprite: [[
+            "........................",
             "...........III..........",
             ".........IIIIIII........",
             ".......IIIIIIIIIII......",
@@ -175,13 +176,21 @@ export const SKINS_16BIT_KINGDOM = {
             "........................",
             "........................",
             "........................",
-            "........................",
             "........................"
         ]]
     },
-    prop_bush: {
+    prop_bush_16bit: {
         name: "Bush 16-Bit",
         sprite: [[
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
             "...........GG...........",
             ".........GGGGGG.........",
             ".......GGGGGGGGGG.......",
@@ -189,15 +198,6 @@ export const SKINS_16BIT_KINGDOM = {
             ".....GGGGGGGGGGGGGG.....",
             "....GGGGGGGGGGGGGGGG....",
             "...GGGGGGGGGGGGGGGGGG...",
-            "........................",
-            "........................",
-            "........................",
-            "........................",
-            "........................",
-            "........................",
-            "........................",
-            "........................",
-            "........................",
             "........................",
             "........................",
             "........................",

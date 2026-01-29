@@ -120,14 +120,29 @@ function handleKInputStart(pos) {
     const pathTargets = ['mine', 'forge', 'farm'];
     for(const id of pathTargets) {
         const target = getZoneCoords(id);
-        const cp = getPathControlPoint(castle, target, id); // pathId is effectively the target slotId for simple star topology
+        const cp = getPathControlPoint(castle, target, id);
+
+        // Check CP (Control Point)
         if(Math.hypot(mx - cp.x, my - cp.y) < 30) {
             KINGDOM.drag.active = true;
             KINGDOM.drag.mode = 'path';
-            KINGDOM.drag.target = id; // pathId
-            KINGDOM.drag.original = { ...getKingdomData().paths[id] || {x:0, y:0} };
-            KINGDOM.drag.offsetX = cp.x - mx; // offset from control point visual center
+            KINGDOM.drag.target = id;
+            KINGDOM.drag.offsetX = cp.x - mx;
             KINGDOM.drag.offsetY = cp.y - my;
+            return;
+        }
+
+        // Check Midpoint (Grab the wire)
+        // M = 0.25*P0 + 0.5*P1 + 0.25*P2
+        const midX = 0.25*castle.x + 0.5*cp.x + 0.25*target.x;
+        const midY = 0.25*castle.y + 0.5*cp.y + 0.25*target.y;
+
+        if(Math.hypot(mx - midX, my - midY) < 30) {
+            KINGDOM.drag.active = true;
+            KINGDOM.drag.mode = 'path_mid';
+            KINGDOM.drag.target = id;
+            KINGDOM.drag.offsetX = midX - mx;
+            KINGDOM.drag.offsetY = midY - my;
             return;
         }
     }
@@ -183,17 +198,28 @@ function handleKInputMove(pos) {
         const k = getKingdomData();
         k.layout[id] = { x: newX / KINGDOM.w, y: newY / KINGDOM.h };
     }
-    else if(KINGDOM.drag.mode === 'path') {
+    else if(KINGDOM.drag.mode === 'path' || KINGDOM.drag.mode === 'path_mid') {
         const id = KINGDOM.drag.target;
         const k = getKingdomData();
-        
-        // Calculate new Control Point absolute position
-        const cpAbsX = mx + KINGDOM.drag.offsetX;
-        const cpAbsY = my + KINGDOM.drag.offsetY;
-        
-        // We need to store the offset relative to the Midpoint of the two buildings
         const castle = getZoneCoords('castle');
         const target = getZoneCoords(id);
+
+        let cpAbsX, cpAbsY;
+
+        if(KINGDOM.drag.mode === 'path') {
+            cpAbsX = mx + KINGDOM.drag.offsetX;
+            cpAbsY = my + KINGDOM.drag.offsetY;
+        } else {
+            // Dragging Midpoint: Calculate required CP to put midpoint at mouse
+            // P1 = 2*M - 0.5*(P0 + P2)
+            // M is mouse pos + offset
+            const mX = mx + KINGDOM.drag.offsetX;
+            const mY = my + KINGDOM.drag.offsetY;
+
+            cpAbsX = 2 * mX - 0.5 * (castle.x + target.x);
+            cpAbsY = 2 * mY - 0.5 * (castle.y + target.y);
+        }
+
         const midX = (castle.x + target.x) / 2;
         const midY = (castle.y + target.y) / 2;
         
@@ -213,7 +239,7 @@ function handleKInputEnd() {
         s.vy = 0;
         spawnKingdomFloat(s.x, s.y - 40, "AAAAH!", 1.0, '#fff', '10px');
     }
-    else if(KINGDOM.drag.mode === 'building' || KINGDOM.drag.mode === 'path') {
+    else if(KINGDOM.drag.mode === 'building' || KINGDOM.drag.mode.startsWith('path')) {
         saveData();
     }
     
@@ -709,16 +735,27 @@ function drawKingdom() {
         ctx.fillRect(gx, gy, 4, 4);
     }
 
+    const active16 = window.PLAYER.active_16bit && window.PLAYER.active_16bit.kingdom ? window.PLAYER.active_16bit.kingdom : [];
+
     KINGDOM.props.forEach(p => {
         const px = p.x; const py = p.y;
-        const s = (p.scale || 1) * 1.5;
         
         let key = '';
         if(p.type === 0) key = 'prop_tree';
         else if(p.type === 1) key = 'prop_rock';
         else key = 'prop_bush';
 
-        const sprite = SPRITE_CACHE[key];
+        let finalKey = key;
+        let baseScale = 3; // 8-bit scale
+
+        if(active16.includes(key + '_16bit')) {
+            finalKey = key + '_16bit';
+            baseScale = 1.5; // 16-bit scale
+        }
+
+        const s = (p.scale || 1) * baseScale;
+        const sprite = SPRITE_CACHE[finalKey] || SPRITE_CACHE[key];
+
         if(sprite) {
              const w = sprite.width * s;
              const h = sprite.height * s;
@@ -757,8 +794,32 @@ function drawKingdom() {
     drawStructure(ctx, farm.x, farm.y, 'farm');
     drawStructure(ctx, forge.x, forge.y, 'forge');
 
-    // Debug / Editor Visuals
-    // if(KINGDOM.drag.active) { ... }
+    // Debug / Editor Visuals for Path Dragging
+    if(KINGDOM.drag.active && (KINGDOM.drag.mode === 'path' || KINGDOM.drag.mode === 'path_mid')) {
+        const castle = getZoneCoords('castle');
+        const id = KINGDOM.drag.target;
+        const target = getZoneCoords(id);
+        const cp = getPathControlPoint(castle, target, id);
+
+        // Draw Handle
+        ctx.fillStyle = '#f1c40f';
+        ctx.strokeStyle = '#fff';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.arc(cp.x, cp.y, 8, 0, Math.PI*2);
+        ctx.fill();
+        ctx.stroke();
+
+        // Draw Skeleton Lines
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.5)';
+        ctx.setLineDash([5, 5]);
+        ctx.beginPath();
+        ctx.moveTo(castle.x, castle.y);
+        ctx.lineTo(cp.x, cp.y);
+        ctx.lineTo(target.x, target.y);
+        ctx.stroke();
+        ctx.setLineDash([]);
+    }
 
     KINGDOM.particles.forEach(p => {
         ctx.fillStyle = p.color;
@@ -868,8 +929,15 @@ function drawCastleStatus(ctx, x, y) {
 }
 
 function drawStructure(ctx, x, y, type) {
-    const key = 'structure_' + type;
-    const sprite = SPRITE_CACHE[key];
+    let key = 'structure_' + type;
+
+    // Check for 16-bit override
+    const active16 = window.PLAYER.active_16bit && window.PLAYER.active_16bit.kingdom ? window.PLAYER.active_16bit.kingdom : [];
+    if(active16.includes(key + '_16bit')) {
+        key += '_16bit';
+    }
+
+    const sprite = SPRITE_CACHE[key] || SPRITE_CACHE['structure_' + type];
     
     if(sprite) {
         // Adapt scale based on resolution (24x24 vs 12x12)

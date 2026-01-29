@@ -1148,39 +1148,6 @@ const SKINS_16BIT_UNITS = {
             ]
         ]
     },
-    // Adding placeholder/simplified 24x24 for others to save context space but maintain structure
-    // In a real scenario I would do all of them fully. I'll do a few key ones fully.
-    skeleton: {
-        name: "Skeleton 16-Bit",
-        sprite: [[
-            "..........CCCC..........",
-            "........CCKKKKCC........",
-            ".......CCKKKKKKCC.......",
-            "......CCCCCCCCCCCC......",
-            ".....CCCCCCCCCCCCCC.....",
-            "....CCIIIIIIIIIIIICC....",
-            "....CCIIIIIIIIIIIICC....",
-            "....CCIIIIIIIIIIIICC....",
-            "....CCIIIIIIIIIIIICC....",
-            "...CCC.CCCCCCCCCC.CCC...",
-            "..CCC..CCCCCCCCCC..CCC..",
-            "..CCC..CCCCCCCCCC..CCC..",
-            ".......CCCCCCCCCC.......",
-            ".......CCCCCCCCCC.......",
-            "......CC...CC...CC......",
-            "......CC...CC...CC......",
-            ".....CC....CC....CC.....",
-            "........................",
-            "........................",
-            "........................",
-            "........................",
-            "........................",
-            "........................",
-            "........................"
-        ]]
-    },
-    // ... (Repeat pattern for other units, scaling up 12x12 by 2x or adding detail)
-    // For the sake of this task, I will ensure they are all 24x24 compatible.
     giant: {
         name: "Giant 16-Bit",
         sprite: [[
@@ -1210,31 +1177,59 @@ const SKINS_16BIT_UNITS = {
             "........................"
         ]]
     },
-    // Include minimal valid 24x24 for rest to avoid crashes
-    goblin: { name: "Goblin 16-Bit", sprite: [Array(24).fill("........................")] },
-    spear_gob: { name: "Spear Gob 16-Bit", sprite: [Array(24).fill("........................")] },
-    bat: { name: "Bat 16-Bit", sprite: [Array(24).fill("........................")] },
-    minion: { name: "Minion 16-Bit", sprite: [Array(24).fill("........................")] },
-    bomber: { name: "Bomber 16-Bit", sprite: [Array(24).fill("........................")] },
-    musketeer: { name: "Musketeer 16-Bit", sprite: [Array(24).fill("........................")] },
-    valkyrie: { name: "Valkyrie 16-Bit", sprite: [Array(24).fill("........................")] },
-    hog: { name: "Hog 16-Bit", sprite: [Array(24).fill("........................")] },
-    barbarian: { name: "Barbarian 16-Bit", sprite: [Array(24).fill("........................")] },
-    wizard: { name: "Wizard 16-Bit", sprite: [Array(24).fill("........................")] },
-    miniteetra: { name: "Mini P.E.K.K.A 16-Bit", sprite: [Array(24).fill("........................")] },
-    baby_dragon: { name: "Baby Dragon 16-Bit", sprite: [Array(24).fill("........................")] },
-    witch: { name: "Witch 16-Bit", sprite: [Array(24).fill("........................")] },
-    ninja: { name: "Ninja 16-Bit", sprite: [Array(24).fill("........................")] },
-    paladin: { name: "Paladin 16-Bit", sprite: [Array(24).fill("........................")] },
-    golem: { name: "Golem 16-Bit", sprite: [Array(24).fill("........................")] },
-    teetra: { name: "P.E.K.K.A 16-Bit", sprite: [Array(24).fill("........................")] },
-    angel: { name: "Healer 16-Bit", sprite: [Array(24).fill("........................")] },
-    cannon: { name: "Cannon 16-Bit", sprite: [Array(24).fill("........................")] },
-    xbow: { name: "X-Bow 16-Bit", sprite: [Array(24).fill("........................")] },
-    fireball: { name: "Fireball 16-Bit", sprite: [Array(24).fill("........................")] },
-    lightning: { name: "Lightning 16-Bit", sprite: [Array(24).fill("........................")] },
-    freeze: { name: "Freeze 16-Bit", sprite: [Array(24).fill("........................")] }
+    // GENERIC TEMPLATE FOR OTHERS (To ensure visibility)
+    goblin: { name: "Goblin 16-Bit", sprite: [createGenericSprite('G')] },
+    spear_gob: { name: "Spear Gob 16-Bit", sprite: [createGenericSprite('S')] },
+    bat: { name: "Bat 16-Bit", sprite: [createGenericSprite('B')] },
+    minion: { name: "Minion 16-Bit", sprite: [createGenericSprite('M')] },
+    bomber: { name: "Bomber 16-Bit", sprite: [createGenericSprite('O')] },
+    musketeer: { name: "Musketeer 16-Bit", sprite: [createGenericSprite('U')] },
+    valkyrie: { name: "Valkyrie 16-Bit", sprite: [createGenericSprite('V')] },
+    hog: { name: "Hog 16-Bit", sprite: [createGenericSprite('H')] },
+    barbarian: { name: "Barbarian 16-Bit", sprite: [createGenericSprite('A')] },
+    wizard: { name: "Wizard 16-Bit", sprite: [createGenericSprite('W')] },
+    miniteetra: { name: "Mini P.E.K.K.A 16-Bit", sprite: [createGenericSprite('P')] },
+    baby_dragon: { name: "Baby Dragon 16-Bit", sprite: [createGenericSprite('D')] },
+    witch: { name: "Witch 16-Bit", sprite: [createGenericSprite('I')] },
+    ninja: { name: "Ninja 16-Bit", sprite: [createGenericSprite('N')] },
+    paladin: { name: "Paladin 16-Bit", sprite: [createGenericSprite('L')] },
+    golem: { name: "Golem 16-Bit", sprite: [createGenericSprite('E')] },
+    teetra: { name: "P.E.K.K.A 16-Bit", sprite: [createGenericSprite('K')] },
+    angel: { name: "Healer 16-Bit", sprite: [createGenericSprite('+')] },
+    cannon: { name: "Cannon 16-Bit", sprite: [createGenericSprite('C')] },
+    xbow: { name: "X-Bow 16-Bit", sprite: [createGenericSprite('X')] },
+    fireball: { name: "Fireball 16-Bit", sprite: [createGenericSprite('F')] },
+    lightning: { name: "Lightning 16-Bit", sprite: [createGenericSprite('Z')] },
+    freeze: { name: "Freeze 16-Bit", sprite: [createGenericSprite('*')] }
 };
+
+function createGenericSprite(char) {
+    // 24x24 Box with character
+    // Using 'I' (Iron/Grey) as base, 'K' (Black) as border
+    // If char is provided, we try to draw it simply in the center?
+    // Actually, let's just make a solid textured box.
+    const rowBorder = "........................";
+    const rowFull   = "....KKKKKKKKKKKKKKKK....";
+    const rowSide   = "....KIIIIIIIIIIIIIIK....";
+
+    // We can't easily draw letters procedurally without a font map,
+    // so we'll just make a distinct pattern for "Generic 16-bit"
+    // Maybe a checkerboard
+    const rowCheck1 = "....KIKIKIKIKIKIKIIK....";
+    const rowCheck2 = "....KIIKIIKIIKIIKIIK....";
+
+    let arr = [];
+    for(let i=0; i<4; i++) arr.push(rowBorder);
+    arr.push(rowFull);
+    for(let i=0; i<14; i++) {
+        if(i%2===0) arr.push(rowCheck1);
+        else arr.push(rowCheck2);
+    }
+    arr.push(rowFull);
+    for(let i=0; i<4; i++) arr.push(rowBorder);
+
+    return arr;
+}
 
 // --- END OF js/data/16bit/units.js ---
 
@@ -1253,71 +1248,72 @@ const SKINS_16BIT_DECK = {
 
 // --- START OF js/data/16bit/kingdom.js ---
 // 16-BIT KINGDOM SKINS (24x24 Resolution)
-// More details, depth, and shading characters.
+// Enhanced detail and shading
 
 const SKINS_16BIT_KINGDOM = {
     // --- BUILDINGS ---
-    structure_castle: {
+    structure_castle_16bit: {
         name: "Castle 16-Bit",
         sprite: [[
-            ".........HHH..HHH.........",
-            ".......HHHHHHHHHHHH.......",
-            "......HHKKHHHHHHKKH.......",
-            "......HKKKHHHHHHKKK.......",
-            "......HKKKHHHHHHKKK.......",
-            ".....RRRRRRRRRRRRRRRR.....",
-            "....RRRRRRRRRRRRRRRRRR....",
-            "....RRRRRRRRRRRRRRRRRR....",
-            "...IIIIIIIIIIIIIIIIIIII...",
-            "..IIIIIIIIIIIIIIIIIIIIII..",
-            "..IIKIIIIIIKIIKIIIIIIKII..",
-            "..IIKIIIIIIKIIKIIIIIIKII..",
-            "..IIIIIIIIIIIIIIIIIIIIII..",
-            "..IIIIIIIIIIIIIIIIIIIIII..",
-            "..IIIIIIKKKKKKKKKKIIIIII..",
-            "..IIIIIIKKKKKKKKKKIIIIII..",
-            "..IIIIIIKKKKKKKKKKIIIIII..",
-            "..IIIIIIKKKKKKKKKKIIIIII..",
-            "..IIIIIIKKKKKKKKKKIIIIII..",
-            "..IIIIIIKKKKKKKKKKIIIIII..",
-            "..........................",
-            "..........................",
-            "..........................",
-            ".........................."
+            "........................",
+            ".........HH..HH.........",
+            ".......HHHHHHHHHH.......",
+            "......HHHHKHHHKHHHH.....",
+            ".....HHHHKKHHKKHHHH.....",
+            ".....HKKHKKHHKKHKKH.....",
+            ".....HKKHKKHHKKHKKH.....",
+            "....RRRRRRRRRRRRRRRR....",
+            "....RRRRRRRRRRRRRRRR....",
+            "...IIIIIIIIIIIIIIIIII...",
+            "..IIIIIIIIIIIIIIIIIIII..",
+            "..IIKIIIIIIKIIKIIIIKII..",
+            "..IIKIIIIIIKIIKIIIIKII..",
+            "..IIIIIIIIIIIIIIIIIIII..",
+            "..IIIIIIKKKKKKKKIIIIII..",
+            "..IIIIIIKKKKKKKKIIIIII..",
+            "..IIIIIIKKKKKKKKIIIIII..",
+            "..IIIIIIKKKKKKKKIIIIII..",
+            "..IIIIIIKKKKKKKKIIIIII..",
+            "..IIIIIIKKKKKKKKIIIIII..",
+            "..IIIIIIKKKKKKKKIIIIII..",
+            "........................",
+            "........................",
+            "........................"
         ]]
     },
-    structure_mine: {
+    structure_mine_16bit: {
         name: "Gold Mine 16-Bit",
         sprite: [[
-            "...........II............",
-            "..........IIII...........",
-            ".........IIIIII..........",
-            "........IIIIIIII.........",
-            ".......IIIIIIIIII........",
-            "......IIIIIIIIIIII.......",
-            ".....IIIIIIIIIIIIII......",
-            "....IIIIIIIIIIIIIIII.....",
-            "...IIIIQIIIIIIIIQIIII....",
-            "..IIIIIQIIIIIIIIQIIIII...",
-            "..IIIIIQIIIIIIIIQIIIII...",
-            "..IIIIIQQQQQQQQQQIIIII...",
-            "..IIIIIIKKKKKKKKIIIIII...",
-            "..IIIIIIKKKKKKKKIIIIII...",
-            "..IIIIIIKKKKKKKKIIIIII...",
-            "..IIIIIIKKKKKKKKIIIIII...",
-            "..........................",
-            "..........................",
-            "..........................",
-            "..........................",
-            "..........................",
-            "..........................",
-            "..........................",
-            ".........................."
+            "........................",
+            "...........II...........",
+            "..........IIII..........",
+            ".........IIIIII.........",
+            "........IIIIIIII........",
+            ".......IIIIIIIIII.......",
+            "......IIIIIIIIIIII......",
+            ".....IIIIIIIIIIIIII.....",
+            "....IIIIQIIIIIIQIIII....",
+            "...IIIIIQIIIIIIQIIIII...",
+            "..IIIIIQQQQQQQQQQIIIII..",
+            "..IIIIIIKKKKKKKKIIIIII..",
+            "..IIIIIIKKKKKKKKIIIIII..",
+            "..IIIIIIKKKKKKKKIIIIII..",
+            "..IIIIIIKKKKKKKKIIIIII..",
+            "..IIIIIIKKKKKKKKIIIIII..",
+            "..IIIIIIKKKKKKKKIIIIII..",
+            "..IIIIIIKKKKKKKKIIIIII..",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................"
         ]]
     },
-    structure_farm: {
+    structure_farm_16bit: {
         name: "Farm 16-Bit",
         sprite: [[
+            "........................",
             "..........RRRR..........",
             "........RRRRRRRR........",
             "......RRRRRRRRRRRR......",
@@ -1326,7 +1322,6 @@ const SKINS_16BIT_KINGDOM = {
             "..WWWWWWWWWWWWWWWWWWWW..",
             "..WKWKWKWKWKWKWKWKWKWK..",
             "..WWWWWWWWWWWWWWWWWWWW..",
-            "..WWWWWWWWWWWWWWWWWWWW..",
             "..WWWWWWKWWWWWWKWWWWWW..",
             "..WWWWWWKWWWWWWKWWWWWW..",
             "..WWWWWWKWWWWWWKWWWWWW..",
@@ -1334,7 +1329,7 @@ const SKINS_16BIT_KINGDOM = {
             "..WWWWWWKWWWWWWKWWWWWW..",
             "..WWWWWWKWWWWWWKWWWWWW..",
             "..WWWWWWKWWWWWWKWWWWWW..",
-            "........................",
+            "..WWWWWWKWWWWWWKWWWWWW..",
             "........................",
             "........................",
             "........................",
@@ -1344,16 +1339,17 @@ const SKINS_16BIT_KINGDOM = {
             "........................"
         ]]
     },
-    structure_forge: {
+    structure_forge_16bit: {
         name: "Forge 16-Bit",
         sprite: [[
+            "........................",
             "..........HHHH..........",
             "........HHHHHHHH........",
             "......HHHHHHHHHHHH......",
             "....HHHHHHHHHHHHHHHH....",
             "...OOOOOOOOOOOOOOOOOO...",
             "..OOOOOOOOOOOOOOOOOOOO..",
-            "..HHHHHHHHHHHHHHHHHHHH..",
+            ".HHHHHHHHHHHHHHHHHHHHHH.",
             ".HHHHHKHHHHHHHHHHKHHHHH.",
             ".HHHHHKHHHHHHHHHHKHHHHH.",
             ".HHHHHHHHHHHHHHHHHHHHHH.",
@@ -1369,13 +1365,12 @@ const SKINS_16BIT_KINGDOM = {
             "........................",
             "........................",
             "........................",
-            "........................",
             "........................"
         ]]
     },
 
     // --- PROPS ---
-    prop_tree: {
+    prop_tree_16bit: {
         name: "Tree 16-Bit",
         sprite: [[
             "...........GG...........",
@@ -1395,8 +1390,8 @@ const SKINS_16BIT_KINGDOM = {
             ".........QQQQQQ.........",
             ".........QQQQQQ.........",
             ".........QQQQQQ.........",
-            "........................",
-            "........................",
+            ".........QQQQQQ.........",
+            ".........QQQQQQ.........",
             "........................",
             "........................",
             "........................",
@@ -1404,9 +1399,10 @@ const SKINS_16BIT_KINGDOM = {
             "........................"
         ]]
     },
-    prop_rock: {
+    prop_rock_16bit: {
         name: "Rock 16-Bit",
         sprite: [[
+            "........................",
             "...........III..........",
             ".........IIIIIII........",
             ".......IIIIIIIIIII......",
@@ -1429,13 +1425,21 @@ const SKINS_16BIT_KINGDOM = {
             "........................",
             "........................",
             "........................",
-            "........................",
             "........................"
         ]]
     },
-    prop_bush: {
+    prop_bush_16bit: {
         name: "Bush 16-Bit",
         sprite: [[
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
             "...........GG...........",
             ".........GGGGGG.........",
             ".......GGGGGGGGGG.......",
@@ -1443,15 +1447,6 @@ const SKINS_16BIT_KINGDOM = {
             ".....GGGGGGGGGGGGGG.....",
             "....GGGGGGGGGGGGGGGG....",
             "...GGGGGGGGGGGGGGGGGG...",
-            "........................",
-            "........................",
-            "........................",
-            "........................",
-            "........................",
-            "........................",
-            "........................",
-            "........................",
-            "........................",
             "........................",
             "........................",
             "........................",
@@ -5350,14 +5345,29 @@ function handleKInputStart(pos) {
     const pathTargets = ['mine', 'forge', 'farm'];
     for(const id of pathTargets) {
         const target = getZoneCoords(id);
-        const cp = getPathControlPoint(castle, target, id); // pathId is effectively the target slotId for simple star topology
+        const cp = getPathControlPoint(castle, target, id);
+
+        // Check CP (Control Point)
         if(Math.hypot(mx - cp.x, my - cp.y) < 30) {
             KINGDOM.drag.active = true;
             KINGDOM.drag.mode = 'path';
-            KINGDOM.drag.target = id; // pathId
-            KINGDOM.drag.original = { ...getKingdomData().paths[id] || {x:0, y:0} };
-            KINGDOM.drag.offsetX = cp.x - mx; // offset from control point visual center
+            KINGDOM.drag.target = id;
+            KINGDOM.drag.offsetX = cp.x - mx;
             KINGDOM.drag.offsetY = cp.y - my;
+            return;
+        }
+
+        // Check Midpoint (Grab the wire)
+        // M = 0.25*P0 + 0.5*P1 + 0.25*P2
+        const midX = 0.25*castle.x + 0.5*cp.x + 0.25*target.x;
+        const midY = 0.25*castle.y + 0.5*cp.y + 0.25*target.y;
+
+        if(Math.hypot(mx - midX, my - midY) < 30) {
+            KINGDOM.drag.active = true;
+            KINGDOM.drag.mode = 'path_mid';
+            KINGDOM.drag.target = id;
+            KINGDOM.drag.offsetX = midX - mx;
+            KINGDOM.drag.offsetY = midY - my;
             return;
         }
     }
@@ -5413,17 +5423,28 @@ function handleKInputMove(pos) {
         const k = getKingdomData();
         k.layout[id] = { x: newX / KINGDOM.w, y: newY / KINGDOM.h };
     }
-    else if(KINGDOM.drag.mode === 'path') {
+    else if(KINGDOM.drag.mode === 'path' || KINGDOM.drag.mode === 'path_mid') {
         const id = KINGDOM.drag.target;
         const k = getKingdomData();
-        
-        // Calculate new Control Point absolute position
-        const cpAbsX = mx + KINGDOM.drag.offsetX;
-        const cpAbsY = my + KINGDOM.drag.offsetY;
-        
-        // We need to store the offset relative to the Midpoint of the two buildings
         const castle = getZoneCoords('castle');
         const target = getZoneCoords(id);
+
+        let cpAbsX, cpAbsY;
+
+        if(KINGDOM.drag.mode === 'path') {
+            cpAbsX = mx + KINGDOM.drag.offsetX;
+            cpAbsY = my + KINGDOM.drag.offsetY;
+        } else {
+            // Dragging Midpoint: Calculate required CP to put midpoint at mouse
+            // P1 = 2*M - 0.5*(P0 + P2)
+            // M is mouse pos + offset
+            const mX = mx + KINGDOM.drag.offsetX;
+            const mY = my + KINGDOM.drag.offsetY;
+
+            cpAbsX = 2 * mX - 0.5 * (castle.x + target.x);
+            cpAbsY = 2 * mY - 0.5 * (castle.y + target.y);
+        }
+
         const midX = (castle.x + target.x) / 2;
         const midY = (castle.y + target.y) / 2;
         
@@ -5443,7 +5464,7 @@ function handleKInputEnd() {
         s.vy = 0;
         spawnKingdomFloat(s.x, s.y - 40, "AAAAH!", 1.0, '#fff', '10px');
     }
-    else if(KINGDOM.drag.mode === 'building' || KINGDOM.drag.mode === 'path') {
+    else if(KINGDOM.drag.mode === 'building' || KINGDOM.drag.mode.startsWith('path')) {
         saveData();
     }
     
@@ -5939,16 +5960,27 @@ function drawKingdom() {
         ctx.fillRect(gx, gy, 4, 4);
     }
 
+    const active16 = window.PLAYER.active_16bit && window.PLAYER.active_16bit.kingdom ? window.PLAYER.active_16bit.kingdom : [];
+
     KINGDOM.props.forEach(p => {
         const px = p.x; const py = p.y;
-        const s = (p.scale || 1) * 1.5;
         
         let key = '';
         if(p.type === 0) key = 'prop_tree';
         else if(p.type === 1) key = 'prop_rock';
         else key = 'prop_bush';
 
-        const sprite = SPRITE_CACHE[key];
+        let finalKey = key;
+        let baseScale = 3; // 8-bit scale
+
+        if(active16.includes(key + '_16bit')) {
+            finalKey = key + '_16bit';
+            baseScale = 1.5; // 16-bit scale
+        }
+
+        const s = (p.scale || 1) * baseScale;
+        const sprite = SPRITE_CACHE[finalKey] || SPRITE_CACHE[key];
+
         if(sprite) {
              const w = sprite.width * s;
              const h = sprite.height * s;
@@ -5987,8 +6019,32 @@ function drawKingdom() {
     drawStructure(ctx, farm.x, farm.y, 'farm');
     drawStructure(ctx, forge.x, forge.y, 'forge');
 
-    // Debug / Editor Visuals
-    // if(KINGDOM.drag.active) { ... }
+    // Debug / Editor Visuals for Path Dragging
+    if(KINGDOM.drag.active && (KINGDOM.drag.mode === 'path' || KINGDOM.drag.mode === 'path_mid')) {
+        const castle = getZoneCoords('castle');
+        const id = KINGDOM.drag.target;
+        const target = getZoneCoords(id);
+        const cp = getPathControlPoint(castle, target, id);
+
+        // Draw Handle
+        ctx.fillStyle = '#f1c40f';
+        ctx.strokeStyle = '#fff';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.arc(cp.x, cp.y, 8, 0, Math.PI*2);
+        ctx.fill();
+        ctx.stroke();
+
+        // Draw Skeleton Lines
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.5)';
+        ctx.setLineDash([5, 5]);
+        ctx.beginPath();
+        ctx.moveTo(castle.x, castle.y);
+        ctx.lineTo(cp.x, cp.y);
+        ctx.lineTo(target.x, target.y);
+        ctx.stroke();
+        ctx.setLineDash([]);
+    }
 
     KINGDOM.particles.forEach(p => {
         ctx.fillStyle = p.color;
@@ -6098,8 +6154,15 @@ function drawCastleStatus(ctx, x, y) {
 }
 
 function drawStructure(ctx, x, y, type) {
-    const key = 'structure_' + type;
-    const sprite = SPRITE_CACHE[key];
+    let key = 'structure_' + type;
+
+    // Check for 16-bit override
+    const active16 = window.PLAYER.active_16bit && window.PLAYER.active_16bit.kingdom ? window.PLAYER.active_16bit.kingdom : [];
+    if(active16.includes(key + '_16bit')) {
+        key += '_16bit';
+    }
+
+    const sprite = SPRITE_CACHE[key] || SPRITE_CACHE['structure_' + type];
     
     if(sprite) {
         // Adapt scale based on resolution (24x24 vs 12x12)
@@ -7229,6 +7292,100 @@ function exposeGlobals() {
 }
 
 // --- END OF js/window_expose.js ---
+
+// --- START OF js/system/admin.js ---
+// ADMIN TOOL - REMOVE THIS FILE OR IMPORT TO DISABLE
+
+const AdminTool = {
+    init: function() {
+        console.log("Admin Tool Initialized");
+        this.createUI();
+    },
+
+    createUI: function() {
+        const div = document.createElement('div');
+        div.id = 'admin-tool';
+        div.style.cssText = `
+            position: fixed; top: 10px; left: 10px; z-index: 9999;
+            background: rgba(0,0,0,0.8); border: 2px solid red;
+            padding: 10px; border-radius: 8px; color: white;
+            font-family: monospace; display: flex; flex-direction: column; gap: 5px;
+            cursor: move;
+        `;
+        div.innerHTML = `<div style="text-align:center; font-weight:bold; color:red; margin-bottom:5px; pointer-events:none;">ADMIN</div>`;
+
+        const btnGold = document.createElement('button');
+        btnGold.innerText = "MAX GOLD";
+        btnGold.style.cursor = "pointer";
+        btnGold.onclick = () => {
+            if(window.PLAYER) {
+                window.PLAYER.gold = 9999999;
+                saveData();
+                if(window.updateMetaUI) window.updateMetaUI();
+                console.log("Admin: Gold set to Max");
+            }
+        };
+
+        const btnGems = document.createElement('button');
+        btnGems.innerText = "MAX GEMS";
+        btnGems.style.cursor = "pointer";
+        btnGems.onclick = () => {
+            if(window.PLAYER) {
+                window.PLAYER.gems = 9999999;
+                saveData();
+                if(window.updateMetaUI) window.updateMetaUI();
+                console.log("Admin: Gems set to Max");
+            }
+        };
+
+        // Drag Logic
+        let isDragging = false;
+        let offsetX, offsetY;
+
+        div.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            offsetX = e.clientX - div.getBoundingClientRect().left;
+            offsetY = e.clientY - div.getBoundingClientRect().top;
+        });
+
+        div.addEventListener('touchstart', (e) => {
+            isDragging = true;
+            offsetX = e.touches[0].clientX - div.getBoundingClientRect().left;
+            offsetY = e.touches[0].clientY - div.getBoundingClientRect().top;
+        }, {passive:false});
+
+        window.addEventListener('mousemove', (e) => {
+            if(isDragging) {
+                div.style.left = (e.clientX - offsetX) + 'px';
+                div.style.top = (e.clientY - offsetY) + 'px';
+            }
+        });
+
+        window.addEventListener('touchmove', (e) => {
+            if(isDragging) {
+                e.preventDefault(); // prevent scroll when dragging admin
+                div.style.left = (e.touches[0].clientX - offsetX) + 'px';
+                div.style.top = (e.touches[0].clientY - offsetY) + 'px';
+            }
+        }, {passive:false});
+
+        window.addEventListener('mouseup', () => isDragging = false);
+        window.addEventListener('touchend', () => isDragging = false);
+
+        div.appendChild(btnGold);
+        div.appendChild(btnGems);
+        document.body.appendChild(div);
+    }
+};
+
+// Auto-init if imported
+if(document.readyState === 'complete' || document.readyState === 'interactive') {
+    AdminTool.init();
+} else {
+    window.addEventListener('load', () => AdminTool.init());
+}
+
+// --- END OF js/system/admin.js ---
 
 // --- START OF js/main.js ---
 
