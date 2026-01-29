@@ -902,8 +902,15 @@ const SKINS_16BIT_UNITS = {
             [".....KK.....","....KSSK....","...KSSSSK...","...KSSSSK...","..BVVVVVVB..","..BVVVVVVB..","..BVVVVVVB..","..BVVVVVVB..","...BBBBBB...","...B.BB.B...","..BB....BB.."]
         ]
     },
-    prince: { // Paladin
-        name: "Prince 16-Bit",
+    ninja: {
+        name: "Ninja 16-Bit",
+        sprite: [
+            [".....KK.....","....KKKK....","...KKKKKK...","...KKYKKK...","..KTTTTTTK..","..KTTTTTTK..","..KTTKTTTK..","..KTTTTTTK..","...KKKKKK...","...K.KK.K...","..K..KK..K..",".....KK....."],
+            [".....KK.....","....KKKK....","...KKKKKK...","...KKYKKK...","..KTTTTTTK..","..KTTTTTTK..","..KTTKTTTK..","..KTTTTTTK..","...KKKKKK...","...K.KK.K...","..KK....KK..",".....KK....."]
+        ]
+    },
+    paladin: {
+        name: "Paladin 16-Bit",
         sprite: [
             [".....CC.....","....CYYC....","...CYYYYC...","...CYYYYC...","..CTTTTTTC..","..CTTTTTTC..","..CTTYYYYC..","..CTTTTTTC..","...YYYYYY...","...Y.YY.Y...","..Y..YY..Y..",".....YY....."],
             [".....CC.....","....CYYC....","...CYYYYC...","...CYYYYC...","..CTTTTTTC..","..CTTTTTTC..","..CTTYYYYC..","..CTTTTTTC..","...YYYYYY...","...Y.YY.Y...","..Y...Y..Y..",".....YY....."]
@@ -944,6 +951,18 @@ const SKINS_16BIT_UNITS = {
         sprite: [
             [".....II.....","..I.IIII.I..",".IIIIIIIIII.",".IIIIIIIIII.","....IIII....","....IIII....","...KKKKKK...","...KKKKKK...","...KKKKKK...","...KKKKKK..."]
         ]
+    },
+    fireball: {
+        name: "Fireball 16-Bit",
+        sprite: ["LLLL","LYYL","LYYL","LLLL"]
+    },
+    lightning: {
+        name: "Lightning 16-Bit",
+        sprite: ["YY","YY","YY"]
+    },
+    freeze: {
+        name: "Freeze 16-Bit",
+        sprite: ["CCCC","CWWCK","CWWCK","CCCC"]
     }
 };
 
@@ -3355,6 +3374,36 @@ function spawnConfetti(x, y) {
 
 // --- END OF js/ui/roulette.js ---
 
+// --- START OF js/ui/skin_renderer.js ---
+/**
+ * Handles global skin application (UI, Deck)
+ * by injecting/removing CSS classes on the body.
+ */
+function applyGlobalSkins() {
+    if(!window.PLAYER || !window.PLAYER.active_16bit) return;
+
+    // 1. UI Skin
+    if(window.PLAYER.active_16bit.ui) {
+        document.body.classList.add('skin-ui-16bit');
+        // We could handle specific sub-themes here if needed (e.g., 'neon_ui')
+        // For now, any active UI skin toggles the 16-bit class
+    } else {
+        document.body.classList.remove('skin-ui-16bit');
+    }
+
+    // 2. Deck Skin
+    if(window.PLAYER.active_16bit.deck) {
+        document.body.classList.add('skin-deck-16bit');
+        // Handle specific deck themes via data attribute if needed
+        // document.body.dataset.deckSkin = window.PLAYER.active_16bit.deck;
+    } else {
+        document.body.classList.remove('skin-deck-16bit');
+        // delete document.body.dataset.deckSkin;
+    }
+}
+
+// --- END OF js/ui/skin_renderer.js ---
+
 // --- START OF js/ui/skins.js ---
 
 function openGachaDraw() {
@@ -4545,6 +4594,7 @@ function updateMetaUI() {
     const deckCount = document.getElementById('deck-size');
     if(deckCount) deckCount.textContent = window.PLAYER.deck.length;
 
+    applyGlobalSkins();
     renderCollection();
     renderShop();
     renderSkins();

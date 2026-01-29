@@ -1,6 +1,7 @@
 import { renderCollection } from './collection.js';
 import { renderShop } from './shop.js';
 import { renderSkins } from './skins.js';
+import { applyGlobalSkins } from './skin_renderer.js';
 import { TEXTS } from '../data/texts.js';
 import { LANG } from '../core/state.js';
 
@@ -40,6 +41,7 @@ export function updateMetaUI() {
     const deckCount = document.getElementById('deck-size');
     if(deckCount) deckCount.textContent = window.PLAYER.deck.length;
 
+    applyGlobalSkins();
     renderCollection();
     renderShop();
     renderSkins();

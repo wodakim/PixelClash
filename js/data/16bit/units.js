@@ -123,8 +123,15 @@ export const SKINS_16BIT_UNITS = {
             [".....KK.....","....KSSK....","...KSSSSK...","...KSSSSK...","..BVVVVVVB..","..BVVVVVVB..","..BVVVVVVB..","..BVVVVVVB..","...BBBBBB...","...B.BB.B...","..BB....BB.."]
         ]
     },
-    prince: { // Paladin
-        name: "Prince 16-Bit",
+    ninja: {
+        name: "Ninja 16-Bit",
+        sprite: [
+            [".....KK.....","....KKKK....","...KKKKKK...","...KKYKKK...","..KTTTTTTK..","..KTTTTTTK..","..KTTKTTTK..","..KTTTTTTK..","...KKKKKK...","...K.KK.K...","..K..KK..K..",".....KK....."],
+            [".....KK.....","....KKKK....","...KKKKKK...","...KKYKKK...","..KTTTTTTK..","..KTTTTTTK..","..KTTKTTTK..","..KTTTTTTK..","...KKKKKK...","...K.KK.K...","..KK....KK..",".....KK....."]
+        ]
+    },
+    paladin: {
+        name: "Paladin 16-Bit",
         sprite: [
             [".....CC.....","....CYYC....","...CYYYYC...","...CYYYYC...","..CTTTTTTC..","..CTTTTTTC..","..CTTYYYYC..","..CTTTTTTC..","...YYYYYY...","...Y.YY.Y...","..Y..YY..Y..",".....YY....."],
             [".....CC.....","....CYYC....","...CYYYYC...","...CYYYYC...","..CTTTTTTC..","..CTTTTTTC..","..CTTYYYYC..","..CTTTTTTC..","...YYYYYY...","...Y.YY.Y...","..Y...Y..Y..",".....YY....."]
@@ -165,5 +172,17 @@ export const SKINS_16BIT_UNITS = {
         sprite: [
             [".....II.....","..I.IIII.I..",".IIIIIIIIII.",".IIIIIIIIII.","....IIII....","....IIII....","...KKKKKK...","...KKKKKK...","...KKKKKK...","...KKKKKK..."]
         ]
+    },
+    fireball: {
+        name: "Fireball 16-Bit",
+        sprite: ["LLLL","LYYL","LYYL","LLLL"]
+    },
+    lightning: {
+        name: "Lightning 16-Bit",
+        sprite: ["YY","YY","YY"]
+    },
+    freeze: {
+        name: "Freeze 16-Bit",
+        sprite: ["CCCC","CWWCK","CWWCK","CCCC"]
     }
 };

@@ -28,6 +28,7 @@ ORDERED_FILES = [
     'js/ui/deck.js',
     'js/game/brain.js',
     'js/ui/roulette.js',
+    'js/ui/skin_renderer.js',
     'js/ui/skins.js',
     'js/ui/collection.js',
     'js/ui/shop.js',
