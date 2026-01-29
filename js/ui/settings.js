@@ -13,15 +13,10 @@ export function toggleSettings() {
         btn.id = 'btn-restart-tuto';
         btn.className = 'pixel-btn';
         btn.style.cssText = "width:100%; margin:10px 0; background:#e67e22;";
-        // btn.setAttribute('data-lang', 'restart_tuto'); 
-        // We set text content directly with translation to be safe, or use attribute if system supports it dynamic
         btn.textContent = t('restart_tuto'); 
         btn.onclick = confirmRestartTutorial;
         
-        // Insert before Close button (last child usually) or Reset Data
         const container = el.children[0];
-        // Find Reset Data button to insert before, or just before last child (Close)
-        // Let's insert before the "FERMER" button which is likely the last one
         const closeBtn = container.lastElementChild;
         container.insertBefore(btn, closeBtn);
     }
@@ -30,17 +25,31 @@ export function toggleSettings() {
     const btn = document.getElementById('btn-restart-tuto');
     if(btn) btn.textContent = t('restart_tuto');
 
+    updateLangButtons();
+
     el.style.display = (el.style.display === 'flex') ? 'none' : 'flex';
 }
 
-export function switchLanguage() {
-    const newLang = (LANG === 'fr') ? 'en' : 'fr';
+export function switchLanguage(newLang) {
+    if (!newLang) newLang = (LANG === 'fr') ? 'en' : 'fr'; // Fallback if no arg
     setLang(newLang);
     if(window.PLAYER) window.PLAYER.settings.lang = newLang;
     
+    updateLangButtons();
+
     // Call global update
     if(window.updateAllText) window.updateAllText();
     saveData();
+}
+
+function updateLangButtons() {
+    ['fr','en','pl'].forEach(l => {
+        const btn = document.getElementById('btn-lang-'+l);
+        if(btn) {
+            if(l === LANG) btn.classList.add('blue');
+            else btn.classList.remove('blue');
+        }
+    });
 }
 
 export function toggleDayNight() {

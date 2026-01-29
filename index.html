@@ -71,7 +71,11 @@
     <div style="background:#2c3e50; padding:20px; border:4px solid white; text-align:center; min-width:280px;">
         <h2 style="color:#f1c40f; margin-bottom:20px; text-shadow:2px 2px 0 #000;" data-lang="settings">PARAMÈTRES</h2>
 
-        <button class="pixel-btn blue" id="btn-lang" onclick="switchLanguage()" style="width:100%; margin:10px 0;">LANG: FR</button>
+        <div style="display:flex; gap:10px; width:100%; margin:10px 0;">
+            <button class="pixel-btn blue" id="btn-lang-fr" onclick="switchLanguage('fr')" style="flex:1;">FR</button>
+            <button class="pixel-btn" id="btn-lang-en" onclick="switchLanguage('en')" style="flex:1;">EN</button>
+            <button class="pixel-btn" id="btn-lang-pl" onclick="switchLanguage('pl')" style="flex:1;">PL</button>
+        </div>
         <button class="pixel-btn purple" id="btn-theme" onclick="toggleDayNight()" style="width:100%; margin:10px 0;">THEME: DARK</button>
         <button class="pixel-btn" onclick="confirmReset()" style="width:100%; margin:10px 0; background:#c0392b;" data-lang="reset_data">RESET DATA</button>
 
