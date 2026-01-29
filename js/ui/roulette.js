@@ -350,7 +350,7 @@ export function start16BitRoulette() {
     // Collect all possible keys and check which are unlocked
     let pool = [];
 
-    ['arena', 'units', 'ui', 'deck'].forEach(cat => {
+    ['arena', 'units', 'ui', 'deck', 'kingdom'].forEach(cat => {
         if(SKINS_16BIT_DATA[cat]) {
             Object.keys(SKINS_16BIT_DATA[cat]).forEach(key => {
                 if(!window.PLAYER.unlocked_16bit.includes(key)) {

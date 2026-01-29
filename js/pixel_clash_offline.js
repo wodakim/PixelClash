@@ -1743,7 +1743,8 @@ const SKINS_16BIT_UNITS = {
         ]]
     },
     teetra: {
-        name: "P.E.K.K.A",
+        name: "Teetra",
+        name: "Mini Teetra",
         sprite: [[
             "..........IIII..........",
             ".........IIIIII.........",
@@ -2095,11 +2096,63 @@ const SKINS_16BIT_KINGDOM = {
     background_16bit: {
         name: "Retro Sky",
         // No sprite array needed if handled procedurally, or define gradient colors
-        colors: { skyTop: "#2980b9", skyBottom: "#6dd5fa", mountain: "#8e44ad" }
+        colors: { skyTop: "#2980b9", skyBottom: "#6dd5fa", mountain: "#8e44ad" },
+        sprite: [[
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "..........SKY...........", // Dummy text for preview if needed
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................"
+        ]]
     },
     grass_16bit: {
         name: "Retro Grass",
-        colors: { top: "#27ae60", bottom: "#2ecc71" } // slightly different green
+        colors: { top: "#27ae60", bottom: "#2ecc71" },
+        sprite: [[
+            "GGGGGGGGGGGGGGGGGGGGGGGG",
+            "GGGGGGGGGGGGGGGGGGGGGGGG",
+            "GGGGGGGGGGGGGGGGGGGGGGGG",
+            "GGGGGGGGGGGGGGGGGGGGGGGG",
+            "GGGGGGGGGGGGGGGGGGGGGGGG",
+            "GGGGGGGGGGGGGGGGGGGGGGGG",
+            "GGGGGGGGGGGGGGGGGGGGGGGG",
+            "GGGGGGGGGGGGGGGGGGGGGGGG",
+            "GGGGGGGGGGGGGGGGGGGGGGGG",
+            "GGGGGGGGGGGGGGGGGGGGGGGG",
+            "GGGGGGGGGGGGGGGGGGGGGGGG",
+            "GGGGGGGGGGGGGGGGGGGGGGGG",
+            "GGGGGGGGGGGGGGGGGGGGGGGG",
+            "GGGGGGGGGGGGGGGGGGGGGGGG",
+            "GGGGGGGGGGGGGGGGGGGGGGGG",
+            "GGGGGGGGGGGGGGGGGGGGGGGG",
+            "GGGGGGGGGGGGGGGGGGGGGGGG",
+            "GGGGGGGGGGGGGGGGGGGGGGGG",
+            "GGGGGGGGGGGGGGGGGGGGGGGG",
+            "GGGGGGGGGGGGGGGGGGGGGGGG",
+            "GGGGGGGGGGGGGGGGGGGGGGGG",
+            "GGGGGGGGGGGGGGGGGGGGGGGG",
+            "GGGGGGGGGGGGGGGGGGGGGGGG",
+            "GGGGGGGGGGGGGGGGGGGGGGGG"
+        ]]
     },
 
     // --- PROPS ---
@@ -4435,7 +4488,7 @@ function start16BitRoulette() {
     // Collect all possible keys and check which are unlocked
     let pool = [];
 
-    ['arena', 'units', 'ui', 'deck'].forEach(cat => {
+    ['arena', 'units', 'ui', 'deck', 'kingdom'].forEach(cat => {
         if(SKINS_16BIT_DATA[cat]) {
             Object.keys(SKINS_16BIT_DATA[cat]).forEach(key => {
                 if(!window.PLAYER.unlocked_16bit.includes(key)) {

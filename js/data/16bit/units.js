@@ -556,7 +556,8 @@ export const SKINS_16BIT_UNITS = {
         ]]
     },
     teetra: {
-        name: "P.E.K.K.A",
+        name: "Teetra",
+        name: "Mini Teetra",
         sprite: [[
             "..........IIII..........",
             ".........IIIIII.........",
