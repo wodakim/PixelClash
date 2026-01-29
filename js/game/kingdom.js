@@ -704,13 +704,27 @@ function drawKingdom() {
     
     const horizonY = h * 0.35;
 
+    const active16 = window.PLAYER.active_16bit && window.PLAYER.active_16bit.kingdom ? window.PLAYER.active_16bit.kingdom : [];
+
+    // SKY
+    let colorSkyTop = "#3498db";
+    let colorSkyBot = "#87ceeb";
+    let colorMount = "#5d6d7e";
+
+    if(active16.includes('background_16bit')) {
+        colorSkyTop = "#2980b9";
+        colorSkyBot = "#6dd5fa";
+        colorMount = "#8e44ad"; // Purple mountains
+    }
+
     const gradSky = ctx.createLinearGradient(0, 0, 0, horizonY);
-    gradSky.addColorStop(0, "#3498db");
-    gradSky.addColorStop(1, "#87ceeb");
+    gradSky.addColorStop(0, colorSkyTop);
+    gradSky.addColorStop(1, colorSkyBot);
     ctx.fillStyle = gradSky;
     ctx.fillRect(0,0,w, horizonY);
 
-    ctx.fillStyle = "#5d6d7e";
+    // MOUNTAINS
+    ctx.fillStyle = colorMount;
     ctx.beginPath();
     ctx.moveTo(0, horizonY);
     ctx.lineTo(w*0.2, horizonY - 40);
@@ -722,9 +736,18 @@ function drawKingdom() {
     ctx.lineTo(0, horizonY + 100);
     ctx.fill();
 
+    // GRASS
+    let colorGrassTop = "#27ae60";
+    let colorGrassBot = "#2ecc71";
+
+    if(active16.includes('grass_16bit')) {
+        colorGrassTop = "#1abc9c";
+        colorGrassBot = "#16a085"; // Teal/retro green
+    }
+
     const gradG = ctx.createLinearGradient(0, horizonY, 0, h);
-    gradG.addColorStop(0, "#27ae60");
-    gradG.addColorStop(1, "#2ecc71");
+    gradG.addColorStop(0, colorGrassTop);
+    gradG.addColorStop(1, colorGrassBot);
     ctx.fillStyle = gradG;
     ctx.fillRect(0, horizonY, w, h - horizonY);
 
@@ -734,8 +757,6 @@ function drawKingdom() {
         const gy = horizonY + Math.random()*(h-horizonY);
         ctx.fillRect(gx, gy, 4, 4);
     }
-
-    const active16 = window.PLAYER.active_16bit && window.PLAYER.active_16bit.kingdom ? window.PLAYER.active_16bit.kingdom : [];
 
     KINGDOM.props.forEach(p => {
         const px = p.x; const py = p.y;

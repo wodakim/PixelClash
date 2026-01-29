@@ -830,7 +830,16 @@ export function renderHand() {
 
         const canvas = document.createElement('canvas'); canvas.width=32; canvas.height=32;
         const cx = canvas.getContext('2d');
-        const s = SPRITE_CACHE[key + '_blue_0'] || SPRITE_CACHE[key + '_blue'] || SPRITE_CACHE[key];
+
+        let spriteKey = key;
+        const active16 = window.PLAYER.active_16bit && window.PLAYER.active_16bit.units ? window.PLAYER.active_16bit.units : [];
+        if(active16.includes(key + '_16bit') || active16.includes(key)) {
+             if(SPRITE_CACHE[key + '_16bit_blue_0'] || SPRITE_CACHE[key + '_16bit']) {
+                 spriteKey = key + '_16bit';
+             }
+        }
+
+        const s = SPRITE_CACHE[spriteKey + '_blue_0'] || SPRITE_CACHE[spriteKey + '_blue'] || SPRITE_CACHE[spriteKey];
         if(s) cx.drawImage(s,0,0,32,32);
         d.appendChild(canvas);
 

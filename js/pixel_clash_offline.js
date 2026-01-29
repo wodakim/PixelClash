@@ -1188,7 +1188,7 @@ const SKINS_16BIT_ARENAS = {
 const SKINS_16BIT_UNITS = {
     // --- COMMON ---
     archer: {
-        name: "Archer 16-Bit",
+        name: "Archer", // Name aligned with card name
         sprite: [[
             "..........TTTT..........",
             "........TTYYYYTT........",
@@ -1217,7 +1217,7 @@ const SKINS_16BIT_UNITS = {
         ]]
     },
     knight: {
-        name: "Knight 16-Bit",
+        name: "Knight",
         sprite: [[
             "..........IIII..........",
             "........IIIIIIII........",
@@ -1246,7 +1246,7 @@ const SKINS_16BIT_UNITS = {
         ]]
     },
     goblin: {
-        name: "Goblin 16-Bit",
+        name: "Goblin",
         sprite: [[
             "........................",
             "........................",
@@ -1275,7 +1275,7 @@ const SKINS_16BIT_UNITS = {
         ]]
     },
     spear_gob: {
-        name: "Spear Gob 16-Bit",
+        name: "Spear Gob",
         sprite: [[
             "........................",
             "............I...........",
@@ -1304,7 +1304,7 @@ const SKINS_16BIT_UNITS = {
         ]]
     },
     bat: {
-        name: "Bat 16-Bit",
+        name: "Bat",
         sprite: [[
             "........................",
             ".......P........P.......",
@@ -1333,7 +1333,7 @@ const SKINS_16BIT_UNITS = {
         ]]
     },
     minion: {
-        name: "Minion 16-Bit",
+        name: "Minion",
         sprite: [[
             "........................",
             "..........BBBB..........",
@@ -1362,7 +1362,7 @@ const SKINS_16BIT_UNITS = {
         ]]
     },
     bomber: {
-        name: "Bomber 16-Bit",
+        name: "Bomber",
         sprite: [[
             "..........TTTT..........",
             "........TTTTTTTT........",
@@ -1393,7 +1393,7 @@ const SKINS_16BIT_UNITS = {
 
     // --- RARE ---
     musketeer: {
-        name: "Musketeer 16-Bit",
+        name: "Musketeer",
         sprite: [[
             "..........PPPP..........",
             "........PPPPPPPP........",
@@ -1422,7 +1422,7 @@ const SKINS_16BIT_UNITS = {
         ]]
     },
     giant: {
-        name: "Giant 16-Bit",
+        name: "Giant",
         sprite: [[
             "..........HHHH..........",
             "........HHHHHHHH........",
@@ -1451,7 +1451,7 @@ const SKINS_16BIT_UNITS = {
         ]]
     },
     valkyrie: {
-        name: "Valkyrie 16-Bit",
+        name: "Valkyrie",
         sprite: [[
             ".........OOOOOO.........",
             ".......OOOOOOOOOO.......",
@@ -1480,7 +1480,7 @@ const SKINS_16BIT_UNITS = {
         ]]
     },
     hog: {
-        name: "Hog 16-Bit",
+        name: "Hog",
         sprite: [[
             "...........KKK..........",
             ".........KKKKKKK........",
@@ -1509,7 +1509,7 @@ const SKINS_16BIT_UNITS = {
         ]]
     },
     barbarian: {
-        name: "Barbarian 16-Bit",
+        name: "Barbarian",
         sprite: [[
             "..........YYYY..........",
             "........YYYYYYYY........",
@@ -1538,7 +1538,7 @@ const SKINS_16BIT_UNITS = {
         ]]
     },
     wizard: {
-        name: "Wizard 16-Bit",
+        name: "Wizard",
         sprite: [[
             "..........TTTT..........",
             ".........TTTTTT.........",
@@ -1567,7 +1567,7 @@ const SKINS_16BIT_UNITS = {
         ]]
     },
     miniteetra: {
-        name: "Mini P.E.K.K.A 16-Bit",
+        name: "Mini P.E.K.K.A",
         sprite: [[
             "..........IIII..........",
             ".........IIIIII.........",
@@ -1598,7 +1598,7 @@ const SKINS_16BIT_UNITS = {
 
     // --- EPIC ---
     baby_dragon: {
-        name: "Baby Dragon 16-Bit",
+        name: "Baby Dragon",
         sprite: [[
             "..........GGGG..........",
             "........GGGGGGGG........",
@@ -1627,7 +1627,7 @@ const SKINS_16BIT_UNITS = {
         ]]
     },
     witch: {
-        name: "Witch 16-Bit",
+        name: "Witch",
         sprite: [[
             "..........KKKK..........",
             ".........KKKKKK.........",
@@ -1656,7 +1656,7 @@ const SKINS_16BIT_UNITS = {
         ]]
     },
     ninja: {
-        name: "Ninja 16-Bit",
+        name: "Ninja",
         sprite: [[
             "..........KKKK..........",
             ".........KKKKKK.........",
@@ -1685,7 +1685,7 @@ const SKINS_16BIT_UNITS = {
         ]]
     },
     paladin: {
-        name: "Paladin 16-Bit",
+        name: "Paladin",
         sprite: [[
             "..........YYYY..........",
             ".........YYYYYY.........",
@@ -1714,7 +1714,7 @@ const SKINS_16BIT_UNITS = {
         ]]
     },
     golem: {
-        name: "Golem 16-Bit",
+        name: "Golem",
         sprite: [[
             "..........IIII..........",
             ".........IIIIII.........",
@@ -1743,7 +1743,7 @@ const SKINS_16BIT_UNITS = {
         ]]
     },
     teetra: {
-        name: "P.E.K.K.A 16-Bit",
+        name: "P.E.K.K.A",
         sprite: [[
             "..........IIII..........",
             ".........IIIIII.........",
@@ -1772,7 +1772,7 @@ const SKINS_16BIT_UNITS = {
         ]]
     },
     angel: {
-        name: "Healer 16-Bit",
+        name: "Healer",
         sprite: [[
             "..........WWWW..........",
             ".........WWWWWW.........",
@@ -1803,7 +1803,7 @@ const SKINS_16BIT_UNITS = {
 
     // --- BUILDINGS ---
     cannon: {
-        name: "Cannon 16-Bit",
+        name: "Cannon",
         sprite: [[
             "........................",
             "........................",
@@ -1832,7 +1832,7 @@ const SKINS_16BIT_UNITS = {
         ]]
     },
     xbow: {
-        name: "X-Bow 16-Bit",
+        name: "X-Bow",
         sprite: [[
             "........................",
             "........................",
@@ -1863,7 +1863,7 @@ const SKINS_16BIT_UNITS = {
 
     // --- SPELLS ---
     fireball: {
-        name: "Fireball 16-Bit",
+        name: "Fireball",
         sprite: [[
             "........................",
             "...........RRR..........",
@@ -1892,7 +1892,7 @@ const SKINS_16BIT_UNITS = {
         ]]
     },
     lightning: {
-        name: "Lightning 16-Bit",
+        name: "Lightning",
         sprite: [[
             "........................",
             "..........CCCC..........",
@@ -1921,7 +1921,7 @@ const SKINS_16BIT_UNITS = {
         ]]
     },
     freeze: {
-        name: "Freeze 16-Bit",
+        name: "Freeze",
         sprite: [[
             "........................",
             "...........C............",
@@ -1956,7 +1956,9 @@ const SKINS_16BIT_UNITS = {
 // --- START OF js/data/16bit/ui.js ---
 const SKINS_16BIT_UI = {
     retro_hd: { name: "Retro HD", desc: "Sharper UI Borders" },
-    neon_ui: { name: "Neon UI", desc: "Glowing Borders" }
+    neon_ui: { name: "Neon UI", desc: "Glowing Borders" },
+    cyber_dark: { name: "Cyber Dark", desc: "Sleek Dark Interface" },
+    glass_ui: { name: "Glass Retro", desc: "Transparent 16-Bit" }
 };
 
 const SKINS_16BIT_DECK = {
@@ -2087,6 +2089,17 @@ const SKINS_16BIT_KINGDOM = {
             "........................",
             "........................"
         ]]
+    },
+
+    // --- ENVIRONMENT ---
+    background_16bit: {
+        name: "Retro Sky",
+        // No sprite array needed if handled procedurally, or define gradient colors
+        colors: { skyTop: "#2980b9", skyBottom: "#6dd5fa", mountain: "#8e44ad" }
+    },
+    grass_16bit: {
+        name: "Retro Grass",
+        colors: { top: "#27ae60", bottom: "#2ecc71" } // slightly different green
     },
 
     // --- PROPS ---
@@ -4594,21 +4607,112 @@ function applyGlobalSkins() {
     // 1. UI Skin
     if(window.PLAYER.active_16bit.ui) {
         document.body.classList.add('skin-ui-16bit');
-        // We could handle specific sub-themes here if needed (e.g., 'neon_ui')
-        // For now, any active UI skin toggles the 16-bit class
+
+        // Remove specific theme classes
+        document.body.classList.remove('skin-ui-retro_hd', 'skin-ui-neon_ui', 'skin-ui-cyber_dark', 'skin-ui-glass_ui');
+
+        // Add current specific theme class
+        if(typeof window.PLAYER.active_16bit.ui === 'string') {
+            document.body.classList.add('skin-ui-' + window.PLAYER.active_16bit.ui);
+        }
     } else {
-        document.body.classList.remove('skin-ui-16bit');
+        document.body.classList.remove('skin-ui-16bit', 'skin-ui-retro_hd', 'skin-ui-neon_ui', 'skin-ui-cyber_dark', 'skin-ui-glass_ui');
     }
 
     // 2. Deck Skin
     if(window.PLAYER.active_16bit.deck) {
         document.body.classList.add('skin-deck-16bit');
-        // Handle specific deck themes via data attribute if needed
-        // document.body.dataset.deckSkin = window.PLAYER.active_16bit.deck;
+
+        // Remove previous specific deck classes
+        document.body.classList.remove('skin-deck-gold_trim', 'skin-deck-diamond_trim');
+
+        // Add specific class
+        if(window.PLAYER.active_16bit.deck === 'gold_trim') {
+            document.body.classList.add('skin-deck-gold_trim');
+        } else if(window.PLAYER.active_16bit.deck === 'diamond_trim') {
+            document.body.classList.add('skin-deck-diamond_trim');
+        }
     } else {
-        document.body.classList.remove('skin-deck-16bit');
-        // delete document.body.dataset.deckSkin;
+        document.body.classList.remove('skin-deck-16bit', 'skin-deck-gold_trim', 'skin-deck-diamond_trim');
     }
+}
+
+// Inject CSS for skins if not present
+if(!document.getElementById('skin-css')) {
+    const s = document.createElement('style');
+    s.id = 'skin-css';
+    s.innerHTML = `
+        /* GOLD TRIM */
+        body.skin-deck-gold_trim .pixel-card {
+            border: 2px solid #ffd700 !important;
+            box-shadow: 0 0 8px #ffd700;
+            background: linear-gradient(135deg, #444, #222);
+        }
+        body.skin-deck-gold_trim .pixel-card .card-name {
+            color: #ffd700;
+            text-shadow: 1px 1px 0 #000;
+        }
+
+        /* DIAMOND TRIM */
+        body.skin-deck-diamond_trim .pixel-card {
+            border: 2px solid #00bfff !important;
+            box-shadow: 0 0 10px #00bfff, inset 0 0 5px rgba(0, 191, 255, 0.5);
+            background: linear-gradient(135deg, #2c3e50, #000);
+        }
+        body.skin-deck-diamond_trim .pixel-card .card-name {
+            color: #00bfff;
+            text-shadow: 0 0 5px #00bfff;
+        }
+
+        /* --- UI SKINS --- */
+
+        /* RETRO HD */
+        body.skin-ui-retro_hd .pixel-btn {
+            border-width: 4px;
+            box-shadow: 4px 4px 0 #000;
+            font-family: monospace; /* Fallback to cleaner font */
+        }
+
+        /* NEON UI */
+        body.skin-ui-neon_ui .pixel-btn {
+            border: 2px solid #00ff00;
+            box-shadow: 0 0 10px #00ff00;
+            background: #000;
+            color: #00ff00;
+        }
+        body.skin-ui-neon_ui .tab-content {
+            border: 1px solid #00ff00;
+            box-shadow: inset 0 0 20px rgba(0, 255, 0, 0.1);
+        }
+
+        /* CYBER DARK */
+        body.skin-ui-cyber_dark {
+            background: #0a0a0a !important;
+        }
+        body.skin-ui-cyber_dark .pixel-btn {
+            background: linear-gradient(180deg, #333, #111);
+            border: 1px solid #555;
+            border-radius: 4px; /* Slight roundness for "modern" feel */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+        }
+        body.skin-ui-cyber_dark .tab-content {
+            background: rgba(10, 10, 10, 0.95);
+        }
+
+        /* GLASS RETRO */
+        body.skin-ui-glass_ui .pixel-btn {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        body.skin-ui-glass_ui .tab-content {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    `;
+    document.head.appendChild(s);
 }
 
 // --- END OF js/ui/skin_renderer.js ---
@@ -4926,8 +5030,26 @@ function renderCollection() {
         c.width=64; c.height=64; c.className='card-preview';
         const ctx = c.getContext('2d');
         ctx.imageSmoothingEnabled = false;
-        const s = SPRITE_CACHE[key + '_blue_0'] || SPRITE_CACHE[key + '_blue'] || SPRITE_CACHE[key];
-        if(s) ctx.drawImage(s,0,0,s.width,s.height,0,0,64,64);
+
+        let spriteKey = key;
+        const active16 = window.PLAYER.active_16bit && window.PLAYER.active_16bit.units ? window.PLAYER.active_16bit.units : [];
+        if(active16.includes(key + '_16bit') || active16.includes(key)) {
+             // Try to find the 16-bit version
+             if(SPRITE_CACHE[key + '_16bit_blue_0'] || SPRITE_CACHE[key + '_16bit']) {
+                 spriteKey = key + '_16bit';
+             }
+        }
+
+        const s = SPRITE_CACHE[spriteKey + '_blue_0'] || SPRITE_CACHE[spriteKey + '_blue'] || SPRITE_CACHE[spriteKey];
+        if(s) {
+            // Keep aspect ratio for 16-bit
+            const scale = Math.min(64 / s.width, 64 / s.height);
+            const w = s.width * scale;
+            const h = s.height * scale;
+            const x = (64 - w) / 2;
+            const y = (64 - h) / 2;
+            ctx.drawImage(s, x, y, w, h);
+        }
         el.appendChild(c);
 
         if(has) {
@@ -6649,13 +6771,27 @@ function drawKingdom() {
     
     const horizonY = h * 0.35;
 
+    const active16 = window.PLAYER.active_16bit && window.PLAYER.active_16bit.kingdom ? window.PLAYER.active_16bit.kingdom : [];
+
+    // SKY
+    let colorSkyTop = "#3498db";
+    let colorSkyBot = "#87ceeb";
+    let colorMount = "#5d6d7e";
+
+    if(active16.includes('background_16bit')) {
+        colorSkyTop = "#2980b9";
+        colorSkyBot = "#6dd5fa";
+        colorMount = "#8e44ad"; // Purple mountains
+    }
+
     const gradSky = ctx.createLinearGradient(0, 0, 0, horizonY);
-    gradSky.addColorStop(0, "#3498db");
-    gradSky.addColorStop(1, "#87ceeb");
+    gradSky.addColorStop(0, colorSkyTop);
+    gradSky.addColorStop(1, colorSkyBot);
     ctx.fillStyle = gradSky;
     ctx.fillRect(0,0,w, horizonY);
 
-    ctx.fillStyle = "#5d6d7e";
+    // MOUNTAINS
+    ctx.fillStyle = colorMount;
     ctx.beginPath();
     ctx.moveTo(0, horizonY);
     ctx.lineTo(w*0.2, horizonY - 40);
@@ -6667,9 +6803,18 @@ function drawKingdom() {
     ctx.lineTo(0, horizonY + 100);
     ctx.fill();
 
+    // GRASS
+    let colorGrassTop = "#27ae60";
+    let colorGrassBot = "#2ecc71";
+
+    if(active16.includes('grass_16bit')) {
+        colorGrassTop = "#1abc9c";
+        colorGrassBot = "#16a085"; // Teal/retro green
+    }
+
     const gradG = ctx.createLinearGradient(0, horizonY, 0, h);
-    gradG.addColorStop(0, "#27ae60");
-    gradG.addColorStop(1, "#2ecc71");
+    gradG.addColorStop(0, colorGrassTop);
+    gradG.addColorStop(1, colorGrassBot);
     ctx.fillStyle = gradG;
     ctx.fillRect(0, horizonY, w, h - horizonY);
 
@@ -6679,8 +6824,6 @@ function drawKingdom() {
         const gy = horizonY + Math.random()*(h-horizonY);
         ctx.fillRect(gx, gy, 4, 4);
     }
-
-    const active16 = window.PLAYER.active_16bit && window.PLAYER.active_16bit.kingdom ? window.PLAYER.active_16bit.kingdom : [];
 
     KINGDOM.props.forEach(p => {
         const px = p.x; const py = p.y;
@@ -7759,7 +7902,16 @@ function renderHand() {
 
         const canvas = document.createElement('canvas'); canvas.width=32; canvas.height=32;
         const cx = canvas.getContext('2d');
-        const s = SPRITE_CACHE[key + '_blue_0'] || SPRITE_CACHE[key + '_blue'] || SPRITE_CACHE[key];
+
+        let spriteKey = key;
+        const active16 = window.PLAYER.active_16bit && window.PLAYER.active_16bit.units ? window.PLAYER.active_16bit.units : [];
+        if(active16.includes(key + '_16bit') || active16.includes(key)) {
+             if(SPRITE_CACHE[key + '_16bit_blue_0'] || SPRITE_CACHE[key + '_16bit']) {
+                 spriteKey = key + '_16bit';
+             }
+        }
+
+        const s = SPRITE_CACHE[spriteKey + '_blue_0'] || SPRITE_CACHE[spriteKey + '_blue'] || SPRITE_CACHE[spriteKey];
         if(s) cx.drawImage(s,0,0,32,32);
         d.appendChild(canvas);
 

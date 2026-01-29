@@ -120,6 +120,17 @@ export const SKINS_16BIT_KINGDOM = {
         ]]
     },
 
+    // --- ENVIRONMENT ---
+    background_16bit: {
+        name: "Retro Sky",
+        // No sprite array needed if handled procedurally, or define gradient colors
+        colors: { skyTop: "#2980b9", skyBottom: "#6dd5fa", mountain: "#8e44ad" }
+    },
+    grass_16bit: {
+        name: "Retro Grass",
+        colors: { top: "#27ae60", bottom: "#2ecc71" } // slightly different green
+    },
+
     // --- PROPS ---
     prop_tree_16bit: {
         name: "Tree 16-Bit",
