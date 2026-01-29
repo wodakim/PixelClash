@@ -20,6 +20,23 @@
     --rarity-god: #e74c3c;      /* Rouge */
 }
 
+html, body {
+    /* Empêche le rebond sur tout le document */
+    overscroll-behavior: none;
+    
+    /* Empêche le défilement de la page entière (le jeu doit gérer son propre scroll si besoin) */
+    overflow: hidden; 
+    
+    /* Fixe la hauteur pour éviter que le body ne bouge */
+    height: 100%;
+    width: 100%;
+    position: fixed;
+}
+
+.game-container, #root, canvas {
+    touch-action: none;
+}
+
 body.light-mode {
     --bg-dark: #95a5a6;
     --text-main: #2c3e50;
@@ -46,6 +63,7 @@ body, html {
     color: var(--text-main);
     font-size: 10px;
     transition: background-color 0.3s, color 0.3s;
+    overscroll-behavior: none;
 }
 
 /* Effet CRT (Scanlines) */
