@@ -38,6 +38,7 @@ export function renderSkins() {
     const books = [
         { id: 'arena', name: "ARÈNE", icon: 'book' },
         { id: 'units', name: "UNITÉS", icon: 'book' },
+        { id: 'kingdom', name: "ROYAUME", icon: 'book' },
         { id: 'ui',    name: "INTERFACE",    icon: 'book' },
         { id: 'deck',  name: "DECK",  icon: 'book' }
     ];
@@ -136,6 +137,36 @@ function openBook(category) {
                     else window.PLAYER.active_16bit.arena = key;
                     refreshBook(category);
                 }, SKINS_16BIT_DATA.arena[key].bg);
+                list.appendChild(d);
+            }
+        });
+    }
+
+    // 5. KINGDOM BOOK
+    else if(category === 'kingdom') {
+        Object.keys(SKINS_16BIT_DATA.kingdom).forEach(key => {
+            const unlocked = window.PLAYER.unlocked_16bit.includes(key);
+            if(unlocked) {
+                // For Kingdom, we can assume 'active' if checking the list,
+                // but actually we need a place to store "active kingdom skins".
+                // Currently state.js active_16bit has: arena, units, ui, deck.
+                // We should add 'kingdom' array or object to active_16bit in state.js
+                // BUT since I can't edit state.js in this step, I'll assume we use a general toggle
+                // or just check against the key presence in a new property if I could add it.
+                // WORKAROUND: Use window.PLAYER.active_16bit.kingdom (array of keys)
+
+                if(!window.PLAYER.active_16bit.kingdom) window.PLAYER.active_16bit.kingdom = [];
+
+                const isSelected = window.PLAYER.active_16bit.kingdom.includes(key);
+                const d = createItemRow(SKINS_16BIT_DATA.kingdom[key].name, isSelected, () => {
+                    if(!window.PLAYER.active_16bit.kingdom) window.PLAYER.active_16bit.kingdom = [];
+
+                    const idx = window.PLAYER.active_16bit.kingdom.indexOf(key);
+                    if(idx >= 0) window.PLAYER.active_16bit.kingdom.splice(idx, 1);
+                    else window.PLAYER.active_16bit.kingdom.push(key);
+
+                    refreshBook(category);
+                });
                 list.appendChild(d);
             }
         });

@@ -711,7 +711,7 @@ function drawKingdom() {
 
     KINGDOM.props.forEach(p => {
         const px = p.x; const py = p.y;
-        const s = (p.scale || 1) * 3; 
+        const s = (p.scale || 1) * 1.5;
         
         let key = '';
         if(p.type === 0) key = 'prop_tree';
@@ -794,14 +794,20 @@ function drawKingdom() {
             ctx.fillStyle = 'rgba(0,0,0,0.3)';
             ctx.beginPath(); ctx.ellipse(s.x, s.y+14, 10, 4, 0, 0, Math.PI*2); ctx.fill();
             
+            // Check if 16-bit sprite (24x24) or standard (12x12)
+            // If sprite width is > 16, it's likely 16-bit.
+            const isHighRes = sprite.width > 16;
+            const drawSize = isHighRes ? 48 : 32;
+            const offset = drawSize / 2;
+
             if(s.state === 'dragged') {
                 ctx.save();
                 ctx.translate(s.x, s.y);
                 ctx.scale(1.2, 1.2);
-                ctx.drawImage(sprite, -16, -16, 32, 32);
+                ctx.drawImage(sprite, -offset, -offset, drawSize, drawSize);
                 ctx.restore();
             } else {
-                ctx.drawImage(sprite, s.x - 16, s.y - 16, 32, 32);
+                ctx.drawImage(sprite, s.x - offset, s.y - offset, drawSize, drawSize);
             }
 
             if(s.state === 'working') {
@@ -866,7 +872,9 @@ function drawStructure(ctx, x, y, type) {
     const sprite = SPRITE_CACHE[key];
     
     if(sprite) {
-        const scale = 5;
+        // Adapt scale based on resolution (24x24 vs 12x12)
+        const isHighRes = sprite.width > 16;
+        const scale = isHighRes ? 2.5 : 5;
         const w = sprite.width * scale;
         const h = sprite.height * scale;
         

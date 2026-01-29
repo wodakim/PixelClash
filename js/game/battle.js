@@ -779,6 +779,13 @@ all.forEach(obj => {
 
         if(finalSprite) {
             let sc = (isTower || (CARDS[obj.key] && CARDS[obj.key].speed===0)) ? 4 : 2;
+
+            // Adjust scale for 16-bit assets (24x24) vs 8-bit (12x12)
+            // Maintain similar on-screen size
+            if(finalSprite.width > 16) {
+                sc = sc / 2;
+            }
+
             const w = finalSprite.width * sc;
             const h = finalSprite.height * sc;
             ctx.drawImage(finalSprite, obj.x - w/2, obj.y - h/2, w, h);

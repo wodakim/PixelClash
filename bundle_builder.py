@@ -10,6 +10,7 @@ ORDERED_FILES = [
     'js/data/16bit/arenas.js',
     'js/data/16bit/units.js',
     'js/data/16bit/ui.js',
+    'js/data/16bit/kingdom.js',
     'js/data/16bit/main.js',
     'js/engine/audio.js',
     'js/core/state.js',

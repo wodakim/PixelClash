@@ -66,4 +66,12 @@ export function initSprites() {
             }
         });
     }
+
+    // 16-BIT Kingdom
+    if(SKINS_16BIT_DATA && SKINS_16BIT_DATA.kingdom) {
+        Object.keys(SKINS_16BIT_DATA.kingdom).forEach(key => {
+            const entry = SKINS_16BIT_DATA.kingdom[key];
+            if(entry.sprite) generate(key, entry.sprite);
+        });
+    }
 }
