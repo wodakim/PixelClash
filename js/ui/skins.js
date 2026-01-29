@@ -1,5 +1,5 @@
 import { SKINS } from '../data/skins.js';
-import { SKINS_16BIT_DATA } from '../data/skins_16bit.js';
+import { SKINS_16BIT_DATA } from '../data/16bit/main.js';
 import { AUDIO } from '../engine/audio.js';
 import { saveData } from '../core/storage.js';
 import { showNotif } from './notifications.js';
@@ -56,25 +56,25 @@ export function renderSkins() {
 
     l.appendChild(shelf);
 
-    // Roulette Buttons Container
-    const btnContainer = document.createElement('div');
-    btnContainer.style.cssText = "display:flex; flex-direction:column; gap:10px; margin-top:20px; width:100%; align-items:center;";
+    // Roulette Buttons Container in TOP HEADER
+    const topContainer = document.getElementById('skin-roulette-container');
+    if(topContainer) {
+        topContainer.innerHTML = ''; // Clear existing button
 
-    // Old Roulette (8-bit Arena)
-    const oldBtn = document.createElement('button');
-    oldBtn.className = 'pixel-btn blue';
-    oldBtn.innerHTML = `ARÈNE 8-BIT (10 <img src="${window.ICONS.gem}" class="pixel-icon">)`;
-    oldBtn.onclick = openGachaDraw;
-    btnContainer.appendChild(oldBtn);
+        // Old Roulette (8-bit Arena)
+        const oldBtn = document.createElement('button');
+        oldBtn.className = 'pixel-btn blue';
+        oldBtn.innerHTML = `ARÈNE 8-BIT (10 <img src="${window.ICONS.gem}" class="pixel-icon">)`;
+        oldBtn.onclick = openGachaDraw;
+        topContainer.appendChild(oldBtn);
 
-    // New Roulette (16-bit)
-    const newBtn = document.createElement('button');
-    newBtn.className = 'pixel-btn purple';
-    newBtn.innerHTML = `EVOLUTION 16-BIT (50 <img src="${window.ICONS.gem}" class="pixel-icon">)`;
-    newBtn.onclick = open16BitGacha;
-    btnContainer.appendChild(newBtn);
-
-    l.appendChild(btnContainer);
+        // New Roulette (16-bit)
+        const newBtn = document.createElement('button');
+        newBtn.className = 'pixel-btn purple';
+        newBtn.innerHTML = `EVOLUTION 16-BIT (50 <img src="${window.ICONS.gem}" class="pixel-icon">)`;
+        newBtn.onclick = open16BitGacha;
+        topContainer.appendChild(newBtn);
+    }
 }
 
 function openBook(category) {

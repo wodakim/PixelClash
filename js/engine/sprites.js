@@ -1,5 +1,5 @@
 import { PALETTE, SPRITES_ASCII } from '../data/sprites_data.js';
-import { SKINS_16BIT_DATA } from '../data/skins_16bit.js';
+import { SKINS_16BIT_DATA } from '../data/16bit/main.js';
 
 export const SPRITE_CACHE = {};
 

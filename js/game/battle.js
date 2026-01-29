@@ -2,7 +2,7 @@ import { AUDIO } from '../engine/audio.js';
 import { SPRITE_CACHE } from '../engine/sprites.js';
 import { CARDS, getUnitStats } from '../data/cards.js';
 import { SKINS } from '../data/skins.js';
-import { SKINS_16BIT_DATA } from '../data/skins_16bit.js';
+import { SKINS_16BIT_DATA } from '../data/16bit/main.js';
 import { MODULES } from '../data/modules.js';
 import { GAME_W, GAME_H } from '../data/config.js';
 import { t } from '../core/utils.js';

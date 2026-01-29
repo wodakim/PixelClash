@@ -22,3 +22,7 @@
 127.0.0.1 - - [29/Jan/2026 14:58:17] "GET /style.css HTTP/1.1" 200 -
 127.0.0.1 - - [29/Jan/2026 14:58:17] "GET /js/pixel_clash_offline.js?v=2 HTTP/1.1" 200 -
 127.0.0.1 - - [29/Jan/2026 14:58:17] "GET /fonts/PressStart2P.ttf HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jan/2026 16:03:59] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jan/2026 16:03:59] "GET /style.css HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jan/2026 16:03:59] "GET /js/pixel_clash_offline.js?v=2 HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jan/2026 16:03:59] "GET /fonts/PressStart2P.ttf HTTP/1.1" 200 -

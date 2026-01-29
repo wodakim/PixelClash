@@ -677,80 +677,301 @@ const SKINS = {
 
 // --- END OF js/data/skins.js ---
 
-// --- START OF js/data/skins_16bit.js ---
-const SKINS_16BIT_DATA = {
-    // --- ARENA SKINS ---
-    arena: {
-        forest_16bit: {
-            name: "Forest 16-Bit",
-            bg: "#27ae60",
-            ground: "grass_16bit",
-            liquid: "water_16bit",
-            bridge: "bridge_16bit",
-            music: 'battle',
-            // Define the tile sprites directly here.
-            // The sprite loader will need to pick these up.
-            sprites: {
-                grass_16bit: ["GDGD","DGDG","GDGD","DGDG"],
-                water_16bit: ["AZAZ","ZAZA","AZAZ","ZAZA"],
-                bridge_16bit: ["OOOO","OKOO","OOOO","OOKO"]
-            }
-        },
-        lava_16bit: {
-            name: "Magma 16-Bit",
-            bg: "#c0392b",
-            ground: "obsidian_16bit",
-            liquid: "lava_16bit",
-            bridge: "metal_16bit",
-            music: 'battle',
-            sprites: {
-                obsidian_16bit: ["KIKIKI","IKIKIK","KIKIKI","IKIKIK"],
-                lava_16bit: ["RXMX","XRXR","RXMX","XRXR"],
-                metal_16bit: ["IIII","IKII","IIII","IIKI"]
-            }
-        }
-    },
+// --- START OF js/data/16bit/arenas.js ---
+// 16-BIT ARENA SKINS (Detailed ASCII Patterns)
+// Patterns use 4 chars per block to simulate higher resolution or more complexity
 
-    // --- UNIT SKINS ---
-    // These keys match the original unit keys (e.g., 'archer', 'knight')
-    // The system will look for unlocked 16-bit skins for these units.
-    units: {
-        archer: {
-            name: "Archer 16-Bit",
-            // A slightly modified 'HD' version (using 'W' for highlights)
-            sprite: [
-                [".....II.....","....IYYI....","...IYYYYI...","...IYYYYI...","...ITTTTI...","..ITTTTTTI..","..ITTTTTTI..",".ITTTTTTTTI.","...WWWWWW...","...W.WW.W...","..W..WW..W..",".....WW....."],
-                [".....II.....","....IYYI....","...IYYYYI...","...IYYYYI...","...ITTTTI...","..ITTTTTTI..","..ITTTTTTI..",".ITTTTTTTTI.","...WWWWWW...","..W..W..W...","...W...W....",".....WW....."]
-            ]
-        },
-        knight: {
-            name: "Knight 16-Bit",
-            sprite: [
-                [".....WW.....","....WWWW....","...IITTII...","..IIITTIII..",".IITTTTTTII.","..ITTTTTTI..",".IIIITTIIII.",".IIIITTIIII.","...IITTII...","...WWWWWW...","..WW.WW.WW..",".....WW....."],
-                [".....WW.....","....WWWW....","...IITTII...","..IIITTIII..",".IITTTTTTII.","..ITTTTTTI..",".IIIITTIIII.",".IIIITTIIII.","...IITTII...","...WWWWWW...","..W..WW..W..",".....WW....."]
-            ]
-        },
-        giant: {
-            name: "Giant 16-Bit",
-            sprite: [
-                [".....HH.....","....HHHH....","...HHHHHH...","...HKHKHH...","..ITTTTTTI..","..ITTTTTTI..","..ITTTTTTI..","..ITTTTTTI..","..ITTTTTTI..","...HHHHHH...","...H.HH.H...","..HH....HH.."],
-                [".....HH.....","....HHHH....","...HHHHHH...","...HKHKHH...","..ITTTTTTI..","..ITTTTTTI..","..ITTTTTTI..","..ITTTTTTI..","..ITTTTTTI..","...HHHHHH...","...H.HH.H...","..H..HH..H.."]
-            ]
-        }
-    },
+const TILE_SETS = {
+    // FOREST
+    grass_16bit: ["GGDG","DGGD","GGDG","DGGD"],
+    water_16bit: ["AZAZ","ZAZA","BZBZ","ZBZB"],
+    bridge_16bit: ["OOOO","OKOO","OOKO","OOOO"],
 
-    // --- UI SKINS ---
-    ui: {
-        retro_hd: { name: "Retro HD", desc: "Sharper UI Borders" }
-    },
+    // DESERT
+    sand_16bit: ["YYXY","XYXY","YXYY","XYXY"],
+    quicksand_16bit: ["XOXO","OXOX","XOXO","OXOX"],
+    bone_bridge_16bit: ["WEWE","EKEW","WEWE","EKEW"],
 
-    // --- DECK SKINS ---
-    deck: {
-        gold_trim: { name: "Gold Trim", desc: "Golden Card Borders" }
+    // SNOW
+    snow_16bit: ["WWWW","EWEW","WEWE","WWWW"],
+    ice_16bit: ["CCZC","ZCCZ","CCZC","ZCCZ"],
+    ice_bridge_16bit: ["IBIB","BIKB","IBIB","BIKB"],
+
+    // VOLCANO
+    obsidian_16bit: ["KKKK","KIKI","KKKK","IKIK"],
+    lava_16bit: ["RROR","ORRO","RROR","ORRO"],
+    metal_bridge_16bit: ["IIII","IKII","IIII","IIKI"],
+
+    // CYBER
+    grid_16bit: ["KKCK","KCKK","KKCK","KCKK"],
+    void_16bit: ["KBKB","BKBK","KBKB","BKBK"],
+    neon_bridge_16bit: ["CCCC","CKKC","CCCC","CKKC"],
+
+    // GRAVEYARD
+    dirt_16bit: ["SKSK","KSKS","SKSK","KSKS"],
+    water_dark_16bit: ["BKBK","KBKB","BKBK","KBKB"],
+    stone_bridge_16bit: ["IIII","KIKI","IIII","KIKI"],
+
+    // SPACE
+    star_16bit: ["KAKA","AKAK","KAKA","AKAK"],
+    void_space_16bit: ["KBKB","BKBK","KBKB","BKBK"],
+    neon_bridge_space_16bit: ["CCCC","CKKC","CCCC","CKKC"],
+
+    // BEACH
+    gold_sand_16bit: ["YAYA","AYAY","YAYA","AYAY"],
+    water_beach_16bit: ["AZAZ","ZAZA","AZAZ","ZAZA"],
+    bridge_beach_16bit: ["OOOO","OKOO","OOOO","OOKO"]
+};
+
+const SKINS_16BIT_ARENAS = {
+    forest_16bit: {
+        name: "Forest 16-Bit",
+        bg: "#2ecc71", // Lighter green
+        ground: "grass_16bit", liquid: "water_16bit", bridge: "bridge_16bit",
+        sprites: TILE_SETS
+    },
+    desert_16bit: {
+        name: "Desert 16-Bit",
+        bg: "#f39c12",
+        ground: "sand_16bit", liquid: "quicksand_16bit", bridge: "bone_bridge_16bit",
+        sprites: TILE_SETS
+    },
+    snow_16bit: {
+        name: "Frozen 16-Bit",
+        bg: "#ecf0f1",
+        ground: "snow_16bit", liquid: "ice_16bit", bridge: "ice_bridge_16bit",
+        sprites: TILE_SETS
+    },
+    volcano_16bit: {
+        name: "Volcano 16-Bit",
+        bg: "#e74c3c",
+        ground: "obsidian_16bit", liquid: "lava_16bit", bridge: "metal_bridge_16bit",
+        sprites: TILE_SETS
+    },
+    cyber_16bit: {
+        name: "Cyber 16-Bit",
+        bg: "#34495e",
+        ground: "grid_16bit", liquid: "void_16bit", bridge: "neon_bridge_16bit",
+        sprites: TILE_SETS
+    },
+    graveyard_16bit: {
+        name: "Cemetery 16-Bit",
+        bg: "#2c3e50",
+        ground: "dirt_16bit", liquid: "water_dark_16bit", bridge: "stone_bridge_16bit",
+        sprites: TILE_SETS
+    },
+    space_16bit: {
+        name: "Space 16-Bit",
+        bg: "#000",
+        ground: "star_16bit", liquid: "void_space_16bit", bridge: "neon_bridge_space_16bit",
+        sprites: TILE_SETS
+    },
+    beach_16bit: {
+        name: "Beach 16-Bit",
+        bg: "#3498db",
+        ground: "gold_sand_16bit", liquid: "water_beach_16bit", bridge: "bridge_beach_16bit",
+        sprites: TILE_SETS
     }
 };
 
-// --- END OF js/data/skins_16bit.js ---
+// --- END OF js/data/16bit/arenas.js ---
+
+// --- START OF js/data/16bit/units.js ---
+const SKINS_16BIT_UNITS = {
+    // COMMON
+    archer: {
+        name: "Archer 16-Bit",
+        sprite: [
+            [".....II.....","....IYYI....","...IYYYYI...","...IYYYYI...","...ITTTTI...","..ITTTTTTI..","..ITTTTTTI..",".ITTTTTTTTI.","...WWWWWW...","...W.WW.W...","..W..WW..W..",".....WW....."],
+            [".....II.....","....IYYI....","...IYYYYI...","...IYYYYI...","...ITTTTI...","..ITTTTTTI..","..ITTTTTTI..",".ITTTTTTTTI.","...WWWWWW...","..W..W..W...","...W...W....",".....WW....."]
+        ]
+    },
+    knight: {
+        name: "Knight 16-Bit",
+        sprite: [
+            [".....WW.....","....WWWW....","...IITTII...","..IIITTIII..",".IITTTTTTII.","..ITTTTTTI..",".IIIITTIIII.",".IIIITTIIII.","...IITTII...","...WWWWWW...","..WW.WW.WW..",".....WW....."],
+            [".....WW.....","....WWWW....","...IITTII...","..IIITTIII..",".IITTTTTTII.","..ITTTTTTI..",".IIIITTIIII.",".IIIITTIIII.","...IITTII...","...WWWWWW...","..W..WW..W..",".....WW....."]
+        ]
+    },
+    skeleton: {
+        name: "Skeleton 16-Bit",
+        sprite: [
+            [".....WW.....","....WKKW....","....WWWW....",".....WW.....","....WIIC....","....WIIC....","....WIIC....","...C.CC.C...","..C..CC..C..",".....CC.....","............","............"],
+            [".....WW.....","....WKKW....","....WWWW....",".....WW.....","....WIIC....","....WIIC....","....WIIC....","...C.CC.C...","..C.C..C.C..","....C..C....","............","............"]
+        ]
+    },
+    goblin: {
+        name: "Goblin 16-Bit",
+        sprite: [
+            [".....GG.....","....GKKG....","...GGGGGG...","...GGGGGG...","...TTTTTT...","..GTTTTTTG..","...TTTTTT...","...GGGGGG...","...G.GG.G...","..G..GG..G..",".....GG....."],
+            [".....GG.....","....GKKG....","...GGGGGG...","...GGGGGG...","...TTTTTT...","..GTTTTTTG..","...TTTTTT...","...GGGGGG...","...G.GG.G...","..G.G..G.G..","....G..G...."]
+        ]
+    },
+    spear_gob: {
+        name: "Spear Gob 16-Bit",
+        sprite: [
+            ["...GGGGG....","...GKKKG....","...GGGGGG...","..GGGGGGG.I.","..GTTTTTG.I.","..GTTTTTGGI.","..GTTTTTG.I.","..IGGGGGG...","...G.GG.G...","..G..GG..G.."],
+            ["...GGGGG....","...GKKKG....","...GGGGGG.I.","..GGGGGGG.I.","..GTTTTTG.I.","..GTTTTTG.I.","..GTTTTTG.I.","..IGGGGGG...","...G.GG.G...","..GG....GG.."]
+        ]
+    },
+    bat: {
+        name: "Bat 16-Bit",
+        sprite: [
+            [".B...B...B..",".BB.BBB.BB..",".BBBBBBBBB..",".B.BBBBB.B..","....BBB.....","....BBB.....","............"],
+            ["............",".B...B...B..",".BB.BBB.BB..",".BBBBBBBBB..",".B.BBBBB.B..","....BBB.....","....BBB....."]
+        ]
+    },
+    minion: {
+        name: "Minion 16-Bit",
+        sprite: [
+            [".A...A...A..",".AA.AAA.AA..",".AAAAAAAAA..",".A.AAAAA.A..","....AAA.....","....AIA.....","...A.A.A...."],
+            ["............",".A...A...A..",".AA.AAA.AA..",".AAAAAAAAA..",".A.AAAAA.A..","....AAA.....","....AIA....."]
+        ]
+    },
+    bomber: {
+        name: "Bomber 16-Bit",
+        sprite: [
+            [".....RR.....","....RRRR....","...RRRRRR...","...RRLRRR...","..ITTTTTTI..","..ITTTTTTI..","..ITTTTTTI..","..ITRRRRTI..","..IRRLLRR...","...W.WW.W...","..W..WW..W..",".....WW....."],
+            [".....RR.....","....RRRR....","...RRRRRR...","...RRLRRR...","..ITTTTTTI..","..ITTTTTTI..","..ITTTTTTI..","..ITRRRRTI..","..IRRLLRR...","...W.WW.W...","..WW....WW..",".....WW....."]
+        ]
+    },
+
+    // RARE
+    giant: {
+        name: "Giant 16-Bit",
+        sprite: [
+            [".....HH.....","....HHHH....","...HHHHHH...","...HKHKHH...","..ITTTTTTI..","..ITTTTTTI..","..ITTTTTTI..","..ITTTTTTI..","..ITTTTTTI..","...HHHHHH...","...H.HH.H...","..HH....HH.."],
+            [".....HH.....","....HHHH....","...HHHHHH...","...HKHKHH...","..ITTTTTTI..","..ITTTTTTI..","..ITTTTTTI..","..ITTTTTTI..","..ITTTTTTI..","...HHHHHH...","...H.HH.H...","..H..HH..H.."]
+        ]
+    },
+    musketeer: {
+        name: "Musketeer 16-Bit",
+        sprite: [
+            [".....KK.....","....KSSK....","...KSSSSK...","...KSSSSK...","..KTTTTTTK..","..KTTTTTT...","..KTTTTTTII.","..KTTTTTTII.","...KKKKKK...","...K.KK.K...","..K..KK..K.."],
+            [".....KK.....","....KSSK....","...KSSSSK...","...KSSSSK...","..KTTTTTTK..","..KTTTTTT...","..KTTTTTTII.","..KTTTTTTII.","...KKKKKK...","...K.KK.K...","..KK....KK.."]
+        ]
+    },
+    valkyrie: {
+        name: "Valkyrie 16-Bit",
+        sprite: [
+            ["....OOOO....","...OSSSSO...","...SSSSSS...","..KTTTTTTK..","...TTTTTT...","..OOTTTTOO..",".O.OTTTTO.O.","...KKKKKK...","...K.KK.K...","..K..KK..K..",".....SS....."],
+            ["....OOOO....","...OSSSSO...","...SSSSSS...","..KTTTTTTK..","...TTTTTT...","..OOTTTTOO..",".O.OTTTTO.O.","...KKKKKK...","...K.KK.K...","..KK....KK..","....S..S...."]
+        ]
+    },
+    hog: {
+        name: "Hog Rider 16-Bit",
+        sprite: [
+            ["....KKKK....","....KSSK....","....SSSS....","..KTTTTTTK..","..KTTTTTTK..","...SSSSSS...","...OOOOOO...","..OOOOOOOO..",".O.OOOOOO.O.","...O.OO.O..."],
+            ["....KKKK....","....KSSK....","....SSSS....","..KTTTTTTK..","..KTTTTTTK..","...SSSSSS...","...OOOOOO...","..OOOOOOOO..",".O.OOOOOO.O.","..O......O.."]
+        ]
+    },
+    barbarian: {
+        name: "Barbarian 16-Bit",
+        sprite: [
+            [".....YY.....","....YSSY....","...SSSSSS...","...SSSSSS...","..KTTTTTTK..",".KTTTKKTTTK.","..KTTTTTTK..","...KKKKKK...","...K.KK.K...","..K..KK..K..",".....SS....."],
+            [".....YY.....","....YSSY....","...SSSSSS...","...SSSSSS...","..KTTTTTTK..",".KTTTKKTTTK.","..KTTTTTTK..","...KKKKKK...","...K.KK.K...","..KK....KK..","....S..S...."]
+        ]
+    },
+    wizard: {
+        name: "Wizard 16-Bit",
+        sprite: [
+            [".......V....","......VVV...",".....VVSVV..","....BBBBBBB.","....GEEGEEG.","CC...ggHgg..","CX...LLLLL..","..X.VBBLBBV.","...XVBBVBBV.","...VXBBVBBV.",".....BBVBB..",".....UU.UU.."],
+            [".......V....","......VVV...",".....VVSVV..","....BBBBBBB.","....GEEGEEG.","CC...ggHgg..","CX...LLLLL..","..X.VBBLBBV.","...XVBBVBBV.","...VXBBVBBV.",".....BBVBB..",".....UU.UU.."]
+        ]
+    },
+    miniteetra: {
+        name: "Mini P.E.K.K.A 16-Bit",
+        sprite: [
+            [".....II.....","....ICCI....","...ICCCCI...","..ITTTTTTI..","...TTTTTT...","..ITTTTTTI..","..ITTTTTTI..","...IIIIII...","...I.II.I...","..I..II..I..",".....II....."],
+            [".....II.....","....ICCI....","...ICCCCI...","..ITTTTTTI..","...TTTTTT...","..ITTTTTTI..","..ITTTTTTI..","...IIIIII...","...I.II.I...","..II....II..",".....II....."]
+        ]
+    },
+
+    // EPIC & LEGENDARY
+    baby_dragon: {
+        name: "Baby Dragon 16-Bit",
+        sprite: [
+            [".....GG.....","....GGGG....","...GGSGG....","..GGGGSGGG..",".GTTTTTTTTG.","..GTTTTTTG..","...GTTTTG...","...GG..GG...","...G....G...","............","............","............"],
+            [".....GG.....","....GGGG....","...GGSGG....","..GGGGSGGG..",".GTTTTTTTTG.","..GTTTTTTG..","...GTTTTG...","...GG..GG...","...GG..GG...","............","............","............"]
+        ]
+    },
+    witch: {
+        name: "Witch 16-Bit",
+        sprite: [
+            [".....KK.....","....KSSK....","...KSSSSK...","...KSSSSK...","..BVVVVVVB..","..BVVVVVVB..","..BVVVVVVB..","..BVVVVVVB..","...BBBBBB...","...B.BB.B...","..B..BB..B.."],
+            [".....KK.....","....KSSK....","...KSSSSK...","...KSSSSK...","..BVVVVVVB..","..BVVVVVVB..","..BVVVVVVB..","..BVVVVVVB..","...BBBBBB...","...B.BB.B...","..BB....BB.."]
+        ]
+    },
+    prince: { // Paladin
+        name: "Prince 16-Bit",
+        sprite: [
+            [".....CC.....","....CYYC....","...CYYYYC...","...CYYYYC...","..CTTTTTTC..","..CTTTTTTC..","..CTTYYYYC..","..CTTTTTTC..","...YYYYYY...","...Y.YY.Y...","..Y..YY..Y..",".....YY....."],
+            [".....CC.....","....CYYC....","...CYYYYC...","...CYYYYC...","..CTTTTTTC..","..CTTTTTTC..","..CTTYYYYC..","..CTTTTTTC..","...YYYYYY...","...Y.YY.Y...","..Y...Y..Y..",".....YY....."]
+        ]
+    },
+    golem: {
+        name: "Golem 16-Bit",
+        sprite: [
+            [".....HH.....","....HHHH....","...HHHHHH...","..HHHHHHHH..", "..HTTTTTTH..","..HTTTTTTH..","..HTTTTTTH..","..HTTTTTTH..","..HTTTTTTH..","...HHHHHH...","..HH....HH..",".HHH....HHH."],
+            [".....HH.....","....HHHH....","...HHHHHH...","..HHHHHHHH..", "..HTTTTTTH..","..HTTTTTTH..","..HTTTTTTH..","..HTTTTTTH..","..HTTTTTTH..","...HHHHHH...",".HHH....HHH.",".HH......HH."]
+        ]
+    },
+    teetra: { // P.E.K.K.A
+        name: "P.E.K.K.A 16-Bit",
+        sprite: [
+            ["....III.....","...ICCCCI...","..ICCCCCCI..","..ITTTTTTI..","..ITTTTTTI..",".IITTTTTTII.",".IITTTTTTII.",".IITTTTTTII.","...IIIIII...","...I.II.I...","..I..II..I..",".....II....."],
+            ["....III.....","...ICCCCI...","..ICCCCCCI..","..ITTTTTTI..","..ITTTTTTI..",".IITTTTTTII.",".IITTTTTTII.",".IITTTTTTII.","...IIIIII...","...I.II.I...","..II....II..",".....II....."]
+        ]
+    },
+    angel: { // Healer
+        name: "Healer 16-Bit",
+        sprite: [
+            [".W...YY...W.",".WW.YSSY.WW.",".WWYSSSSYWW.","..WTTTTTTW..","...TTTTTT...","...TTTTTT...","...YYYYYY...","...Y.YY.Y...","..Y..YY..Y..",".....YY....."],
+            [".W...YY...W.",".WW.YSSY.WW.",".WWYSSSSYWW.","..WTTTTTTW..","...TTTTTT...","...TTTTTT...","...YYYYYY...","...Y.YY.Y...","..Y...Y..Y..",".....YY....."]
+        ]
+    },
+
+    // BUILDINGS & SPELLS
+    cannon: {
+        name: "Cannon 16-Bit",
+        sprite: [
+            ["......H.....",".....HH.....","....HHHH....","...KHHHH....","..KKHHHH....",".KKHHHHH....","KKKHHHHH....","K.KHHHHH....","..KKKKKK....","..KKKKKK...."],
+            ["......H.....",".....HH.....","....HHHH....","...KHHHH....","..KKHHHH....",".KKHHHHH....","KKKHHHHH....","K.KHHHHH....","..KKKKKK....","..KKKKKK...."]
+        ]
+    },
+    xbow: {
+        name: "X-Bow 16-Bit",
+        sprite: [
+            [".....II.....","..I.IIII.I..",".IIIIIIIIII.",".IIIIIIIIII.","....IIII....","....IIII....","...KKKKKK...","...KKKKKK...","...KKKKKK...","...KKKKKK..."]
+        ]
+    }
+};
+
+// --- END OF js/data/16bit/units.js ---
+
+// --- START OF js/data/16bit/ui.js ---
+const SKINS_16BIT_UI = {
+    retro_hd: { name: "Retro HD", desc: "Sharper UI Borders" },
+    neon_ui: { name: "Neon UI", desc: "Glowing Borders" }
+};
+
+const SKINS_16BIT_DECK = {
+    gold_trim: { name: "Gold Trim", desc: "Golden Card Borders" },
+    diamond_trim: { name: "Diamond Trim", desc: "Shiny Blue Borders" }
+};
+
+// --- END OF js/data/16bit/ui.js ---
+
+// --- START OF js/data/16bit/main.js ---
+
+const SKINS_16BIT_DATA = {
+    arena: SKINS_16BIT_ARENAS,
+    units: SKINS_16BIT_UNITS,
+    ui: SKINS_16BIT_UI,
+    deck: SKINS_16BIT_DECK
+};
+
+// --- END OF js/data/16bit/main.js ---
 
 // --- START OF js/engine/audio.js ---
 // --- AUDIO ENGINE ---
@@ -3187,25 +3408,25 @@ function renderSkins() {
 
     l.appendChild(shelf);
 
-    // Roulette Buttons Container
-    const btnContainer = document.createElement('div');
-    btnContainer.style.cssText = "display:flex; flex-direction:column; gap:10px; margin-top:20px; width:100%; align-items:center;";
+    // Roulette Buttons Container in TOP HEADER
+    const topContainer = document.getElementById('skin-roulette-container');
+    if(topContainer) {
+        topContainer.innerHTML = ''; // Clear existing button
 
-    // Old Roulette (8-bit Arena)
-    const oldBtn = document.createElement('button');
-    oldBtn.className = 'pixel-btn blue';
-    oldBtn.innerHTML = `ARÈNE 8-BIT (10 <img src="${window.ICONS.gem}" class="pixel-icon">)`;
-    oldBtn.onclick = openGachaDraw;
-    btnContainer.appendChild(oldBtn);
+        // Old Roulette (8-bit Arena)
+        const oldBtn = document.createElement('button');
+        oldBtn.className = 'pixel-btn blue';
+        oldBtn.innerHTML = `ARÈNE 8-BIT (10 <img src="${window.ICONS.gem}" class="pixel-icon">)`;
+        oldBtn.onclick = openGachaDraw;
+        topContainer.appendChild(oldBtn);
 
-    // New Roulette (16-bit)
-    const newBtn = document.createElement('button');
-    newBtn.className = 'pixel-btn purple';
-    newBtn.innerHTML = `EVOLUTION 16-BIT (50 <img src="${window.ICONS.gem}" class="pixel-icon">)`;
-    newBtn.onclick = open16BitGacha;
-    btnContainer.appendChild(newBtn);
-
-    l.appendChild(btnContainer);
+        // New Roulette (16-bit)
+        const newBtn = document.createElement('button');
+        newBtn.className = 'pixel-btn purple';
+        newBtn.innerHTML = `EVOLUTION 16-BIT (50 <img src="${window.ICONS.gem}" class="pixel-icon">)`;
+        newBtn.onclick = open16BitGacha;
+        topContainer.appendChild(newBtn);
+    }
 }
 
 function openBook(category) {
