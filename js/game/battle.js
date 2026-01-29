@@ -2,6 +2,7 @@ import { AUDIO } from '../engine/audio.js';
 import { SPRITE_CACHE } from '../engine/sprites.js';
 import { CARDS, getUnitStats } from '../data/cards.js';
 import { SKINS } from '../data/skins.js';
+import { SKINS_16BIT_DATA } from '../data/16bit/main.js';
 import { MODULES } from '../data/modules.js';
 import { GAME_W, GAME_H } from '../data/config.js';
 import { t } from '../core/utils.js';
@@ -716,7 +717,13 @@ function showGameMsg(txt) { const el = document.getElementById('g-msg'); if(el) 
 function draw() {
     if(!ctx) return;
     const GAME = window.GAME;
-    const skin = SKINS[window.PLAYER.currentSkin] || SKINS.grass;
+    let skin = SKINS[window.PLAYER.currentSkin] || SKINS.grass;
+
+    // 16-BIT ARENA OVERRIDE
+    if(window.PLAYER.active_16bit.arena && SKINS_16BIT_DATA.arena[window.PLAYER.active_16bit.arena]) {
+        skin = SKINS_16BIT_DATA.arena[window.PLAYER.active_16bit.arena];
+    }
+
     ctx.fillStyle = skin.bg; ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.save();
     ctx.scale(SCALE, SCALE);
@@ -748,6 +755,11 @@ all.forEach(obj => {
         let spriteKey = obj.key || 'tower';
         if(isTower) spriteKey = 'tower';
         
+        // 16-BIT UNIT OVERRIDE
+        if(!isTower && window.PLAYER.active_16bit.units.includes(obj.key)) {
+            spriteKey += '_16bit';
+        }
+
         let frame = 0;
         if(!isTower && !obj.type) { 
             const frameCount = SPRITE_CACHE[spriteKey + '_frames'] || 1;
@@ -767,6 +779,13 @@ all.forEach(obj => {
 
         if(finalSprite) {
             let sc = (isTower || (CARDS[obj.key] && CARDS[obj.key].speed===0)) ? 4 : 2;
+            
+            // Adjust scale for 16-bit assets (24x24) vs 8-bit (12x12)
+            // Maintain similar on-screen size
+            if(finalSprite.width > 16) {
+                sc = sc / 2;
+            }
+
             const w = finalSprite.width * sc;
             const h = finalSprite.height * sc;
             ctx.drawImage(finalSprite, obj.x - w/2, obj.y - h/2, w, h);
@@ -811,7 +830,16 @@ export function renderHand() {
 
         const canvas = document.createElement('canvas'); canvas.width=32; canvas.height=32;
         const cx = canvas.getContext('2d');
-        const s = SPRITE_CACHE[key + '_blue_0'] || SPRITE_CACHE[key + '_blue'] || SPRITE_CACHE[key];
+        
+        let spriteKey = key;
+        const active16 = window.PLAYER.active_16bit && window.PLAYER.active_16bit.units ? window.PLAYER.active_16bit.units : [];
+        if(active16.includes(key + '_16bit') || active16.includes(key)) {
+             if(SPRITE_CACHE[key + '_16bit_blue_0'] || SPRITE_CACHE[key + '_16bit']) {
+                 spriteKey = key + '_16bit';
+             }
+        }
+
+        const s = SPRITE_CACHE[spriteKey + '_blue_0'] || SPRITE_CACHE[spriteKey + '_blue'] || SPRITE_CACHE[spriteKey];
         if(s) cx.drawImage(s,0,0,32,32);
         d.appendChild(canvas);
 

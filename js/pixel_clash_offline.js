@@ -677,6 +677,1588 @@ const SKINS = {
 
 // --- END OF js/data/skins.js ---
 
+// --- START OF js/data/16bit/arenas.js ---
+// 16-BIT ARENA SKINS (16x16 Resolution for Tile Width 16)
+// Provides detailed terrain textures.
+
+const TILE_SETS = {
+    // FOREST
+    grass_16bit: [
+        "GGGGGDGGGGGDGGGG",
+        "GDGGGGGGGDGGGGGG",
+        "GGGGGGGGGGGGGGGG",
+        "GGGGDGGGGGGGGDGG",
+        "GGGGGGGGGGGGGGGG",
+        "GGGDGGGGGGGDGGGG",
+        "GGGGGGGGGGGGGGGG",
+        "GGGGGGGGGGGGGGGG",
+        "GGGGGDGGGGGDGGGG",
+        "GDGGGGGGGDGGGGGG",
+        "GGGGGGGGGGGGGGGG",
+        "GGGGDGGGGGGGGDGG",
+        "GGGGGGGGGGGGGGGG",
+        "GGGDGGGGGGGDGGGG",
+        "GGGGGGGGGGGGGGGG",
+        "GGGGGGGGGGGGGGGG"
+    ],
+    water_16bit: [
+        "AZAZAZAZAZAZAZAZ",
+        "ZAZAZAZAZAZAZAZA",
+        "AZAZBZAZAZBZAZAZ",
+        "ZAZAZAZAZAZAZAZA",
+        "AZBZAZAZAZBZAZAZ",
+        "ZAZAZAZAZAZAZAZA",
+        "AZAZAZAZAZAZAZAZ",
+        "ZAZAZAZAZAZAZAZA",
+        "AZAZAZAZAZAZAZAZ",
+        "ZAZAZAZAZAZAZAZA",
+        "AZAZBZAZAZBZAZAZ",
+        "ZAZAZAZAZAZAZAZA",
+        "AZBZAZAZAZBZAZAZ",
+        "ZAZAZAZAZAZAZAZA",
+        "AZAZAZAZAZAZAZAZ",
+        "ZAZAZAZAZAZAZAZA"
+    ],
+    bridge_16bit: [
+        "OOOOOOOOOOOOOOOO",
+        "OKOKOKOKOKOKOKOO",
+        "OOOOOOOOOOOOOOOO",
+        "OKOKOKOKOKOKOKOO",
+        "OOOOOOOOOOOOOOOO",
+        "OKOKOKOKOKOKOKOO",
+        "OOOOOOOOOOOOOOOO",
+        "OKOKOKOKOKOKOKOO",
+        "OOOOOOOOOOOOOOOO",
+        "OKOKOKOKOKOKOKOO",
+        "OOOOOOOOOOOOOOOO",
+        "OKOKOKOKOKOKOKOO",
+        "OOOOOOOOOOOOOOOO",
+        "OKOKOKOKOKOKOKOO",
+        "OOOOOOOOOOOOOOOO",
+        "OKOKOKOKOKOKOKOO"
+    ],
+    
+    // DESERT
+    sand_16bit: [
+        "YYYYXYYYYYYXYYYY",
+        "YYXYYYYYYXYYYYYY",
+        "YYYYYYYYYYYYYYYY",
+        "YYYYYYYYYYYYYYYY",
+        "YYYYXYYYYYYXYYYY",
+        "YYXYYYYYYXYYYYYY",
+        "YYYYYYYYYYYYYYYY",
+        "YYYYYYYYYYYYYYYY",
+        "YYYYXYYYYYYXYYYY",
+        "YYXYYYYYYXYYYYYY",
+        "YYYYYYYYYYYYYYYY",
+        "YYYYYYYYYYYYYYYY",
+        "YYYYXYYYYYYXYYYY",
+        "YYXYYYYYYXYYYYYY",
+        "YYYYYYYYYYYYYYYY",
+        "YYYYYYYYYYYYYYYY"
+    ],
+    quicksand_16bit: [
+        "XOXOXOXOXOXOXOXO",
+        "OXOXOXOXOXOXOXOX",
+        "XOXOXOXOXOXOXOXO",
+        "OXOXOXOXOXOXOXOX",
+        "XOXOXOXOXOXOXOXO",
+        "OXOXOXOXOXOXOXOX",
+        "XOXOXOXOXOXOXOXO",
+        "OXOXOXOXOXOXOXOX",
+        "XOXOXOXOXOXOXOXO",
+        "OXOXOXOXOXOXOXOX",
+        "XOXOXOXOXOXOXOXO",
+        "OXOXOXOXOXOXOXOX",
+        "XOXOXOXOXOXOXOXO",
+        "OXOXOXOXOXOXOXOX",
+        "XOXOXOXOXOXOXOXO",
+        "OXOXOXOXOXOXOXOX"
+    ],
+    bone_bridge_16bit: [
+        "WEWEWEWEWEWEWEWE",
+        "EKEKEKEKEKEKEKEW",
+        "WEWEWEWEWEWEWEWE",
+        "EKEKEKEKEKEKEKEW",
+        "WEWEWEWEWEWEWEWE",
+        "EKEKEKEKEKEKEKEW",
+        "WEWEWEWEWEWEWEWE",
+        "EKEKEKEKEKEKEKEW",
+        "WEWEWEWEWEWEWEWE",
+        "EKEKEKEKEKEKEKEW",
+        "WEWEWEWEWEWEWEWE",
+        "EKEKEKEKEKEKEKEW",
+        "WEWEWEWEWEWEWEWE",
+        "EKEKEKEKEKEKEKEW",
+        "WEWEWEWEWEWEWEWE",
+        "EKEKEKEKEKEKEKEW"
+    ],
+
+    // SNOW
+    snow_16bit: [
+        "WWWWWWWWWWWWWWWW",
+        "WEWEWEWEWEWEWEWE",
+        "WWWWWWWWWWWWWWWW",
+        "EWEWEWEWEWEWEWEW",
+        "WWWWWWWWWWWWWWWW",
+        "WEWEWEWEWEWEWEWE",
+        "WWWWWWWWWWWWWWWW",
+        "EWEWEWEWEWEWEWEW",
+        "WWWWWWWWWWWWWWWW",
+        "WEWEWEWEWEWEWEWE",
+        "WWWWWWWWWWWWWWWW",
+        "EWEWEWEWEWEWEWEW",
+        "WWWWWWWWWWWWWWWW",
+        "WEWEWEWEWEWEWEWE",
+        "WWWWWWWWWWWWWWWW",
+        "EWEWEWEWEWEWEWEW"
+    ],
+    ice_16bit: [
+        "CCZCCZCCZCCZCCZC",
+        "ZCCZZCCZZCCZZCCZ",
+        "CCZCCZCCZCCZCCZC",
+        "ZCCZZCCZZCCZZCCZ",
+        "CCZCCZCCZCCZCCZC",
+        "ZCCZZCCZZCCZZCCZ",
+        "CCZCCZCCZCCZCCZC",
+        "ZCCZZCCZZCCZZCCZ",
+        "CCZCCZCCZCCZCCZC",
+        "ZCCZZCCZZCCZZCCZ",
+        "CCZCCZCCZCCZCCZC",
+        "ZCCZZCCZZCCZZCCZ",
+        "CCZCCZCCZCCZCCZC",
+        "ZCCZZCCZZCCZZCCZ",
+        "CCZCCZCCZCCZCCZC",
+        "ZCCZZCCZZCCZZCCZ"
+    ],
+    ice_bridge_16bit: [
+        "IBIBIBIBIBIBIBIB",
+        "BIBKBIBKBIBKBIBK",
+        "IBIBIBIBIBIBIBIB",
+        "BIBKBIBKBIBKBIBK",
+        "IBIBIBIBIBIBIBIB",
+        "BIBKBIBKBIBKBIBK",
+        "IBIBIBIBIBIBIBIB",
+        "BIBKBIBKBIBKBIBK",
+        "IBIBIBIBIBIBIBIB",
+        "BIBKBIBKBIBKBIBK",
+        "IBIBIBIBIBIBIBIB",
+        "BIBKBIBKBIBKBIBK",
+        "IBIBIBIBIBIBIBIB",
+        "BIBKBIBKBIBKBIBK",
+        "IBIBIBIBIBIBIBIB",
+        "BIBKBIBKBIBKBIBK"
+    ],
+
+    // VOLCANO
+    obsidian_16bit: [
+        "KKKKKIKIKKKKKIKI",
+        "KIKIKKKKKIKIKKKK",
+        "KKKKKIKIKKKKKIKI",
+        "IKIKIKIKIKIKIKIK",
+        "KKKKKIKIKKKKKIKI",
+        "KIKIKKKKKIKIKKKK",
+        "KKKKKIKIKKKKKIKI",
+        "IKIKIKIKIKIKIKIK",
+        "KKKKKIKIKKKKKIKI",
+        "KIKIKKKKKIKIKKKK",
+        "KKKKKIKIKKKKKIKI",
+        "IKIKIKIKIKIKIKIK",
+        "KKKKKIKIKKKKKIKI",
+        "KIKIKKKKKIKIKKKK",
+        "KKKKKIKIKKKKKIKI",
+        "IKIKIKIKIKIKIKIK"
+    ],
+    lava_16bit: [
+        "RRORRRORRRORRROR",
+        "ORROORROORROORRO",
+        "RRORRRORRRORRROR",
+        "ORROORROORROORRO",
+        "RRORRRORRRORRROR",
+        "ORROORROORROORRO",
+        "RRORRRORRRORRROR",
+        "ORROORROORROORRO",
+        "RRORRRORRRORRROR",
+        "ORROORROORROORRO",
+        "RRORRRORRRORRROR",
+        "ORROORROORROORRO",
+        "RRORRRORRRORRROR",
+        "ORROORROORROORRO",
+        "RRORRRORRRORRROR",
+        "ORROORROORROORRO"
+    ],
+    metal_bridge_16bit: [
+        "IIIIIIIIIIIIIIII",
+        "IKIIIIKIIIIKIIII",
+        "IIIIIIIIIIIIIIII",
+        "IIKIIIIKIIIIKIII",
+        "IIIIIIIIIIIIIIII",
+        "IKIIIIKIIIIKIIII",
+        "IIIIIIIIIIIIIIII",
+        "IIKIIIIKIIIIKIII",
+        "IIIIIIIIIIIIIIII",
+        "IKIIIIKIIIIKIIII",
+        "IIIIIIIIIIIIIIII",
+        "IIKIIIIKIIIIKIII",
+        "IIIIIIIIIIIIIIII",
+        "IKIIIIKIIIIKIIII",
+        "IIIIIIIIIIIIIIII",
+        "IIKIIIIKIIIIKIII"
+    ],
+
+    // CYBER
+    grid_16bit: [
+        "KKCKKKCKKKCKKKCK",
+        "KCKKKCKKKCKKKCKK",
+        "KKCKKKCKKKCKKKCK",
+        "KCKKKCKKKCKKKCKK",
+        "KKCKKKCKKKCKKKCK",
+        "KCKKKCKKKCKKKCKK",
+        "KKCKKKCKKKCKKKCK",
+        "KCKKKCKKKCKKKCKK",
+        "KKCKKKCKKKCKKKCK",
+        "KCKKKCKKKCKKKCKK",
+        "KKCKKKCKKKCKKKCK",
+        "KCKKKCKKKCKKKCKK",
+        "KKCKKKCKKKCKKKCK",
+        "KCKKKCKKKCKKKCKK",
+        "KKCKKKCKKKCKKKCK",
+        "KCKKKCKKKCKKKCKK"
+    ],
+    void_16bit: [
+        "KBKBKBKBKBKBKBKB",
+        "BKBKBKBKBKBKBKBK",
+        "KBKBKBKBKBKBKBKB",
+        "BKBKBKBKBKBKBKBK",
+        "KBKBKBKBKBKBKBKB",
+        "BKBKBKBKBKBKBKBK",
+        "KBKBKBKBKBKBKBKB",
+        "BKBKBKBKBKBKBKBK",
+        "KBKBKBKBKBKBKBKB",
+        "BKBKBKBKBKBKBKBK",
+        "KBKBKBKBKBKBKBKB",
+        "BKBKBKBKBKBKBKBK",
+        "KBKBKBKBKBKBKBKB",
+        "BKBKBKBKBKBKBKBK",
+        "KBKBKBKBKBKBKBKB",
+        "BKBKBKBKBKBKBKBK"
+    ],
+    neon_bridge_16bit: [
+        "CCCCCCCCCCCCCCCC",
+        "CKKCCKKCCKKCCKKC",
+        "CCCCCCCCCCCCCCCC",
+        "CKKCCKKCCKKCCKKC",
+        "CCCCCCCCCCCCCCCC",
+        "CKKCCKKCCKKCCKKC",
+        "CCCCCCCCCCCCCCCC",
+        "CKKCCKKCCKKCCKKC",
+        "CCCCCCCCCCCCCCCC",
+        "CKKCCKKCCKKCCKKC",
+        "CCCCCCCCCCCCCCCC",
+        "CKKCCKKCCKKCCKKC",
+        "CCCCCCCCCCCCCCCC",
+        "CKKCCKKCCKKCCKKC",
+        "CCCCCCCCCCCCCCCC",
+        "CKKCCKKCCKKCCKKC"
+    ],
+    
+    // BEACH
+    gold_sand_16bit: [
+        "YAYAYAYAYAYAYAYA",
+        "AYAYAYAYAYAYAYAY",
+        "YAYAYAYAYAYAYAYA",
+        "AYAYAYAYAYAYAYAY",
+        "YAYAYAYAYAYAYAYA",
+        "AYAYAYAYAYAYAYAY",
+        "YAYAYAYAYAYAYAYA",
+        "AYAYAYAYAYAYAYAY",
+        "YAYAYAYAYAYAYAYA",
+        "AYAYAYAYAYAYAYAY",
+        "YAYAYAYAYAYAYAYA",
+        "AYAYAYAYAYAYAYAY",
+        "YAYAYAYAYAYAYAYA",
+        "AYAYAYAYAYAYAYAY",
+        "YAYAYAYAYAYAYAYA",
+        "AYAYAYAYAYAYAYAY"
+    ],
+    water_beach_16bit: [
+        "AAAAZZZZAAAAZZZZ",
+        "AAZZZZAAAAZZZZAA",
+        "AZZZZAAAAZZZZAAA",
+        "ZZZZAAAAZZZZAAAA",
+        "ZZZAAAAZZZZAAAAZ",
+        "ZZAAAAZZZZAAAAZZ",
+        "ZAAAAZZZZAAAAZZZ",
+        "AAAAZZZZAAAAZZZZ",
+        "AAZZZZAAAAZZZZAA",
+        "AZZZZAAAAZZZZAAA",
+        "ZZZZAAAAZZZZAAAA",
+        "ZZZAAAAZZZZAAAAZ",
+        "ZZAAAAZZZZAAAAZZ",
+        "ZAAAAZZZZAAAAZZZ",
+        "AAAAZZZZAAAAZZZZ",
+        "AAZZZZAAAAZZZZAA"
+    ],
+    bridge_beach_16bit: [
+        "OOOOOOOOOOOOOOOO",
+        "OOOOOOOOOOOOOOOO",
+        "OOOKOKOKOKOKOKOO",
+        "OOOOOOOOOOOOOOOO",
+        "OOOOOOOOOOOOOOOO",
+        "OOOKOKOKOKOKOKOO",
+        "OOOOOOOOOOOOOOOO",
+        "OOOOOOOOOOOOOOOO",
+        "OOOKOKOKOKOKOKOO",
+        "OOOOOOOOOOOOOOOO",
+        "OOOOOOOOOOOOOOOO",
+        "OOOKOKOKOKOKOKOO",
+        "OOOOOOOOOOOOOOOO",
+        "OOOOOOOOOOOOOOOO",
+        "OOOKOKOKOKOKOKOO",
+        "OOOOOOOOOOOOOOOO"
+    ],
+    
+    // GRAVEYARD
+    dirt_16bit: [
+        "KKSKKKKSKKKSKKKS",
+        "KSKKKSKKSKKSKKSK",
+        "SKKSKKSKKSKKSKKS",
+        "KKSKKKSKKKSKKSKK",
+        "KKSKKKKSKKKSKKKS",
+        "KSKKKSKKSKKSKKSK",
+        "SKKSKKSKKSKKSKKS",
+        "KKSKKKSKKKSKKSKK",
+        "KKSKKKKSKKKSKKKS",
+        "KSKKKSKKSKKSKKSK",
+        "SKKSKKSKKSKKSKKS",
+        "KKSKKKSKKKSKKSKK",
+        "KKSKKKKSKKKSKKKS",
+        "KSKKKSKKSKKSKKSK",
+        "SKKSKKSKKSKKSKKS",
+        "KKSKKKSKKKSKKSKK"
+    ],
+    water_dark_16bit: [
+        "KBKBKBKBKBKBKBKB",
+        "BKBKBKBKBKBKBKBK",
+        "KBKBKBKBKBKBKBKB",
+        "BKBKBKBKBKBKBKBK",
+        "KBKBKBKBKBKBKBKB",
+        "BKBKBKBKBKBKBKBK",
+        "KBKBKBKBKBKBKBKB",
+        "BKBKBKBKBKBKBKBK",
+        "KBKBKBKBKBKBKBKB",
+        "BKBKBKBKBKBKBKBK",
+        "KBKBKBKBKBKBKBKB",
+        "BKBKBKBKBKBKBKBK",
+        "KBKBKBKBKBKBKBKB",
+        "BKBKBKBKBKBKBKBK",
+        "KBKBKBKBKBKBKBKB",
+        "BKBKBKBKBKBKBKBK"
+    ],
+    stone_bridge_16bit: [
+        "IIIIIIIIIIIIIIII",
+        "IKIKIKIKIKIKIKIK",
+        "IIIIIIIIIIIIIIII",
+        "IIIIIIIIIIIIIIII",
+        "IKIKIKIKIKIKIKIK",
+        "IIIIIIIIIIIIIIII",
+        "IIIIIIIIIIIIIIII",
+        "IKIKIKIKIKIKIKIK",
+        "IIIIIIIIIIIIIIII",
+        "IIIIIIIIIIIIIIII",
+        "IKIKIKIKIKIKIKIK",
+        "IIIIIIIIIIIIIIII",
+        "IIIIIIIIIIIIIIII",
+        "IKIKIKIKIKIKIKIK",
+        "IIIIIIIIIIIIIIII",
+        "IIIIIIIIIIIIIIII"
+    ],
+
+    // SPACE
+    star_16bit: [
+        "KKKKKKKKKKKKKKKK",
+        "KKWKKKKKKKKKKWKK",
+        "KKKKKKKKKKKKKKKK",
+        "KKKKKKWKKKKKKKKK",
+        "KKKKKKKKKKKKKKKK",
+        "KZWKKKKKKKKKZWKK",
+        "KKKKKKKKKKKKKKKK",
+        "KKKKKKKKKKKKKKKK",
+        "KKKKKKKKKKKKKKKK",
+        "KKWKKKKKKKKKKWKK",
+        "KKKKKKKKKKKKKKKK",
+        "KKKKKKWKKKKKKKKK",
+        "KKKKKKKKKKKKKKKK",
+        "KZWKKKKKKKKKZWKK",
+        "KKKKKKKKKKKKKKKK",
+        "KKKKKKKKKKKKKKKK"
+    ],
+    void_space_16bit: [
+        "KKKKKKKKKKKKKKKK",
+        "KKKKKKKKKKKKKKKK",
+        "KKKKKKKKKKKKKKKK",
+        "KKKKKKKKKKKKKKKK",
+        "KKKKKKKKKKKKKKKK",
+        "KKKKKKKKKKKKKKKK",
+        "KKKKKKKKKKKKKKKK",
+        "KKKKKKKKKKKKKKKK",
+        "KKKKKKKKKKKKKKKK",
+        "KKKKKKKKKKKKKKKK",
+        "KKKKKKKKKKKKKKKK",
+        "KKKKKKKKKKKKKKKK",
+        "KKKKKKKKKKKKKKKK",
+        "KKKKKKKKKKKKKKKK",
+        "KKKKKKKKKKKKKKKK",
+        "KKKKKKKKKKKKKKKK"
+    ],
+    neon_bridge_space_16bit: [
+        "CCCCZZZZCCCCZZZZ",
+        "ZZZZCCCCZZZZCCCC",
+        "CCCCZZZZCCCCZZZZ",
+        "ZZZZCCCCZZZZCCCC",
+        "CCCCZZZZCCCCZZZZ",
+        "ZZZZCCCCZZZZCCCC",
+        "CCCCZZZZCCCCZZZZ",
+        "ZZZZCCCCZZZZCCCC",
+        "CCCCZZZZCCCCZZZZ",
+        "ZZZZCCCCZZZZCCCC",
+        "CCCCZZZZCCCCZZZZ",
+        "ZZZZCCCCZZZZCCCC",
+        "CCCCZZZZCCCCZZZZ",
+        "ZZZZCCCCZZZZCCCC",
+        "CCCCZZZZCCCCZZZZ",
+        "ZZZZCCCCZZZZCCCC"
+    ]
+};
+
+const SKINS_16BIT_ARENAS = {
+    forest_16bit: {
+        name: "Forest 16-Bit",
+        bg: "#2ecc71", 
+        ground: "grass_16bit", liquid: "water_16bit", bridge: "bridge_16bit",
+        sprites: TILE_SETS
+    },
+    desert_16bit: {
+        name: "Desert 16-Bit",
+        bg: "#f39c12",
+        ground: "sand_16bit", liquid: "quicksand_16bit", bridge: "bone_bridge_16bit",
+        sprites: TILE_SETS
+    },
+    snow_16bit: {
+        name: "Frozen 16-Bit",
+        bg: "#ecf0f1",
+        ground: "snow_16bit", liquid: "ice_16bit", bridge: "ice_bridge_16bit",
+        sprites: TILE_SETS
+    },
+    volcano_16bit: {
+        name: "Volcano 16-Bit",
+        bg: "#e74c3c",
+        ground: "obsidian_16bit", liquid: "lava_16bit", bridge: "metal_bridge_16bit",
+        sprites: TILE_SETS
+    },
+    cyber_16bit: {
+        name: "Cyber 16-Bit",
+        bg: "#34495e",
+        ground: "grid_16bit", liquid: "void_16bit", bridge: "neon_bridge_16bit",
+        sprites: TILE_SETS
+    },
+    graveyard_16bit: {
+        name: "Cemetery 16-Bit",
+        bg: "#2c3e50",
+        ground: "dirt_16bit", liquid: "water_dark_16bit", bridge: "stone_bridge_16bit",
+        sprites: TILE_SETS
+    },
+    space_16bit: {
+        name: "Space 16-Bit",
+        bg: "#000",
+        ground: "star_16bit", liquid: "void_space_16bit", bridge: "neon_bridge_space_16bit",
+        sprites: TILE_SETS
+    },
+    beach_16bit: {
+        name: "Beach 16-Bit",
+        bg: "#3498db",
+        ground: "gold_sand_16bit", liquid: "water_beach_16bit", bridge: "bridge_beach_16bit",
+        sprites: TILE_SETS
+    }
+};
+
+// --- END OF js/data/16bit/arenas.js ---
+
+// --- START OF js/data/16bit/units.js ---
+const SKINS_16BIT_UNITS = {
+    // --- COMMON ---
+    archer: {
+        name: "Archer", // Name aligned with card name
+        sprite: [[
+            "..........TTTT..........",
+            "........TTYYYYTT........",
+            ".......TYYYYYYYYT.......",
+            "......TYYYYYYYYYYT......",
+            "......TYYYYYYYYYYT......",
+            "......TTHHHHHHHHTT......",
+            ".....THHHHHHHHHHHHT.....",
+            ".....THHHHHHHHHHHHT.....",
+            "....THHHHHHHHHHHHHHT....",
+            "....THHHHHHHHHHHHHHT....",
+            "....THHHHHHHHHHHHHHT....",
+            "...THHHHHHHHHHHHHHHHT...",
+            "....TTTTTTTTTTTTTTTT....",
+            "....GGGGGGGGGGGGGGGG....",
+            "....GG..GGGGGGGG..GG....",
+            "....GG..GGGGGGGG..GG....",
+            "...GG...GGGGGGGG...GG...",
+            "...GG...GGGGGGGG...GG...",
+            "........KKKKKKKK........",
+            "........KKKKKKKK........",
+            "........................",
+            "........................",
+            "........................",
+            "........................"
+        ]]
+    },
+    knight: {
+        name: "Knight",
+        sprite: [[
+            "..........IIII..........",
+            "........IIIIIIII........",
+            ".......IIIIIIIIII.......",
+            "......IIIIIIIIIIII......",
+            ".....IIIITTTTTTIIII.....",
+            "....IIIIITTTTTTIIIII....",
+            "...IIIIIITTTTTTIIIIII...",
+            "..IIIIIITTTTTTTTIIIIII..",
+            ".IIIIIITTTTTTTTTTIIIIII.",
+            ".IIIIIITTTTTTTTTTIIIIII.",
+            "..IIIIIITTTTTTTTIIIIII..",
+            "...IIIIIITTTTTTIIIIII...",
+            "....IIIIITTTTTTIIIII....",
+            ".....IIIITTTTTTIIII.....",
+            "......IIIIIIIIIIII......",
+            "......IIIIIIIIIIII......",
+            ".....II..II..II..II.....",
+            ".....II..II..II..II.....",
+            "....II...II..II...II....",
+            ".........II..II.........",
+            "........................",
+            "........................",
+            "........................",
+            "........................"
+        ]]
+    },
+    goblin: {
+        name: "Goblin",
+        sprite: [[
+            "........................",
+            "........................",
+            "..........GGGG..........",
+            ".........GGGGGG.........",
+            "........GGGGGGGG........",
+            ".......GGGGGGGGGG.......",
+            ".......GGKGGGGKGG.......",
+            ".......GGGGGGGGGG.......",
+            "........GGGGGGGG........",
+            ".........GGGGGG.........",
+            ".......TTTTTTTTTT.......",
+            "......TTTTTTTTTTTT......",
+            "......TTTTTTTTTTTT......",
+            "......TTTTTTTTTTTT......",
+            "......TTTTTTTTTTTT......",
+            ".......GGGGGGGGGG.......",
+            ".......GGGG..GGGG.......",
+            ".......GGGG..GGGG.......",
+            ".......GG......GG.......",
+            ".......KK......KK.......",
+            "........................",
+            "........................",
+            "........................",
+            "........................"
+        ]]
+    },
+    spear_gob: {
+        name: "Spear Gob",
+        sprite: [[
+            "........................",
+            "............I...........",
+            "...........III..........",
+            "..........GGI...........",
+            ".........GGIII..........",
+            "........GGGGIII.........",
+            ".......GGKGGGO..........",
+            ".......GGGGGGO..........",
+            "........GGGGO...........",
+            ".........GGGO...........",
+            ".......TTTTO............",
+            "......TTTTO.............",
+            "......TTTO..............",
+            "......TTO...............",
+            "......TO................",
+            ".......GGGGGGGGGG.......",
+            ".......GGGG..GGGG.......",
+            ".......GGGG..GGGG.......",
+            ".......GG......GG.......",
+            ".......KK......KK.......",
+            "........................",
+            "........................",
+            "........................",
+            "........................"
+        ]]
+    },
+    bat: {
+        name: "Bat",
+        sprite: [[
+            "........................",
+            ".......P........P.......",
+            "......P.P......P.P......",
+            ".....P...P....P...P.....",
+            "....P.....P..P.....P....",
+            "...P.......PP.......P...",
+            "..P.........P........P..",
+            "..P....KK.......KK...P..",
+            "...P...KKK.....KKK..P...",
+            "....P..KKK.....KKK.P....",
+            ".....P.KK.......KKP.....",
+            "......PKKKKKKKKKKP......",
+            ".......PKKKKKKKKP.......",
+            "........PKKKKKKP........",
+            ".........PKKKKP.........",
+            "..........PKKP..........",
+            "...........KK...........",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................"
+        ]]
+    },
+    minion: {
+        name: "Minion",
+        sprite: [[
+            "........................",
+            "..........BBBB..........",
+            ".........BBBBBB.........",
+            "........BBBBBBBB........",
+            ".......BBBBBBBBBB.......",
+            "......BBBBWBBWBBBB......",
+            "......BBBBWBBWBBBB......",
+            "......BBBBBBBBBBBB......",
+            "......BBBBBBBBBBBB......",
+            ".......BBBBBBBBBB.......",
+            "......TTTTTTTTTTTT......",
+            ".....TTTTTTTTTTTTTT.....",
+            ".....TTTTTTTTTTTTTT.....",
+            "....IITTTTTTTTTTTTII....",
+            "...IIITTTTTTTTTTTTIII...",
+            "...I.ITTTTTTTTTTTTI.I...",
+            ".....TTTTTTTTTTTTTT.....",
+            "......BBBB....BBBB......",
+            "......BBBB....BBBB......",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................"
+        ]]
+    },
+    bomber: {
+        name: "Bomber",
+        sprite: [[
+            "..........TTTT..........",
+            "........TTTTTTTT........",
+            ".......TTTTTTTTTT.......",
+            "......TTTGGTTGGTTT......",
+            "......TTTTTTTTTTTT......",
+            "......TTTTTTTTTTTT......",
+            ".......WWWWWWWWWW.......",
+            "......WWKWWWWWWKWW......",
+            "......WWWWWWWWWWWW......",
+            "......WWWWWWWWWWWW......",
+            ".......WWWWWWWWWW.......",
+            "......TTTTTTTTTTTT......",
+            ".....TTTTTTTTTTTTTT.....",
+            "....KKKTTTTTTTTTTTT.....",
+            "...KKKKKTTTTTTTTTTT.....",
+            "...KKKKKTTTTTTTTTTT.....",
+            "....KKKTTTTTTTTTTTT.....",
+            ".......WWWW..WWWW.......",
+            ".......WW......WW.......",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................"
+        ]]
+    },
+
+    // --- RARE ---
+    musketeer: {
+        name: "Musketeer",
+        sprite: [[
+            "..........PPPP..........",
+            "........PPPPPPPP........",
+            ".......PPPPPPPPPP.......",
+            "......PPPPPPPPPPPP......",
+            ".....PPPPPPPPPPPPPP.....",
+            "......HHHHHHHHHHHH......",
+            "......HHHKHHHHHKHH......",
+            "......HHHHHHHHHHHH......",
+            "......HHHHHHHHHHHH......",
+            ".......HHHHHHHHHH.......",
+            "......TTTTTTTTTTTT......",
+            ".....TTTTTTTTTTTTTT.....",
+            ".....TTTTTTTTTTTTTT.....",
+            "....ITTTTTTTTTTTTTTI....",
+            "....ITTTTTTTTTTTTTTI....",
+            "....IIITTTTTTTTTTIII....",
+            "....IIITTTTTTTTTTIII....",
+            ".......HHHH..HHHH.......",
+            ".......KKKK..KKKK.......",
+            ".......KK......KK.......",
+            "........................",
+            "........................",
+            "........................",
+            "........................"
+        ]]
+    },
+    giant: {
+        name: "Giant",
+        sprite: [[
+            "..........HHHH..........",
+            "........HHHHHHHH........",
+            "......HHHHHHHHHHHH......",
+            ".....HHHHHHHHHHHHHH.....",
+            "....HHHKHKHHHHHKHKHH....",
+            "....HHHKHKHHHHHKHKHH....",
+            "...IIITTTTTTTTTTTTIII...",
+            "..IIITTTTTTTTTTTTTTIII..",
+            "..IIITTTTTTTTTTTTTTIII..",
+            "..IIITTTTTTTTTTTTTTIII..",
+            "..IIITTTTTTTTTTTTTTIII..",
+            "..IIITTTTTTTTTTTTTTIII..",
+            "...HHHHHHHHHHHHHHHHHH...",
+            "...HHHHHHHHHHHHHHHHHH...",
+            "...H...HH......HH...H...",
+            "...H...HH......HH...H...",
+            "..HH...HH......HH...HH..",
+            "..HH................HH..",
+            ".HH..................HH.",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................"
+        ]]
+    },
+    valkyrie: {
+        name: "Valkyrie",
+        sprite: [[
+            ".........OOOOOO.........",
+            ".......OOOOOOOOOO.......",
+            "......OOOOOOOOOOOO......",
+            ".....OOOOOOOOOOOOOO.....",
+            ".....OOOHHHHHHHHOOO.....",
+            ".....OOOHKHHHHKHOOO.....",
+            ".....OOOHHHHHHHHOOO.....",
+            "......OOHHHHHHHHOO......",
+            ".......TTTTTTTTTT.......",
+            "......TTTTTTTTTTTT......",
+            ".....TTTTTTTTTTTTTT.....",
+            "....ITTTTTTTTTTTTTTI....",
+            "...IIITTTTTTTTTTTTIII...",
+            "...IIITTTTTTTTTTTTIII...",
+            "..IIIITTTTTTTTTTTTIIII..",
+            ".IIIIITTTTTTTTTTTTIIIII.",
+            ".IIII.TTTTTTTTTTTT.IIII.",
+            "......HHHH....HHHH......",
+            "......KKKK....KKKK......",
+            "......KK........KK......",
+            "........................",
+            "........................",
+            "........................",
+            "........................"
+        ]]
+    },
+    hog: {
+        name: "Hog",
+        sprite: [[
+            "...........KKK..........",
+            ".........KKKKKKK........",
+            "........KKKHHHKKK.......",
+            "........KHHHHHHHK.......",
+            "........KHHHHHHHK.......",
+            ".........HHHHHHH........",
+            "........TTTTTTTTT.......",
+            ".......TTTTTTTTTTT......",
+            "......TTTTTTTTTTTTT.....",
+            ".....TTTTTTTTTTTTTTT....",
+            ".....HHHPPPPPPPPPHHH....",
+            "....HHHHPPPPPPPPPHHHH...",
+            "....HHHHPPPPPPPPPHHHH...",
+            ".....HHHPPPPPPPPPHHH....",
+            "........PPPPPPPPP.......",
+            "........PP.....PP.......",
+            "........PP.....PP.......",
+            "........PP.....PP.......",
+            "........PP.....PP.......",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................"
+        ]]
+    },
+    barbarian: {
+        name: "Barbarian",
+        sprite: [[
+            "..........YYYY..........",
+            "........YYYYYYYY........",
+            ".......YYYYYYYYYY.......",
+            "......YYYYYYYYYYYY......",
+            ".....YYYYYYYYYYYYYY.....",
+            ".....YYYYHHHHHHYYYY.....",
+            ".....YYYHKHHHHKHYYY.....",
+            ".....YYYHHHHHHHHYYY.....",
+            ".....YYYYHHHHHHYYYY.....",
+            "......YYYHHHHHHYYY......",
+            ".......HHHHHHHHHH.......",
+            "......HHHHHHHHHHHH......",
+            ".....HHHHHHHHHHHHHH.....",
+            ".....TTTTHHHHHHTTTT.....",
+            ".....TTTTHHHHHHTTTT.....",
+            "....ITTTTHHHHHHTTTTI....",
+            "...II...HHHHHHHH...II...",
+            "...II...HHHHHHHH...II...",
+            "........KK....KK........",
+            "........KK....KK........",
+            "........................",
+            "........................",
+            "........................",
+            "........................"
+        ]]
+    },
+    wizard: {
+        name: "Wizard",
+        sprite: [[
+            "..........TTTT..........",
+            ".........TTTTTT.........",
+            "........TTTTTTTT........",
+            ".......TTTTTTTTTT.......",
+            "......TTTTTTTTTTTT......",
+            ".....TTTTTTTTTTTTTT.....",
+            ".....TTTHHHHHHHHTTT.....",
+            ".....TTTHKHHHHKHTTT.....",
+            ".....TTTHHHHHHHHTTT.....",
+            ".....TTTHHHHHHHHTTT.....",
+            ".....TTTKKKKKKKKTTT.....",
+            "......TTTTTTTTTTTT......",
+            "......TTTTTTTTTTTT......",
+            ".....TTTTTTTTTTTTTT.....",
+            ".....TTTTTTTTTTTTTT.....",
+            "....TTTTTTTTTTTTTTTT....",
+            "...TTTTTTTTTTTTTTTTTT...",
+            "..TTTTTTTTTTTTTTTTTTTT..",
+            "..TTTT............TTTT..",
+            "..TT................TT..",
+            "........................",
+            "........................",
+            "........................",
+            "........................"
+        ]]
+    },
+    miniteetra: {
+        name: "Mini P.E.K.K.A",
+        sprite: [[
+            "..........IIII..........",
+            ".........IIIIII.........",
+            "........IIIIIIII........",
+            ".......IIIIIIIIII.......",
+            "......IIIIIIIIIIII......",
+            ".....IIIIICCCIIIIII.....",
+            ".....IIIIICCCIIIIII.....",
+            ".....IIIIIIIIIIIIII.....",
+            "......IIIIIIIIIIII......",
+            ".......IIIIIIIIII.......",
+            "......IIIIIIIIIIII......",
+            ".....IIIIIIIIIIIIII.....",
+            ".....IIIIIIIIIIIIII.....",
+            "....IIIIIIIIIIIIIIII....",
+            "....IIIIIIIIIIIIIIII....",
+            "....IIIIIIIIIIIIIIII....",
+            "....IIIIIIIIIIIIIIII....",
+            "....IIII........IIII....",
+            "....IIII........IIII....",
+            "....IIII........IIII....",
+            "........................",
+            "........................",
+            "........................",
+            "........................"
+        ]]
+    },
+
+    // --- EPIC ---
+    baby_dragon: {
+        name: "Baby Dragon",
+        sprite: [[
+            "..........GGGG..........",
+            "........GGGGGGGG........",
+            ".......GGGGGGGGGG.......",
+            "......GGGGGGGGGGGG......",
+            ".....GGGGGGGGGGGGGG.....",
+            ".....GGGKGGGGGKGGGG.....",
+            ".....GGGGGGGGGGGGGG.....",
+            "......GGGGGGGGGGGG......",
+            ".......GGGGGGGGGG.......",
+            "......GGGGGGGGGGGG......",
+            ".....GGGGGGGGGGGGGG.....",
+            "....OGGGGGGGGGGGGGGO....",
+            "...OOGGGGGGGGGGGGGGOO...",
+            "..OOOGGGGGGGGGGGGGGOOO..",
+            ".....GGGGGGGGGGGGGG.....",
+            ".....GGGGGGGGGGGGGG.....",
+            "......GGGG....GGGG......",
+            "......GG........GG......",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................"
+        ]]
+    },
+    witch: {
+        name: "Witch",
+        sprite: [[
+            "..........KKKK..........",
+            ".........KKKKKK.........",
+            "........KKKKKKKK........",
+            ".......KKKKKKKKKK.......",
+            "......KKKKKKKKKKKK......",
+            ".....KKKKKKKKKKKKKK.....",
+            ".....KKKHHHHHHHKKKK.....",
+            ".....KKKHKHHHHKHKKK.....",
+            ".....KKKHHHHHHHKKKK.....",
+            ".....KKKHHHHHHHKKKK.....",
+            "......KKKKKKKKKKKK......",
+            "......PPPPPPPPPPPP......",
+            ".....PPPPPPPPPPPPPP.....",
+            ".....PPPPPPPPPPPPPP.....",
+            "....PPPPPPPPPPPPPPPP....",
+            "...PPPPPPPPPPPPPPPPPP...",
+            "...PPPPP........PPPPP...",
+            "...PPPPP........PPPPP...",
+            "...PP..............PP...",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................"
+        ]]
+    },
+    ninja: {
+        name: "Ninja",
+        sprite: [[
+            "..........KKKK..........",
+            ".........KKKKKK.........",
+            "........KKKKKKKK........",
+            ".......KKKKKKKKKK.......",
+            "......KKKKKKKKKKKK......",
+            ".....KKKKKKKKKKKKKK.....",
+            ".....KKKKKHHHHKKKKK.....",
+            ".....KKKKKKKKKKKKKK.....",
+            ".....KKKKKKKKKKKKKK.....",
+            "......KKKKKKKKKKKK......",
+            ".......RRRRRRRRRR.......",
+            "......KKKKKKKKKKKK......",
+            ".....KKKKKKKKKKKKKK.....",
+            ".....KKKKKKKKKKKKKK.....",
+            "....KKKKKKKKKKKKKKKK....",
+            "....KKKKKKKKKKKKKKKK....",
+            "....KKKK........KKKK....",
+            "....KKKK........KKKK....",
+            "....KKKK........KKKK....",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................"
+        ]]
+    },
+    paladin: {
+        name: "Paladin",
+        sprite: [[
+            "..........YYYY..........",
+            ".........YYYYYY.........",
+            "........YYYYYYYY........",
+            ".......YYYYYYYYYY.......",
+            "......YYYYYYYYYYYY......",
+            ".....YYYYYYYYYYYYYY.....",
+            ".....YYYYYYYYYYYYYY.....",
+            ".....YYYYYHHHHYYYYY.....",
+            "......YYYYYYYYYYYY......",
+            ".......YYYYYYYYYY.......",
+            "......TTTTTTTTTTTT......",
+            ".....TTTTTTTTTTTTTT.....",
+            ".....TTTTTTTTTTTTTT.....",
+            "....TTTTTTTTTTTTTTTT....",
+            "....TTTTTTTTTTTTTTTT....",
+            "....TTTTTTTTTTTTTTTT....",
+            "....YYYY........YYYY....",
+            "....YYYY........YYYY....",
+            "....YYYY........YYYY....",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................"
+        ]]
+    },
+    golem: {
+        name: "Golem",
+        sprite: [[
+            "..........IIII..........",
+            ".........IIIIII.........",
+            "........IIIIIIII........",
+            ".......IIIIIIIIII.......",
+            "......IIIIIIIIIIII......",
+            ".....IIIIICCCIIIIII.....",
+            ".....IIIIICCCIIIIII.....",
+            ".....IIIIIIIIIIIIII.....",
+            "......IIIIIIIIIIII......",
+            ".......IIIIIIIIII.......",
+            "......IIIIIIIIIIII......",
+            ".....IIIIIIIIIIIIII.....",
+            ".....IIIIIIIIIIIIII.....",
+            "....IIIIIIIIIIIIIIII....",
+            "....IIIIIIIIIIIIIIII....",
+            "....IIIIIIIIIIIIIIII....",
+            "....IIIIIIIIIIIIIIII....",
+            "....IIII........IIII....",
+            "....IIII........IIII....",
+            "....IIII........IIII....",
+            "........................",
+            "........................",
+            "........................",
+            "........................"
+        ]]
+    },
+    teetra: {
+        name: "Teetra",
+        name: "Mini Teetra",
+        sprite: [[
+            "..........IIII..........",
+            ".........IIIIII.........",
+            "........IIIIIIII........",
+            ".......IIKIIIIKII.......",
+            "......IIIIIIIIIIII......",
+            ".....IIIIICCCIIIIII.....",
+            ".....IIIIICCCIIIIII.....",
+            ".....IIIIIIIIIIIIII.....",
+            "......IIIIIIIIIIII......",
+            ".......IIIIIIIIII.......",
+            "......IIIIIIIIIIII......",
+            ".....IIIIIIIIIIIIII.....",
+            ".....IIIIIIIIIIIIII.....",
+            "....IIIIIIIIIIIIIIII....",
+            "....IIIIIIIIIIIIIIII....",
+            "....IIIIIIIIIIIIIIII....",
+            "....IIIIIIIIIIIIIIII....",
+            "....IIII........IIII....",
+            "....IIII........IIII....",
+            "....IIII........IIII....",
+            "........................",
+            "........................",
+            "........................",
+            "........................"
+        ]]
+    },
+    angel: {
+        name: "Healer",
+        sprite: [[
+            "..........WWWW..........",
+            ".........WWWWWW.........",
+            "........WWWWWWWW........",
+            ".......WWWWWWWWWW.......",
+            "......WWWWWWWWWWWW......",
+            ".....WWWWWWWWWWWWWW.....",
+            ".....WWWHHHHHHHHWWW.....",
+            ".....WWWHKHHHHKHWWW.....",
+            ".....WWWHHHHHHHHWWW.....",
+            ".....WWWHHHHHHHHWWW.....",
+            "......WWWWWWWWWWWW......",
+            "......YYYYYYYYYYYY......",
+            ".....YYYYYYYYYYYYYY.....",
+            ".....YYYYYYYYYYYYYY.....",
+            "....YYYYYYYYYYYYYYYY....",
+            "...YYYYYYYYYYYYYYYYYY...",
+            "...YYYY.........YYYY...",
+            "...YYYY.........YYYY...",
+            "...YY.............YY...",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................"
+        ]]
+    },
+
+    // --- BUILDINGS ---
+    cannon: {
+        name: "Cannon",
+        sprite: [[
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            ".........KKKKKK.........",
+            ".......KKKKKKKKKK.......",
+            "......KKKKKKKKKKKK......",
+            ".....KKKKKKKKKKKKKK.....",
+            ".....KKKKKKKKKKKKKK.....",
+            ".....KKKKKKKKKKKKKK.....",
+            "......KKKKKKKKKKKK......",
+            ".......KKKKKKKKKK.......",
+            ".......IIIIIIIIII.......",
+            "......IIIIIIIIIIII......",
+            ".....IIIIIIIIIIIIII.....",
+            "....IIIIIIIIIIIIIIII....",
+            "...IIIIIIIIIIIIIIIIII...",
+            "..IIIIIIIIIIIIIIIIIIII..",
+            ".IIIIIIIIIIIIIIIIIIIIII.",
+            "........................",
+            "........................",
+            "........................",
+            "........................"
+        ]]
+    },
+    xbow: {
+        name: "X-Bow",
+        sprite: [[
+            "........................",
+            "........................",
+            "..........OOOO..........",
+            ".........OOOOOO.........",
+            "........OOOOOOOO........",
+            ".......OOOOOOOOOO.......",
+            "......OOOOOOOOOOOO......",
+            ".....OOOOOOOOOOOOOO.....",
+            ".....OPPPPPPPPPPPPO.....",
+            ".....OPPPPPPPPPPPPO.....",
+            ".....OOOOOOOOOOOOOO.....",
+            "......OOOOOOOOOOOO......",
+            ".......OOOOOOOOOO.......",
+            ".......IIIIIIIIII.......",
+            "......IIIIIIIIIIII......",
+            ".....IIIIIIIIIIIIII.....",
+            "....IIIIIIIIIIIIIIII....",
+            "...IIIIIIIIIIIIIIIIII...",
+            "..IIIIIIIIIIIIIIIIIIII..",
+            ".IIIIIIIIIIIIIIIIIIIIII.",
+            "........................",
+            "........................",
+            "........................",
+            "........................"
+        ]]
+    },
+
+    // --- SPELLS ---
+    fireball: {
+        name: "Fireball",
+        sprite: [[
+            "........................",
+            "...........RRR..........",
+            ".........RRRRRRR........",
+            "........RRRRRRRRR.......",
+            ".......RRRRRRRRRRR......",
+            "......RRRRRRRRRRRRR.....",
+            ".....RRRRRRRRRRRRRRR....",
+            "....RRRRRRRRRRRRRRRRR...",
+            "...RRRRRRRRRRRRRRRRRRR..",
+            "..RRRRRRRRRRRRRRRRRRRRR.",
+            ".RRRRRRRRRRRRRRRRRRRRRRR",
+            ".RRRRRRRRRRRRRRRRRRRRRRR",
+            ".RRRRRRRRRRRRRRRRRRRRRRR",
+            ".RRRRRRRRRRRRRRRRRRRRRRR",
+            "..RRRRRRRRRRRRRRRRRRRRR.",
+            "...RRRRRRRRRRRRRRRRRRR..",
+            "....RRRRRRRRRRRRRRRRR...",
+            ".....RRRRRRRRRRRRRRR....",
+            "......RRRRRRRRRRRRR.....",
+            ".......RRRRRRRRRRR......",
+            "........RRRRRRRRR.......",
+            ".........RRRRRRR........",
+            "...........RRR..........",
+            "........................"
+        ]]
+    },
+    lightning: {
+        name: "Lightning",
+        sprite: [[
+            "........................",
+            "..........CCCC..........",
+            ".........CCCC...........",
+            "........CCCC............",
+            ".......CCCC.............",
+            "......CCCC..............",
+            ".....CCCC...............",
+            "....CCCC................",
+            "...CCCC.................",
+            "..CCCC..................",
+            ".CCCC...................",
+            "CCCCCCCCCCCCCCCCCCCCCCCC",
+            "CCCCCCCCCCCCCCCCCCCCCCCC",
+            "...................CCCC.",
+            "..................CCCC..",
+            ".................CCCC...",
+            "................CCCC....",
+            "...............CCCC.....",
+            "..............CCCC......",
+            ".............CCCC.......",
+            "............CCCC........",
+            "...........CCCC.........",
+            "..........CCCC..........",
+            "........................"
+        ]]
+    },
+    freeze: {
+        name: "Freeze",
+        sprite: [[
+            "........................",
+            "...........C............",
+            "...........C............",
+            ".......C...C...C........",
+            "........C..C..C.........",
+            ".........C.C.C..........",
+            "..........CCC...........",
+            ".....C.....C.....C......",
+            "......C....C....C.......",
+            ".......C...C...C........",
+            "CCCCCCCCCCCCCCCCCCCCCCCC",
+            ".......C...C...C........",
+            "......C....C....C.......",
+            ".....C.....C.....C......",
+            "..........CCC...........",
+            ".........C.C.C..........",
+            "........C..C..C.........",
+            ".......C...C...C........",
+            "...........C............",
+            "...........C............",
+            "........................",
+            "........................",
+            "........................",
+            "........................"
+        ]]
+    }
+};
+
+// --- END OF js/data/16bit/units.js ---
+
+// --- START OF js/data/16bit/ui.js ---
+const SKINS_16BIT_UI = {
+    retro_hd: { name: "Retro HD", desc: "Sharper UI Borders" },
+    neon_ui: { name: "Neon UI", desc: "Glowing Borders" },
+    cyber_dark: { name: "Cyber Dark", desc: "Sleek Dark Interface" },
+    glass_ui: { name: "Glass Retro", desc: "Transparent 16-Bit" }
+};
+
+const SKINS_16BIT_DECK = {
+    gold_trim: { name: "Gold Trim", desc: "Golden Card Borders" },
+    diamond_trim: { name: "Diamond Trim", desc: "Shiny Blue Borders" }
+};
+
+// --- END OF js/data/16bit/ui.js ---
+
+// --- START OF js/data/16bit/kingdom.js ---
+// 16-BIT KINGDOM SKINS (24x24 Resolution)
+// Enhanced detail and shading
+
+const SKINS_16BIT_KINGDOM = {
+    // --- BUILDINGS ---
+    structure_castle_16bit: {
+        name: "Castle 16-Bit",
+        sprite: [[
+            "........................",
+            ".........HH..HH.........",
+            ".......HHHHHHHHHH.......",
+            "......HHHHKHHHKHHHH.....",
+            ".....HHHHKKHHKKHHHH.....",
+            ".....HKKHKKHHKKHKKH.....",
+            ".....HKKHKKHHKKHKKH.....",
+            "....RRRRRRRRRRRRRRRR....",
+            "....RRRRRRRRRRRRRRRR....",
+            "...IIIIIIIIIIIIIIIIII...",
+            "..IIIIIIIIIIIIIIIIIIII..",
+            "..IIKIIIIIIKIIKIIIIKII..",
+            "..IIKIIIIIIKIIKIIIIKII..",
+            "..IIIIIIIIIIIIIIIIIIII..",
+            "..IIIIIIKKKKKKKKIIIIII..",
+            "..IIIIIIKKKKKKKKIIIIII..",
+            "..IIIIIIKKKKKKKKIIIIII..",
+            "..IIIIIIKKKKKKKKIIIIII..",
+            "..IIIIIIKKKKKKKKIIIIII..",
+            "..IIIIIIKKKKKKKKIIIIII..",
+            "..IIIIIIKKKKKKKKIIIIII..",
+            "........................",
+            "........................",
+            "........................"
+        ]]
+    },
+    structure_mine_16bit: {
+        name: "Gold Mine 16-Bit",
+        sprite: [[
+            "........................",
+            "...........II...........",
+            "..........IIII..........",
+            ".........IIIIII.........",
+            "........IIIIIIII........",
+            ".......IIIIIIIIII.......",
+            "......IIIIIIIIIIII......",
+            ".....IIIIIIIIIIIIII.....",
+            "....IIIIQIIIIIIQIIII....",
+            "...IIIIIQIIIIIIQIIIII...",
+            "..IIIIIQQQQQQQQQQIIIII..",
+            "..IIIIIIKKKKKKKKIIIIII..",
+            "..IIIIIIKKKKKKKKIIIIII..",
+            "..IIIIIIKKKKKKKKIIIIII..",
+            "..IIIIIIKKKKKKKKIIIIII..",
+            "..IIIIIIKKKKKKKKIIIIII..",
+            "..IIIIIIKKKKKKKKIIIIII..",
+            "..IIIIIIKKKKKKKKIIIIII..",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................"
+        ]]
+    },
+    structure_farm_16bit: {
+        name: "Farm 16-Bit",
+        sprite: [[
+            "........................",
+            "..........RRRR..........",
+            "........RRRRRRRR........",
+            "......RRRRRRRRRRRR......",
+            "....RRRRRRRRRRRRRRRR....",
+            "...RRRRRRRRRRRRRRRRRR...",
+            "..WWWWWWWWWWWWWWWWWWWW..",
+            "..WKWKWKWKWKWKWKWKWKWK..",
+            "..WWWWWWWWWWWWWWWWWWWW..",
+            "..WWWWWWKWWWWWWKWWWWWW..",
+            "..WWWWWWKWWWWWWKWWWWWW..",
+            "..WWWWWWKWWWWWWKWWWWWW..",
+            "..WWWWWWKWWWWWWKWWWWWW..",
+            "..WWWWWWKWWWWWWKWWWWWW..",
+            "..WWWWWWKWWWWWWKWWWWWW..",
+            "..WWWWWWKWWWWWWKWWWWWW..",
+            "..WWWWWWKWWWWWWKWWWWWW..",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................"
+        ]]
+    },
+    structure_forge_16bit: {
+        name: "Forge 16-Bit",
+        sprite: [[
+            "........................",
+            "..........HHHH..........",
+            "........HHHHHHHH........",
+            "......HHHHHHHHHHHH......",
+            "....HHHHHHHHHHHHHHHH....",
+            "...OOOOOOOOOOOOOOOOOO...",
+            "..OOOOOOOOOOOOOOOOOOOO..",
+            ".HHHHHHHHHHHHHHHHHHHHHH.",
+            ".HHHHHKHHHHHHHHHHKHHHHH.",
+            ".HHHHHKHHHHHHHHHHKHHHHH.",
+            ".HHHHHHHHHHHHHHHHHHHHHH.",
+            ".HHHHHRRHHHHHHHHRRHHHHH.",
+            ".HHHHRRRRHHHHHHRRRRHHHH.",
+            ".HHHHRRRRHHHHHHRRRRHHHH.",
+            ".HHHHRRRRHHHHHHRRRRHHHH.",
+            ".HHHHRRRRHHHHHHRRRRHHHH.",
+            ".HHHHRRRRHHHHHHRRRRHHHH.",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................"
+        ]]
+    },
+
+    // --- ENVIRONMENT ---
+    background_16bit: {
+        name: "Retro Sky",
+        // No sprite array needed if handled procedurally, or define gradient colors
+        colors: { skyTop: "#2980b9", skyBottom: "#6dd5fa", mountain: "#8e44ad" },
+        sprite: [[
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "..........SKY...........", // Dummy text for preview if needed
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................"
+        ]]
+    },
+    grass_16bit: {
+        name: "Retro Grass",
+        colors: { top: "#27ae60", bottom: "#2ecc71" },
+        sprite: [[
+            "GGGGGGGGGGGGGGGGGGGGGGGG",
+            "GGGGGGGGGGGGGGGGGGGGGGGG",
+            "GGGGGGGGGGGGGGGGGGGGGGGG",
+            "GGGGGGGGGGGGGGGGGGGGGGGG",
+            "GGGGGGGGGGGGGGGGGGGGGGGG",
+            "GGGGGGGGGGGGGGGGGGGGGGGG",
+            "GGGGGGGGGGGGGGGGGGGGGGGG",
+            "GGGGGGGGGGGGGGGGGGGGGGGG",
+            "GGGGGGGGGGGGGGGGGGGGGGGG",
+            "GGGGGGGGGGGGGGGGGGGGGGGG",
+            "GGGGGGGGGGGGGGGGGGGGGGGG",
+            "GGGGGGGGGGGGGGGGGGGGGGGG",
+            "GGGGGGGGGGGGGGGGGGGGGGGG",
+            "GGGGGGGGGGGGGGGGGGGGGGGG",
+            "GGGGGGGGGGGGGGGGGGGGGGGG",
+            "GGGGGGGGGGGGGGGGGGGGGGGG",
+            "GGGGGGGGGGGGGGGGGGGGGGGG",
+            "GGGGGGGGGGGGGGGGGGGGGGGG",
+            "GGGGGGGGGGGGGGGGGGGGGGGG",
+            "GGGGGGGGGGGGGGGGGGGGGGGG",
+            "GGGGGGGGGGGGGGGGGGGGGGGG",
+            "GGGGGGGGGGGGGGGGGGGGGGGG",
+            "GGGGGGGGGGGGGGGGGGGGGGGG",
+            "GGGGGGGGGGGGGGGGGGGGGGGG"
+        ]]
+    },
+
+    // --- PROPS ---
+    prop_tree_16bit: {
+        name: "Tree 16-Bit",
+        sprite: [[
+            "...........GG...........",
+            ".........GGGGGG.........",
+            ".......GGGGGGGGGG.......",
+            "......GGGGGGGGGGGG......",
+            ".....GGGGGGGGGGGGGG.....",
+            "....GGGGGGGGGGGGGGGG....",
+            "...GGGGGGGGGGGGGGGGGG...",
+            "..GGGGGGGGGGGGGGGGGGGG..",
+            ".GGGGGGGGGGGGGGGGGGGGGG.",
+            "..GGGGGGGGGGGGGGGGGGGG..",
+            "...GGGGGGGGGGGGGGGGGG...",
+            "....GGGGGGGGGGGGGGGG....",
+            ".........QQQQQQ.........",
+            ".........QQQQQQ.........",
+            ".........QQQQQQ.........",
+            ".........QQQQQQ.........",
+            ".........QQQQQQ.........",
+            ".........QQQQQQ.........",
+            ".........QQQQQQ.........",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................"
+        ]]
+    },
+    prop_rock_16bit: {
+        name: "Rock 16-Bit",
+        sprite: [[
+            "........................",
+            "...........III..........",
+            ".........IIIIIII........",
+            ".......IIIIIIIIIII......",
+            "......IIIIIIIIIIIII.....",
+            ".....IIIIIIIIIIIIIII....",
+            "....IIIIIIIIIIIIIIIII...",
+            "...IIIIIIIIIIIIIIIIIII..",
+            "..IIIIIIIIIIIIIIIIIIIII.",
+            ".IIIIIIIIIIIIIIIIIIIIIII",
+            "IIIIIIIIIIIIIIIIIIIIIIII",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................"
+        ]]
+    },
+    prop_bush_16bit: {
+        name: "Bush 16-Bit",
+        sprite: [[
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "...........GG...........",
+            ".........GGGGGG.........",
+            ".......GGGGGGGGGG.......",
+            "......GGGGGGGGGGGG......",
+            ".....GGGGGGGGGGGGGG.....",
+            "....GGGGGGGGGGGGGGGG....",
+            "...GGGGGGGGGGGGGGGGGG...",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................",
+            "........................"
+        ]]
+    }
+};
+
+// --- END OF js/data/16bit/kingdom.js ---
+
+// --- START OF js/data/16bit/main.js ---
+
+const SKINS_16BIT_DATA = {
+    arena: SKINS_16BIT_ARENAS,
+    units: SKINS_16BIT_UNITS,
+    ui: SKINS_16BIT_UI,
+    deck: SKINS_16BIT_DECK,
+    kingdom: SKINS_16BIT_KINGDOM
+};
+
+// --- END OF js/data/16bit/main.js ---
+
 // --- START OF js/engine/audio.js ---
 // --- AUDIO ENGINE ---
 const AUDIO = {
@@ -863,7 +2445,16 @@ const DEFAULT_PLAYER = {
     tutorial_levelup: false,
     tutorial_inspect: false,
     tutorial_brain_ui: false,
-    tutorial_brain_drag: false
+    tutorial_brain_drag: false,
+
+    // 16-BIT TRANSITION SYSTEM
+    unlocked_16bit: [], 
+    active_16bit: {
+        arena: null, 
+        units: [],   
+        ui: false,   
+        deck: false  
+    }
 };
 
 let LANG = 'fr';
@@ -931,10 +2522,8 @@ const SPRITE_CACHE = {};
 
 function initSprites() {
     const teams = { blue: '#3498db', red: '#e74c3c' };
-    Object.keys(SPRITES_ASCII).forEach(key => {
-        const entry = SPRITES_ASCII[key];
-        
-        // Normalize: if entry is array of strings -> single frame. If array of arrays -> animation
+    
+    const generate = (key, entry, keySuffix = '') => {
         let frames = [];
         if(Array.isArray(entry) && typeof entry[0] === 'string') frames = [entry];
         else frames = entry;
@@ -954,22 +2543,54 @@ function initSprites() {
                         ctx.fillStyle = color; ctx.fillRect(x, y, 1, 1);
                     }
                 }
+                
+                const finalKey = key + keySuffix;
+                
                 // Key format: unit_blue_0 (for frame 0)
-                // Also keep legacy format unit_blue for backward compat (uses frame 0)
-                const baseKey = key + '_' + team;
+                const baseKey = finalKey + '_' + team;
                 SPRITE_CACHE[baseKey + '_' + frameIdx] = cvs;
                 if(frameIdx === 0) SPRITE_CACHE[baseKey] = cvs; // Default
 
                 // Neutral/Blue default shortcut
                 if(team === 'blue') {
-                    SPRITE_CACHE[key + '_' + frameIdx] = cvs;
-                    if(frameIdx === 0) SPRITE_CACHE[key] = cvs;
+                    SPRITE_CACHE[finalKey + '_' + frameIdx] = cvs;
+                    if(frameIdx === 0) SPRITE_CACHE[finalKey] = cvs;
                 }
             });
         });
-        // Store frame count
-        SPRITE_CACHE[key + '_frames'] = frames.length;
-    });
+        SPRITE_CACHE[key + keySuffix + '_frames'] = frames.length;
+    };
+
+    // Standard ASCII
+    Object.keys(SPRITES_ASCII).forEach(key => generate(key, SPRITES_ASCII[key]));
+
+    // 16-BIT Units
+    if(SKINS_16BIT_DATA && SKINS_16BIT_DATA.units) {
+        Object.keys(SKINS_16BIT_DATA.units).forEach(key => {
+            const entry = SKINS_16BIT_DATA.units[key];
+            if(entry.sprite) generate(key, entry.sprite, '_16bit');
+        });
+    }
+
+    // 16-BIT Arena Tiles
+    if(SKINS_16BIT_DATA && SKINS_16BIT_DATA.arena) {
+        Object.keys(SKINS_16BIT_DATA.arena).forEach(skinKey => {
+            const skin = SKINS_16BIT_DATA.arena[skinKey];
+            if(skin.sprites) {
+                Object.keys(skin.sprites).forEach(tileKey => {
+                    generate(tileKey, skin.sprites[tileKey]);
+                });
+            }
+        });
+    }
+
+    // 16-BIT Kingdom
+    if(SKINS_16BIT_DATA && SKINS_16BIT_DATA.kingdom) {
+        Object.keys(SKINS_16BIT_DATA.kingdom).forEach(key => {
+            const entry = SKINS_16BIT_DATA.kingdom[key];
+            if(entry.sprite) generate(key, entry.sprite);
+        });
+    }
 }
 
 // --- END OF js/engine/sprites.js ---
@@ -1012,6 +2633,10 @@ function loadData() {
             if(typeof window.PLAYER.tutorial_inspect === 'undefined') window.PLAYER.tutorial_inspect = false;
             if(typeof window.PLAYER.tutorial_brain_ui === 'undefined') window.PLAYER.tutorial_brain_ui = false;
             if(typeof window.PLAYER.tutorial_brain_drag === 'undefined') window.PLAYER.tutorial_brain_drag = false;
+
+            // 16-BIT SYSTEM INIT
+            if(!window.PLAYER.unlocked_16bit) window.PLAYER.unlocked_16bit = [];
+            if(!window.PLAYER.active_16bit) window.PLAYER.active_16bit = { arena: null, units: [], ui: false, deck: false };
             
         } catch(e) {
             console.error("Save Error", e);
@@ -1240,6 +2865,15 @@ const PIXEL_MAPS = {
         "0110110",
         "1111111"
     ],
+    book: [
+        "0011100",
+        "0101010",
+        "0101010",
+        "1111111",
+        "1111111",
+        "1111111",
+        "0111110"
+    ],
     circle: [
         "0011100",
         "0111110",
@@ -1271,6 +2905,7 @@ const COLORS = {
     flag: '#fff',
     clan: '#e67e22',
     construction: '#f39c12',
+    book: '#A1887F',
     white: '#ffffff',
     blue: '#3498db',
     purple: '#9b59b6',
@@ -2837,6 +4472,152 @@ function showSkinResult(key) {
     ctx.fillRect(0,0,64,64);
 }
 
+function start16BitRoulette() {
+    const modal = document.getElementById('roulette-modal');
+    const tape = document.getElementById('roulette-tape');
+    const resultDiv = document.getElementById('roulette-result');
+    const title = document.getElementById('roulette-title');
+
+    modal.style.display = 'flex';
+    resultDiv.style.display = 'none';
+    tape.style.transition = 'none';
+    tape.style.transform = 'translateX(0px)';
+    tape.innerHTML = '';
+    title.textContent = "EVOLUTION...";
+
+    // Collect all possible keys and check which are unlocked
+    let pool = [];
+    
+    ['arena', 'units', 'ui', 'deck', 'kingdom'].forEach(cat => {
+        if(SKINS_16BIT_DATA[cat]) {
+            Object.keys(SKINS_16BIT_DATA[cat]).forEach(key => {
+                if(!window.PLAYER.unlocked_16bit.includes(key)) {
+                    pool.push({ key: key, cat: cat, data: SKINS_16BIT_DATA[cat][key] });
+                }
+            });
+        }
+    });
+
+    // Fallback if complete
+    if(pool.length === 0) {
+        showNotif("EVOLUTION", "COLLECTION COMPLÈTE !");
+        window.PLAYER.gems += 50; 
+        saveData();
+        closeRoulette();
+        return;
+    }
+
+    const winnerItem = pool[Math.floor(Math.random() * pool.length)];
+    const winnerKey = winnerItem.key;
+    
+    // Fill Tape
+    const WIN_INDEX = 45;
+    const TOTAL_ITEMS = 55;
+    const CARD_WIDTH = 90;
+
+    for(let i=0; i < TOTAL_ITEMS; i++) {
+        let item = (i === WIN_INDEX) ? winnerItem : pool[Math.floor(Math.random() * pool.length)];
+        const cardDiv = document.createElement('div');
+        cardDiv.className = 'roulette-card';
+        cardDiv.setAttribute('data-rarity', 'legendary'); 
+        
+        const preview = document.createElement('div');
+        preview.style.cssText = "width:48px; height:48px; border:2px solid #fff; box-shadow:0 0 5px rgba(0,0,0,0.5); display:flex; justify-content:center; align-items:center; background:#222;";
+        
+        // Render preview based on cat
+        if(item.cat === 'arena') {
+            preview.style.background = item.data.bg;
+        } else if(item.cat === 'units') {
+            // Draw sprite
+            const c = document.createElement('canvas'); c.width=48; c.height=48;
+            const cx = c.getContext('2d');
+            // Try to find sprite
+            const s = SPRITE_CACHE[item.key + '_16bit_blue_0'] || SPRITE_CACHE[item.key + '_16bit_blue'] || SPRITE_CACHE[item.key + '_16bit'] || SPRITE_CACHE[item.key];
+            if(s) {
+                 // Calculate aspect ratio fit
+                 cx.drawImage(s, 0, 0, s.width, s.height, 0, 0, 48, 48);
+            }
+            preview.appendChild(c);
+        } else {
+             preview.innerHTML = `<span style="font-size:20px; color:white;">?</span>`;
+        }
+
+        cardDiv.appendChild(preview);
+        tape.appendChild(cardDiv);
+    }
+
+    const jitter = Math.floor(Math.random() * 60) - 30;
+    const targetPos = (WIN_INDEX * CARD_WIDTH) + (CARD_WIDTH/2) + jitter;
+    const centerOffset = document.querySelector('.roulette-container').clientWidth / 2;
+    const finalTranslate = -(targetPos - centerOffset);
+
+    tape.offsetHeight; 
+    if(AUDIO.isOn) AUDIO.playSFX('spawn');
+
+    setTimeout(() => {
+        tape.style.transition = 'transform 5s cubic-bezier(0.1, 0, 0.2, 1)';
+        tape.style.transform = `translateX(${finalTranslate}px)`;
+        let ticks = 0;
+        const tickInt = setInterval(() => {
+            ticks++;
+            if(ticks > 25) clearInterval(tickInt);
+            if(AUDIO.isOn) AUDIO.playSFX('tick');
+        }, 150 + (ticks*10));
+    }, 100);
+
+    setTimeout(() => {
+        show16BitResult(winnerItem);
+    }, 5500);
+}
+
+function show16BitResult(item) {
+    const resultDiv = document.getElementById('roulette-result');
+    const title = document.getElementById('roulette-title');
+    
+    window.PLAYER.unlocked_16bit.push(item.key);
+    title.innerHTML = `EVOLUTION !`;
+    spawnConfetti(window.innerWidth/2, window.innerHeight/2);
+    if(AUDIO.isOn) AUDIO.playMusic('victory', () => AUDIO.playMusic('menu'));
+
+    // Check Total Completion
+    let totalItems = 0;
+    ['arena', 'units', 'ui', 'deck'].forEach(cat => {
+        if(SKINS_16BIT_DATA[cat]) totalItems += Object.keys(SKINS_16BIT_DATA[cat]).length;
+    });
+    
+    if(window.PLAYER.unlocked_16bit.length >= totalItems) {
+        setTimeout(() => {
+            showNotif("16-BIT UNIVERSE", "TRANSITION COMPLÈTE !");
+        }, 1000);
+    }
+
+    saveData();
+    if(window.updateMetaUI) window.updateMetaUI();
+
+    resultDiv.style.display = 'flex';
+    document.getElementById('roulette-name').textContent = item.data.name;
+    document.getElementById('roulette-rarity').textContent = item.cat.toUpperCase();
+    document.getElementById('roulette-rarity').style.color = "#f1c40f"; 
+
+    const c = document.getElementById('roulette-canvas');
+    const ctx = c.getContext('2d');
+    ctx.clearRect(0,0,64,64);
+    
+    if(item.cat === 'arena') {
+        ctx.fillStyle = item.data.bg;
+        ctx.fillRect(0,0,64,64);
+    } else if(item.cat === 'units') {
+        const s = SPRITE_CACHE[item.key + '_16bit_blue_0'] || SPRITE_CACHE[item.key + '_16bit_blue'] || SPRITE_CACHE[item.key + '_16bit'];
+        if(s) ctx.drawImage(s, 0, 0, s.width, s.height, 0, 0, 64, 64);
+    } else {
+        ctx.fillStyle = '#555';
+        ctx.fillRect(0,0,64,64);
+        ctx.fillStyle = '#fff';
+        ctx.font = '30px Arial';
+        ctx.fillText("?", 20, 42);
+    }
+}
+
 window.closeRoulette = closeRoulette;
 
 function spawnConfetti(x, y) {
@@ -2868,6 +4649,127 @@ function spawnConfetti(x, y) {
 
 // --- END OF js/ui/roulette.js ---
 
+// --- START OF js/ui/skin_renderer.js ---
+/**
+ * Handles global skin application (UI, Deck)
+ * by injecting/removing CSS classes on the body.
+ */
+function applyGlobalSkins() {
+    if(!window.PLAYER || !window.PLAYER.active_16bit) return;
+
+    // 1. UI Skin
+    if(window.PLAYER.active_16bit.ui) {
+        document.body.classList.add('skin-ui-16bit');
+        
+        // Remove specific theme classes
+        document.body.classList.remove('skin-ui-retro_hd', 'skin-ui-neon_ui', 'skin-ui-cyber_dark', 'skin-ui-glass_ui');
+        
+        // Add current specific theme class
+        if(typeof window.PLAYER.active_16bit.ui === 'string') {
+            document.body.classList.add('skin-ui-' + window.PLAYER.active_16bit.ui);
+        }
+    } else {
+        document.body.classList.remove('skin-ui-16bit', 'skin-ui-retro_hd', 'skin-ui-neon_ui', 'skin-ui-cyber_dark', 'skin-ui-glass_ui');
+    }
+
+    // 2. Deck Skin
+    if(window.PLAYER.active_16bit.deck) {
+        document.body.classList.add('skin-deck-16bit');
+        
+        // Remove previous specific deck classes
+        document.body.classList.remove('skin-deck-gold_trim', 'skin-deck-diamond_trim');
+        
+        // Add specific class
+        if(window.PLAYER.active_16bit.deck === 'gold_trim') {
+            document.body.classList.add('skin-deck-gold_trim');
+        } else if(window.PLAYER.active_16bit.deck === 'diamond_trim') {
+            document.body.classList.add('skin-deck-diamond_trim');
+        }
+    } else {
+        document.body.classList.remove('skin-deck-16bit', 'skin-deck-gold_trim', 'skin-deck-diamond_trim');
+    }
+}
+
+// Inject CSS for skins if not present
+if(!document.getElementById('skin-css')) {
+    const s = document.createElement('style');
+    s.id = 'skin-css';
+    s.innerHTML = `
+        /* GOLD TRIM */
+        body.skin-deck-gold_trim .pixel-card {
+            border: 2px solid #ffd700 !important;
+            box-shadow: 0 0 8px #ffd700;
+            background: linear-gradient(135deg, #444, #222);
+        }
+        body.skin-deck-gold_trim .pixel-card .card-name {
+            color: #ffd700;
+            text-shadow: 1px 1px 0 #000;
+        }
+
+        /* DIAMOND TRIM */
+        body.skin-deck-diamond_trim .pixel-card {
+            border: 2px solid #00bfff !important;
+            box-shadow: 0 0 10px #00bfff, inset 0 0 5px rgba(0, 191, 255, 0.5);
+            background: linear-gradient(135deg, #2c3e50, #000);
+        }
+        body.skin-deck-diamond_trim .pixel-card .card-name {
+            color: #00bfff;
+            text-shadow: 0 0 5px #00bfff;
+        }
+
+        /* --- UI SKINS --- */
+        
+        /* RETRO HD */
+        body.skin-ui-retro_hd .pixel-btn {
+            border-width: 4px;
+            box-shadow: 4px 4px 0 #000;
+            font-family: monospace; /* Fallback to cleaner font */
+        }
+        
+        /* NEON UI */
+        body.skin-ui-neon_ui .pixel-btn {
+            border: 2px solid #00ff00;
+            box-shadow: 0 0 10px #00ff00;
+            background: #000;
+            color: #00ff00;
+        }
+        body.skin-ui-neon_ui .tab-content {
+            border: 1px solid #00ff00;
+            box-shadow: inset 0 0 20px rgba(0, 255, 0, 0.1);
+        }
+
+        /* CYBER DARK */
+        body.skin-ui-cyber_dark {
+            background: #0a0a0a !important;
+        }
+        body.skin-ui-cyber_dark .pixel-btn {
+            background: linear-gradient(180deg, #333, #111);
+            border: 1px solid #555;
+            border-radius: 4px; /* Slight roundness for "modern" feel */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+        }
+        body.skin-ui-cyber_dark .tab-content {
+            background: rgba(10, 10, 10, 0.95);
+        }
+
+        /* GLASS RETRO */
+        body.skin-ui-glass_ui .pixel-btn {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        body.skin-ui-glass_ui .tab-content {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    `;
+    document.head.appendChild(s);
+}
+
+// --- END OF js/ui/skin_renderer.js ---
+
 // --- START OF js/ui/skins.js ---
 
 function openGachaDraw() {
@@ -2879,31 +4781,250 @@ function openGachaDraw() {
     startSkinRoulette();
 }
 
+function open16BitGacha() {
+    if(!window.PLAYER) return;
+    if(window.PLAYER.gems < 50) { showNotif("EVOLUTION", "Pas assez de gemmes !"); return; }
+    window.PLAYER.gems -= 50;
+    saveData();
+    if(window.updateMetaUI) window.updateMetaUI();
+    start16BitRoulette();
+}
+window.open16BitGacha = open16BitGacha;
+
 function renderSkins() {
     const l = document.getElementById('skin-list');
     if(!l) return;
     l.innerHTML = '';
     if(!window.PLAYER) return;
     
-    Object.keys(SKINS).forEach(key => {
-        if(window.PLAYER.unlockedSkins.includes(key)) {
-            const isActive = window.PLAYER.currentSkin === key;
-            const d = document.createElement('div');
-            d.className = 'skin-item ' + (isActive?'active':'');
-            const icon = `<div style="width:20px; height:20px; background:${SKINS[key].bg}; border:1px solid white;"></div>`;
-            d.innerHTML = `${icon} <span style="flex:1;">${SKINS[key].name}</span> ${isActive ? `<img src="${ICONS.check}" class="pixel-icon">` : ''}`;
-            d.onclick = () => {
-                window.PLAYER.currentSkin = key;
-                if(AUDIO.isOn) AUDIO.playSFX('spawn');
-                saveData();
-                if(window.updateMetaUI) window.updateMetaUI();
-            };
-            l.appendChild(d);
-        }
+    // Container for Books
+    const shelf = document.createElement('div');
+    shelf.className = 'bookshelf';
+    shelf.style.cssText = "display:flex; flex-wrap:wrap; gap:15px; justify-content:center; padding:10px;";
+
+    const books = [
+        { id: 'arena', name: "ARÈNE", icon: 'book' }, 
+        { id: 'units', name: "UNITÉS", icon: 'book' },
+        { id: 'kingdom', name: "ROYAUME", icon: 'book' },
+        { id: 'ui',    name: "INTERFACE",    icon: 'book' },
+        { id: 'deck',  name: "DECK",  icon: 'book' }
+    ];
+
+    books.forEach(b => {
+        const div = document.createElement('div');
+        div.className = 'pixel-btn'; 
+        div.style.cssText = "display:flex; flex-direction:column; align-items:center; width:80px; height:80px; justify-content:center; padding:0;";
+        div.innerHTML = `
+            <img src="${window.ICONS[b.icon]}" class="pixel-icon" style="width:32px; height:32px;">
+            <span style="font-size:0.6rem; margin-top:5px;">${b.name}</span>
+        `;
+        div.onclick = () => openBook(b.id);
+        shelf.appendChild(div);
     });
+
+    l.appendChild(shelf);
+
+    // Roulette Buttons Container in TOP HEADER
+    const topContainer = document.getElementById('skin-roulette-container');
+    if(topContainer) {
+        topContainer.innerHTML = ''; // Clear existing button
+        
+        // Old Roulette (8-bit Arena)
+        const oldBtn = document.createElement('button');
+        oldBtn.className = 'pixel-btn blue';
+        oldBtn.innerHTML = `ARÈNE 8-BIT (10 <img src="${window.ICONS.gem}" class="pixel-icon">)`;
+        oldBtn.onclick = openGachaDraw;
+        topContainer.appendChild(oldBtn);
+
+        // New Roulette (16-bit)
+        const newBtn = document.createElement('button');
+        newBtn.className = 'pixel-btn purple';
+        newBtn.innerHTML = `EVOLUTION 16-BIT (50 <img src="${window.ICONS.gem}" class="pixel-icon">)`;
+        newBtn.onclick = open16BitGacha;
+        topContainer.appendChild(newBtn);
+    }
 }
 
-window.openGachaDraw = openGachaDraw;
+function openBook(category) {
+    let overlay = document.getElementById('book-overlay');
+    if(!overlay) {
+        overlay = document.createElement('div');
+        overlay.id = 'book-overlay';
+        overlay.style.cssText = "position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:2000; display:flex; justify-content:center; align-items:center;";
+        overlay.onclick = (e) => { if(e.target === overlay) closeBook(); };
+        document.body.appendChild(overlay);
+    }
+    overlay.style.display = 'flex';
+    
+    const content = document.createElement('div');
+    content.className = 'book-content';
+    content.style.cssText = "width:300px; max-height:80%; background:#8d6e63; border:4px solid #5d4037; padding:10px; overflow-y:auto; position:relative; box-shadow: 0 0 10px #000; color:white; font-family:'Press Start 2P', monospace;";
+    
+    // Close Btn
+    const closeBtn = document.createElement('div');
+    closeBtn.innerHTML = `<img src="${window.ICONS.cross}" class="pixel-icon">`;
+    closeBtn.style.cssText = "position:absolute; top:5px; right:5px; cursor:pointer; z-index:10;";
+    closeBtn.onclick = closeBook;
+    content.appendChild(closeBtn);
+
+    const title = document.createElement('div');
+    title.textContent = category.toUpperCase();
+    title.style.cssText = "text-align:center; margin-bottom:15px; text-decoration:underline;";
+    content.appendChild(title);
+
+    const list = document.createElement('div');
+    list.style.cssText = "display:flex; flex-direction:column; gap:8px;";
+
+    // 1. ARENA BOOK
+    if(category === 'arena') {
+        // 8-Bit Header
+        const h8 = document.createElement('div'); h8.innerHTML = "--- 8-BIT ---"; h8.style.textAlign='center'; list.appendChild(h8);
+        
+        Object.keys(SKINS).forEach(key => {
+            if(window.PLAYER.unlockedSkins.includes(key)) {
+                const isActive = window.PLAYER.currentSkin === key;
+                const d = createItemRow(SKINS[key].name, isActive, () => {
+                    window.PLAYER.currentSkin = key;
+                    refreshBook(category);
+                }, SKINS[key].bg);
+                list.appendChild(d);
+            }
+        });
+
+        // 16-Bit Header
+        const h16 = document.createElement('div'); h16.innerHTML = "--- 16-BIT ---"; h16.style.textAlign='center'; h16.style.marginTop='10px'; list.appendChild(h16);
+        
+        Object.keys(SKINS_16BIT_DATA.arena).forEach(key => {
+            const unlocked = window.PLAYER.unlocked_16bit.includes(key);
+            if(unlocked) {
+                const isActive = window.PLAYER.active_16bit.arena === key;
+                const d = createItemRow(SKINS_16BIT_DATA.arena[key].name, isActive, () => {
+                    // Toggle
+                    if(window.PLAYER.active_16bit.arena === key) window.PLAYER.active_16bit.arena = null;
+                    else window.PLAYER.active_16bit.arena = key;
+                    refreshBook(category);
+                }, SKINS_16BIT_DATA.arena[key].bg);
+                list.appendChild(d);
+            }
+        });
+    }
+
+    // 5. KINGDOM BOOK
+    else if(category === 'kingdom') {
+        Object.keys(SKINS_16BIT_DATA.kingdom).forEach(key => {
+            const unlocked = window.PLAYER.unlocked_16bit.includes(key);
+            if(unlocked) {
+                // For Kingdom, we can assume 'active' if checking the list, 
+                // but actually we need a place to store "active kingdom skins".
+                // Currently state.js active_16bit has: arena, units, ui, deck.
+                // We should add 'kingdom' array or object to active_16bit in state.js 
+                // BUT since I can't edit state.js in this step, I'll assume we use a general toggle 
+                // or just check against the key presence in a new property if I could add it.
+                // WORKAROUND: Use window.PLAYER.active_16bit.kingdom (array of keys)
+                
+                if(!window.PLAYER.active_16bit.kingdom) window.PLAYER.active_16bit.kingdom = [];
+                
+                const isSelected = window.PLAYER.active_16bit.kingdom.includes(key);
+                const d = createItemRow(SKINS_16BIT_DATA.kingdom[key].name, isSelected, () => {
+                    if(!window.PLAYER.active_16bit.kingdom) window.PLAYER.active_16bit.kingdom = [];
+                    
+                    const idx = window.PLAYER.active_16bit.kingdom.indexOf(key);
+                    if(idx >= 0) window.PLAYER.active_16bit.kingdom.splice(idx, 1);
+                    else window.PLAYER.active_16bit.kingdom.push(key);
+                    
+                    refreshBook(category);
+                });
+                list.appendChild(d);
+            }
+        });
+    }
+
+    // 2. UNITS BOOK
+    else if(category === 'units') {
+        Object.keys(SKINS_16BIT_DATA.units).forEach(key => {
+            const unlocked = window.PLAYER.unlocked_16bit.includes(key);
+            if(unlocked) {
+                const isActive = window.PLAYER.active_16bit.units.includes(key);
+                const d = createItemRow(SKINS_16BIT_DATA.units[key].name, isActive, () => {
+                    const idx = window.PLAYER.active_16bit.units.indexOf(key);
+                    if(idx >= 0) window.PLAYER.active_16bit.units.splice(idx, 1);
+                    else window.PLAYER.active_16bit.units.push(key);
+                    refreshBook(category);
+                });
+                list.appendChild(d);
+            }
+        });
+    }
+
+    // 3. UI BOOK
+    else if(category === 'ui') {
+        Object.keys(SKINS_16BIT_DATA.ui).forEach(key => {
+            const unlocked = window.PLAYER.unlocked_16bit.includes(key);
+            if(unlocked) {
+                const isSelected = window.PLAYER.active_16bit.ui === key;
+                
+                const d = createItemRow(SKINS_16BIT_DATA.ui[key].name, isSelected, () => {
+                    if(window.PLAYER.active_16bit.ui === key) window.PLAYER.active_16bit.ui = false;
+                    else window.PLAYER.active_16bit.ui = key;
+                    refreshBook(category);
+                });
+                list.appendChild(d);
+            }
+        });
+    }
+
+    // 4. DECK BOOK
+    else if(category === 'deck') {
+        Object.keys(SKINS_16BIT_DATA.deck).forEach(key => {
+            const unlocked = window.PLAYER.unlocked_16bit.includes(key);
+            if(unlocked) {
+                const isSelected = window.PLAYER.active_16bit.deck === key;
+                const d = createItemRow(SKINS_16BIT_DATA.deck[key].name, isSelected, () => {
+                    if(window.PLAYER.active_16bit.deck === key) window.PLAYER.active_16bit.deck = false;
+                    else window.PLAYER.active_16bit.deck = key;
+                    refreshBook(category);
+                });
+                list.appendChild(d);
+            }
+        });
+    }
+
+    content.appendChild(list);
+    overlay.innerHTML = '';
+    overlay.appendChild(content);
+}
+
+function createItemRow(name, isActive, onClick, color=null) {
+    const d = document.createElement('div');
+    d.className = 'skin-item ' + (isActive?'active':'');
+    d.style.cssText = "display:flex; align-items:center; background:rgba(0,0,0,0.3); padding:5px; border:1px solid #5d4037; cursor:pointer;";
+    if(isActive) d.style.background = 'rgba(255,255,255,0.2)';
+    
+    let icon = '';
+    if(color) {
+         icon = `<div style="width:20px; height:20px; background:${color}; border:1px solid white; margin-right:10px;"></div>`;
+    } else {
+         icon = `<div style="width:20px; height:20px; border:1px solid white; margin-right:10px; display:flex; align-items:center; justify-content:center;">?</div>`;
+    }
+
+    d.innerHTML = `${icon} <span style="flex:1;">${name}</span> ${isActive ? `<img src="${window.ICONS.check}" class="pixel-icon">` : ''}`;
+    d.onclick = () => {
+        onClick();
+        if(AUDIO.isOn) AUDIO.playSFX('spawn');
+        saveData();
+    };
+    return d;
+}
+
+function refreshBook(category) {
+    openBook(category); // Re-render
+}
+
+function closeBook() {
+    const o = document.getElementById('book-overlay');
+    if(o) o.style.display = 'none';
+}
+
 function closeSkinModal() { document.getElementById('skin-modal').style.display='none'; };
 window.closeSkinModal = closeSkinModal;
 
@@ -2962,8 +5083,26 @@ function renderCollection() {
         c.width=64; c.height=64; c.className='card-preview';
         const ctx = c.getContext('2d');
         ctx.imageSmoothingEnabled = false;
-        const s = SPRITE_CACHE[key + '_blue_0'] || SPRITE_CACHE[key + '_blue'] || SPRITE_CACHE[key];
-        if(s) ctx.drawImage(s,0,0,s.width,s.height,0,0,64,64);
+        
+        let spriteKey = key;
+        const active16 = window.PLAYER.active_16bit && window.PLAYER.active_16bit.units ? window.PLAYER.active_16bit.units : [];
+        if(active16.includes(key + '_16bit') || active16.includes(key)) {
+             // Try to find the 16-bit version
+             if(SPRITE_CACHE[key + '_16bit_blue_0'] || SPRITE_CACHE[key + '_16bit']) {
+                 spriteKey = key + '_16bit';
+             }
+        }
+
+        const s = SPRITE_CACHE[spriteKey + '_blue_0'] || SPRITE_CACHE[spriteKey + '_blue'] || SPRITE_CACHE[spriteKey];
+        if(s) {
+            // Keep aspect ratio for 16-bit
+            const scale = Math.min(64 / s.width, 64 / s.height);
+            const w = s.width * scale;
+            const h = s.height * scale;
+            const x = (64 - w) / 2;
+            const y = (64 - h) / 2;
+            ctx.drawImage(s, x, y, w, h);
+        }
         el.appendChild(c);
 
         if(has) {
@@ -3870,6 +6009,7 @@ function updateMetaUI() {
     const deckCount = document.getElementById('deck-size');
     if(deckCount) deckCount.textContent = window.PLAYER.deck.length;
 
+    applyGlobalSkins();
     renderCollection();
     renderShop();
     renderSkins();
@@ -4100,14 +6240,29 @@ function handleKInputStart(pos) {
     const pathTargets = ['mine', 'forge', 'farm'];
     for(const id of pathTargets) {
         const target = getZoneCoords(id);
-        const cp = getPathControlPoint(castle, target, id); // pathId is effectively the target slotId for simple star topology
+        const cp = getPathControlPoint(castle, target, id); 
+        
+        // Check CP (Control Point)
         if(Math.hypot(mx - cp.x, my - cp.y) < 30) {
             KINGDOM.drag.active = true;
             KINGDOM.drag.mode = 'path';
-            KINGDOM.drag.target = id; // pathId
-            KINGDOM.drag.original = { ...getKingdomData().paths[id] || {x:0, y:0} };
-            KINGDOM.drag.offsetX = cp.x - mx; // offset from control point visual center
+            KINGDOM.drag.target = id;
+            KINGDOM.drag.offsetX = cp.x - mx;
             KINGDOM.drag.offsetY = cp.y - my;
+            return;
+        }
+
+        // Check Midpoint (Grab the wire)
+        // M = 0.25*P0 + 0.5*P1 + 0.25*P2
+        const midX = 0.25*castle.x + 0.5*cp.x + 0.25*target.x;
+        const midY = 0.25*castle.y + 0.5*cp.y + 0.25*target.y;
+        
+        if(Math.hypot(mx - midX, my - midY) < 30) {
+            KINGDOM.drag.active = true;
+            KINGDOM.drag.mode = 'path_mid';
+            KINGDOM.drag.target = id;
+            KINGDOM.drag.offsetX = midX - mx;
+            KINGDOM.drag.offsetY = midY - my;
             return;
         }
     }
@@ -4163,17 +6318,28 @@ function handleKInputMove(pos) {
         const k = getKingdomData();
         k.layout[id] = { x: newX / KINGDOM.w, y: newY / KINGDOM.h };
     }
-    else if(KINGDOM.drag.mode === 'path') {
+    else if(KINGDOM.drag.mode === 'path' || KINGDOM.drag.mode === 'path_mid') {
         const id = KINGDOM.drag.target;
         const k = getKingdomData();
-        
-        // Calculate new Control Point absolute position
-        const cpAbsX = mx + KINGDOM.drag.offsetX;
-        const cpAbsY = my + KINGDOM.drag.offsetY;
-        
-        // We need to store the offset relative to the Midpoint of the two buildings
         const castle = getZoneCoords('castle');
         const target = getZoneCoords(id);
+
+        let cpAbsX, cpAbsY;
+
+        if(KINGDOM.drag.mode === 'path') {
+            cpAbsX = mx + KINGDOM.drag.offsetX;
+            cpAbsY = my + KINGDOM.drag.offsetY;
+        } else {
+            // Dragging Midpoint: Calculate required CP to put midpoint at mouse
+            // P1 = 2*M - 0.5*(P0 + P2)
+            // M is mouse pos + offset
+            const mX = mx + KINGDOM.drag.offsetX;
+            const mY = my + KINGDOM.drag.offsetY;
+            
+            cpAbsX = 2 * mX - 0.5 * (castle.x + target.x);
+            cpAbsY = 2 * mY - 0.5 * (castle.y + target.y);
+        }
+        
         const midX = (castle.x + target.x) / 2;
         const midY = (castle.y + target.y) / 2;
         
@@ -4193,7 +6359,7 @@ function handleKInputEnd() {
         s.vy = 0;
         spawnKingdomFloat(s.x, s.y - 40, "AAAAH!", 1.0, '#fff', '10px');
     }
-    else if(KINGDOM.drag.mode === 'building' || KINGDOM.drag.mode === 'path') {
+    else if(KINGDOM.drag.mode === 'building' || KINGDOM.drag.mode.startsWith('path')) {
         saveData();
     }
     
@@ -4658,13 +6824,27 @@ function drawKingdom() {
     
     const horizonY = h * 0.35;
 
+    const active16 = window.PLAYER.active_16bit && window.PLAYER.active_16bit.kingdom ? window.PLAYER.active_16bit.kingdom : [];
+
+    // SKY
+    let colorSkyTop = "#3498db";
+    let colorSkyBot = "#87ceeb";
+    let colorMount = "#5d6d7e";
+    
+    if(active16.includes('background_16bit')) {
+        colorSkyTop = "#2980b9";
+        colorSkyBot = "#6dd5fa";
+        colorMount = "#8e44ad"; // Purple mountains
+    }
+
     const gradSky = ctx.createLinearGradient(0, 0, 0, horizonY);
-    gradSky.addColorStop(0, "#3498db");
-    gradSky.addColorStop(1, "#87ceeb");
+    gradSky.addColorStop(0, colorSkyTop);
+    gradSky.addColorStop(1, colorSkyBot);
     ctx.fillStyle = gradSky;
     ctx.fillRect(0,0,w, horizonY);
 
-    ctx.fillStyle = "#5d6d7e";
+    // MOUNTAINS
+    ctx.fillStyle = colorMount;
     ctx.beginPath();
     ctx.moveTo(0, horizonY);
     ctx.lineTo(w*0.2, horizonY - 40);
@@ -4676,9 +6856,18 @@ function drawKingdom() {
     ctx.lineTo(0, horizonY + 100);
     ctx.fill();
 
+    // GRASS
+    let colorGrassTop = "#27ae60";
+    let colorGrassBot = "#2ecc71";
+    
+    if(active16.includes('grass_16bit')) {
+        colorGrassTop = "#1abc9c";
+        colorGrassBot = "#16a085"; // Teal/retro green
+    }
+
     const gradG = ctx.createLinearGradient(0, horizonY, 0, h);
-    gradG.addColorStop(0, "#27ae60");
-    gradG.addColorStop(1, "#2ecc71");
+    gradG.addColorStop(0, colorGrassTop);
+    gradG.addColorStop(1, colorGrassBot);
     ctx.fillStyle = gradG;
     ctx.fillRect(0, horizonY, w, h - horizonY);
 
@@ -4691,14 +6880,23 @@ function drawKingdom() {
 
     KINGDOM.props.forEach(p => {
         const px = p.x; const py = p.y;
-        const s = (p.scale || 1) * 3; 
         
         let key = '';
         if(p.type === 0) key = 'prop_tree';
         else if(p.type === 1) key = 'prop_rock';
         else key = 'prop_bush';
+        
+        let finalKey = key;
+        let baseScale = 3; // 8-bit scale
 
-        const sprite = SPRITE_CACHE[key];
+        if(active16.includes(key + '_16bit')) {
+            finalKey = key + '_16bit';
+            baseScale = 1.5; // 16-bit scale
+        }
+
+        const s = (p.scale || 1) * baseScale; 
+        const sprite = SPRITE_CACHE[finalKey] || SPRITE_CACHE[key];
+
         if(sprite) {
              const w = sprite.width * s;
              const h = sprite.height * s;
@@ -4737,8 +6935,32 @@ function drawKingdom() {
     drawStructure(ctx, farm.x, farm.y, 'farm');
     drawStructure(ctx, forge.x, forge.y, 'forge');
 
-    // Debug / Editor Visuals
-    // if(KINGDOM.drag.active) { ... }
+    // Debug / Editor Visuals for Path Dragging
+    if(KINGDOM.drag.active && (KINGDOM.drag.mode === 'path' || KINGDOM.drag.mode === 'path_mid')) {
+        const castle = getZoneCoords('castle');
+        const id = KINGDOM.drag.target;
+        const target = getZoneCoords(id);
+        const cp = getPathControlPoint(castle, target, id);
+        
+        // Draw Handle
+        ctx.fillStyle = '#f1c40f';
+        ctx.strokeStyle = '#fff';
+        ctx.lineWidth = 2;
+        ctx.beginPath(); 
+        ctx.arc(cp.x, cp.y, 8, 0, Math.PI*2); 
+        ctx.fill(); 
+        ctx.stroke();
+        
+        // Draw Skeleton Lines
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.5)';
+        ctx.setLineDash([5, 5]);
+        ctx.beginPath();
+        ctx.moveTo(castle.x, castle.y);
+        ctx.lineTo(cp.x, cp.y);
+        ctx.lineTo(target.x, target.y);
+        ctx.stroke();
+        ctx.setLineDash([]);
+    }
 
     KINGDOM.particles.forEach(p => {
         ctx.fillStyle = p.color;
@@ -4774,14 +6996,20 @@ function drawKingdom() {
             ctx.fillStyle = 'rgba(0,0,0,0.3)';
             ctx.beginPath(); ctx.ellipse(s.x, s.y+14, 10, 4, 0, 0, Math.PI*2); ctx.fill();
             
+            // Check if 16-bit sprite (24x24) or standard (12x12)
+            // If sprite width is > 16, it's likely 16-bit.
+            const isHighRes = sprite.width > 16;
+            const drawSize = isHighRes ? 48 : 32;
+            const offset = drawSize / 2;
+
             if(s.state === 'dragged') {
                 ctx.save();
                 ctx.translate(s.x, s.y);
                 ctx.scale(1.2, 1.2);
-                ctx.drawImage(sprite, -16, -16, 32, 32);
+                ctx.drawImage(sprite, -offset, -offset, drawSize, drawSize);
                 ctx.restore();
             } else {
-                ctx.drawImage(sprite, s.x - 16, s.y - 16, 32, 32);
+                ctx.drawImage(sprite, s.x - offset, s.y - offset, drawSize, drawSize);
             }
 
             if(s.state === 'working') {
@@ -4842,11 +7070,20 @@ function drawCastleStatus(ctx, x, y) {
 }
 
 function drawStructure(ctx, x, y, type) {
-    const key = 'structure_' + type;
-    const sprite = SPRITE_CACHE[key];
+    let key = 'structure_' + type;
+    
+    // Check for 16-bit override
+    const active16 = window.PLAYER.active_16bit && window.PLAYER.active_16bit.kingdom ? window.PLAYER.active_16bit.kingdom : [];
+    if(active16.includes(key + '_16bit')) {
+        key += '_16bit';
+    }
+
+    const sprite = SPRITE_CACHE[key] || SPRITE_CACHE['structure_' + type];
     
     if(sprite) {
-        const scale = 5;
+        // Adapt scale based on resolution (24x24 vs 12x12)
+        const isHighRes = sprite.width > 16;
+        const scale = isHighRes ? 2.5 : 5;
         const w = sprite.width * scale;
         const h = sprite.height * scale;
         
@@ -5605,7 +7842,13 @@ function showGameMsg(txt) { const el = document.getElementById('g-msg'); if(el) 
 function draw() {
     if(!ctx) return;
     const GAME = window.GAME;
-    const skin = SKINS[window.PLAYER.currentSkin] || SKINS.grass;
+    let skin = SKINS[window.PLAYER.currentSkin] || SKINS.grass;
+
+    // 16-BIT ARENA OVERRIDE
+    if(window.PLAYER.active_16bit.arena && SKINS_16BIT_DATA.arena[window.PLAYER.active_16bit.arena]) {
+        skin = SKINS_16BIT_DATA.arena[window.PLAYER.active_16bit.arena];
+    }
+
     ctx.fillStyle = skin.bg; ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.save();
     ctx.scale(SCALE, SCALE);
@@ -5637,6 +7880,11 @@ all.forEach(obj => {
         let spriteKey = obj.key || 'tower';
         if(isTower) spriteKey = 'tower';
         
+        // 16-BIT UNIT OVERRIDE
+        if(!isTower && window.PLAYER.active_16bit.units.includes(obj.key)) {
+            spriteKey += '_16bit';
+        }
+
         let frame = 0;
         if(!isTower && !obj.type) { 
             const frameCount = SPRITE_CACHE[spriteKey + '_frames'] || 1;
@@ -5656,6 +7904,13 @@ all.forEach(obj => {
 
         if(finalSprite) {
             let sc = (isTower || (CARDS[obj.key] && CARDS[obj.key].speed===0)) ? 4 : 2;
+            
+            // Adjust scale for 16-bit assets (24x24) vs 8-bit (12x12)
+            // Maintain similar on-screen size
+            if(finalSprite.width > 16) {
+                sc = sc / 2;
+            }
+
             const w = finalSprite.width * sc;
             const h = finalSprite.height * sc;
             ctx.drawImage(finalSprite, obj.x - w/2, obj.y - h/2, w, h);
@@ -5700,7 +7955,16 @@ function renderHand() {
 
         const canvas = document.createElement('canvas'); canvas.width=32; canvas.height=32;
         const cx = canvas.getContext('2d');
-        const s = SPRITE_CACHE[key + '_blue_0'] || SPRITE_CACHE[key + '_blue'] || SPRITE_CACHE[key];
+        
+        let spriteKey = key;
+        const active16 = window.PLAYER.active_16bit && window.PLAYER.active_16bit.units ? window.PLAYER.active_16bit.units : [];
+        if(active16.includes(key + '_16bit') || active16.includes(key)) {
+             if(SPRITE_CACHE[key + '_16bit_blue_0'] || SPRITE_CACHE[key + '_16bit']) {
+                 spriteKey = key + '_16bit';
+             }
+        }
+
+        const s = SPRITE_CACHE[spriteKey + '_blue_0'] || SPRITE_CACHE[spriteKey + '_blue'] || SPRITE_CACHE[spriteKey];
         if(s) cx.drawImage(s,0,0,32,32);
         d.appendChild(canvas);
 
@@ -5953,6 +8217,100 @@ function exposeGlobals() {
 }
 
 // --- END OF js/window_expose.js ---
+
+// --- START OF js/system/admin.js ---
+// ADMIN TOOL - REMOVE THIS FILE OR IMPORT TO DISABLE
+
+const AdminTool = {
+    init: function() {
+        console.log("Admin Tool Initialized");
+        this.createUI();
+    },
+
+    createUI: function() {
+        const div = document.createElement('div');
+        div.id = 'admin-tool';
+        div.style.cssText = `
+            position: fixed; top: 10px; left: 10px; z-index: 9999;
+            background: rgba(0,0,0,0.8); border: 2px solid red;
+            padding: 10px; border-radius: 8px; color: white;
+            font-family: monospace; display: flex; flex-direction: column; gap: 5px;
+            cursor: move;
+        `;
+        div.innerHTML = `<div style="text-align:center; font-weight:bold; color:red; margin-bottom:5px; pointer-events:none;">ADMIN</div>`;
+
+        const btnGold = document.createElement('button');
+        btnGold.innerText = "MAX GOLD";
+        btnGold.style.cursor = "pointer";
+        btnGold.onclick = () => {
+            if(window.PLAYER) {
+                window.PLAYER.gold = 9999999;
+                saveData();
+                if(window.updateMetaUI) window.updateMetaUI();
+                console.log("Admin: Gold set to Max");
+            }
+        };
+
+        const btnGems = document.createElement('button');
+        btnGems.innerText = "MAX GEMS";
+        btnGems.style.cursor = "pointer";
+        btnGems.onclick = () => {
+            if(window.PLAYER) {
+                window.PLAYER.gems = 9999999;
+                saveData();
+                if(window.updateMetaUI) window.updateMetaUI();
+                console.log("Admin: Gems set to Max");
+            }
+        };
+        
+        // Drag Logic
+        let isDragging = false;
+        let offsetX, offsetY;
+
+        div.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            offsetX = e.clientX - div.getBoundingClientRect().left;
+            offsetY = e.clientY - div.getBoundingClientRect().top;
+        });
+        
+        div.addEventListener('touchstart', (e) => {
+            isDragging = true;
+            offsetX = e.touches[0].clientX - div.getBoundingClientRect().left;
+            offsetY = e.touches[0].clientY - div.getBoundingClientRect().top;
+        }, {passive:false});
+
+        window.addEventListener('mousemove', (e) => {
+            if(isDragging) {
+                div.style.left = (e.clientX - offsetX) + 'px';
+                div.style.top = (e.clientY - offsetY) + 'px';
+            }
+        });
+        
+        window.addEventListener('touchmove', (e) => {
+            if(isDragging) {
+                e.preventDefault(); // prevent scroll when dragging admin
+                div.style.left = (e.touches[0].clientX - offsetX) + 'px';
+                div.style.top = (e.touches[0].clientY - offsetY) + 'px';
+            }
+        }, {passive:false});
+
+        window.addEventListener('mouseup', () => isDragging = false);
+        window.addEventListener('touchend', () => isDragging = false);
+
+        div.appendChild(btnGold);
+        div.appendChild(btnGems);
+        document.body.appendChild(div);
+    }
+};
+
+// Auto-init if imported
+if(document.readyState === 'complete' || document.readyState === 'interactive') {
+    AdminTool.init();
+} else {
+    window.addEventListener('load', () => AdminTool.init());
+}
+
+// --- END OF js/system/admin.js ---
 
 // --- START OF js/main.js ---
 

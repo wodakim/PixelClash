@@ -58,8 +58,26 @@ export function renderCollection() {
         c.width=64; c.height=64; c.className='card-preview';
         const ctx = c.getContext('2d');
         ctx.imageSmoothingEnabled = false;
-        const s = SPRITE_CACHE[key + '_blue_0'] || SPRITE_CACHE[key + '_blue'] || SPRITE_CACHE[key];
-        if(s) ctx.drawImage(s,0,0,s.width,s.height,0,0,64,64);
+        
+        let spriteKey = key;
+        const active16 = window.PLAYER.active_16bit && window.PLAYER.active_16bit.units ? window.PLAYER.active_16bit.units : [];
+        if(active16.includes(key + '_16bit') || active16.includes(key)) {
+             // Try to find the 16-bit version
+             if(SPRITE_CACHE[key + '_16bit_blue_0'] || SPRITE_CACHE[key + '_16bit']) {
+                 spriteKey = key + '_16bit';
+             }
+        }
+
+        const s = SPRITE_CACHE[spriteKey + '_blue_0'] || SPRITE_CACHE[spriteKey + '_blue'] || SPRITE_CACHE[spriteKey];
+        if(s) {
+            // Keep aspect ratio for 16-bit
+            const scale = Math.min(64 / s.width, 64 / s.height);
+            const w = s.width * scale;
+            const h = s.height * scale;
+            const x = (64 - w) / 2;
+            const y = (64 - h) / 2;
+            ctx.drawImage(s, x, y, w, h);
+        }
         el.appendChild(c);
 
         if(has) {

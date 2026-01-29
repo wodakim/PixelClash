@@ -14,6 +14,7 @@ import { loopDeckVisuals } from './ui/deck.js';
 import { exposeGlobals } from './window_expose.js';
 import { showTutorialOverlay, TUTORIALS } from './ui/tutorial.js';
 import { initIcons } from './ui/icons.js';
+import './system/admin.js'; // ADMIN TOOL - REMOVE TO DISABLE
 
 // Ensure globals are exposed immediately
 exposeGlobals();

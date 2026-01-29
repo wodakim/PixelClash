@@ -1,13 +1,12 @@
 import { PALETTE, SPRITES_ASCII } from '../data/sprites_data.js';
+import { SKINS_16BIT_DATA } from '../data/16bit/main.js';
 
 export const SPRITE_CACHE = {};
 
 export function initSprites() {
     const teams = { blue: '#3498db', red: '#e74c3c' };
-    Object.keys(SPRITES_ASCII).forEach(key => {
-        const entry = SPRITES_ASCII[key];
-        
-        // Normalize: if entry is array of strings -> single frame. If array of arrays -> animation
+    
+    const generate = (key, entry, keySuffix = '') => {
         let frames = [];
         if(Array.isArray(entry) && typeof entry[0] === 'string') frames = [entry];
         else frames = entry;
@@ -27,20 +26,52 @@ export function initSprites() {
                         ctx.fillStyle = color; ctx.fillRect(x, y, 1, 1);
                     }
                 }
+                
+                const finalKey = key + keySuffix;
+                
                 // Key format: unit_blue_0 (for frame 0)
-                // Also keep legacy format unit_blue for backward compat (uses frame 0)
-                const baseKey = key + '_' + team;
+                const baseKey = finalKey + '_' + team;
                 SPRITE_CACHE[baseKey + '_' + frameIdx] = cvs;
                 if(frameIdx === 0) SPRITE_CACHE[baseKey] = cvs; // Default
 
                 // Neutral/Blue default shortcut
                 if(team === 'blue') {
-                    SPRITE_CACHE[key + '_' + frameIdx] = cvs;
-                    if(frameIdx === 0) SPRITE_CACHE[key] = cvs;
+                    SPRITE_CACHE[finalKey + '_' + frameIdx] = cvs;
+                    if(frameIdx === 0) SPRITE_CACHE[finalKey] = cvs;
                 }
             });
         });
-        // Store frame count
-        SPRITE_CACHE[key + '_frames'] = frames.length;
-    });
+        SPRITE_CACHE[key + keySuffix + '_frames'] = frames.length;
+    };
+
+    // Standard ASCII
+    Object.keys(SPRITES_ASCII).forEach(key => generate(key, SPRITES_ASCII[key]));
+
+    // 16-BIT Units
+    if(SKINS_16BIT_DATA && SKINS_16BIT_DATA.units) {
+        Object.keys(SKINS_16BIT_DATA.units).forEach(key => {
+            const entry = SKINS_16BIT_DATA.units[key];
+            if(entry.sprite) generate(key, entry.sprite, '_16bit');
+        });
+    }
+
+    // 16-BIT Arena Tiles
+    if(SKINS_16BIT_DATA && SKINS_16BIT_DATA.arena) {
+        Object.keys(SKINS_16BIT_DATA.arena).forEach(skinKey => {
+            const skin = SKINS_16BIT_DATA.arena[skinKey];
+            if(skin.sprites) {
+                Object.keys(skin.sprites).forEach(tileKey => {
+                    generate(tileKey, skin.sprites[tileKey]);
+                });
+            }
+        });
+    }
+
+    // 16-BIT Kingdom
+    if(SKINS_16BIT_DATA && SKINS_16BIT_DATA.kingdom) {
+        Object.keys(SKINS_16BIT_DATA.kingdom).forEach(key => {
+            const entry = SKINS_16BIT_DATA.kingdom[key];
+            if(entry.sprite) generate(key, entry.sprite);
+        });
+    }
 }

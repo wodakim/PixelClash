@@ -7,6 +7,11 @@ ORDERED_FILES = [
     'js/data/cards.js',
     'js/data/modules.js',
     'js/data/skins.js',
+    'js/data/16bit/arenas.js',
+    'js/data/16bit/units.js',
+    'js/data/16bit/ui.js',
+    'js/data/16bit/kingdom.js',
+    'js/data/16bit/main.js',
     'js/engine/audio.js',
     'js/core/state.js',
     'js/core/utils.js',
@@ -24,6 +29,7 @@ ORDERED_FILES = [
     'js/ui/deck.js',
     'js/game/brain.js',
     'js/ui/roulette.js',
+    'js/ui/skin_renderer.js',
     'js/ui/skins.js',
     'js/ui/collection.js',
     'js/ui/shop.js',
@@ -34,6 +40,7 @@ ORDERED_FILES = [
     'js/game/kingdom.js',
     'js/game/battle.js',
     'js/window_expose.js',
+    'js/system/admin.js',
     'js/main.js'
 ]
 
