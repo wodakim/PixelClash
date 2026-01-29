@@ -46,7 +46,10 @@ export function initKingdom() {
     KINGDOM.canvas.addEventListener('touchstart', (e) => start({x:e.touches[0].clientX, y:e.touches[0].clientY}), {passive:false});
     
     window.addEventListener('mousemove', (e) => move({x:e.clientX, y:e.clientY}));
-    window.addEventListener('touchmove', (e) => move({x:e.touches[0].clientX, y:e.touches[0].clientY}), {passive:false});
+    window.addEventListener('touchmove', (e) => {
+        if(KINGDOM.drag.active) e.preventDefault();
+        move({x:e.touches[0].clientX, y:e.touches[0].clientY});
+    }, {passive:false});
     
     window.addEventListener('mouseup', end);
     window.addEventListener('touchend', end);
@@ -415,7 +418,7 @@ function openSlotSelector(slotId) {
     modal.style.cssText = "position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:300; display:flex; flex-direction:column; align-items:center; justify-content:center;";
     
     const content = document.createElement('div');
-    content.style.cssText = "background:#2c3e50; border:4px solid white; padding:20px; width:90%; max-height:80%; overflow-y:auto; display:grid; grid-template-columns:repeat(auto-fill, minmax(70px, 1fr)); gap:10px;";
+    content.style.cssText = "background:#2c3e50; border:4px solid white; padding:20px; width:90%; max-height:80%; overflow-y:auto; display:grid; grid-template-columns:repeat(auto-fill, minmax(70px, 1fr)); gap:10px; touch-action: pan-y; overscroll-behavior: contain;";
     
     const owned = Object.keys(window.PLAYER.cards);
     owned.forEach(key => {
