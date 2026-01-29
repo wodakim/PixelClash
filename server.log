@@ -1,11 +1,24 @@
-Starting server at http://localhost:8000
-Press Ctrl+C to stop the server.
-Traceback (most recent call last):
-  File "/app/start_server.py", line 20, in <module>
-    with socketserver.TCPServer(("", PORT), Handler) as httpd:
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/jules/.pyenv/versions/3.12.12/lib/python3.12/socketserver.py", line 457, in __init__
-    self.server_bind()
-  File "/home/jules/.pyenv/versions/3.12.12/lib/python3.12/socketserver.py", line 478, in server_bind
-    self.socket.bind(self.server_address)
-OSError: [Errno 98] Address already in use
+127.0.0.1 - - [29/Jan/2026 14:51:17] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jan/2026 14:51:17] "GET /style.css HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jan/2026 14:51:17] "GET /js/pixel_clash_offline.js?v=2 HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jan/2026 14:51:17] "GET /fonts/PressStart2P.ttf HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jan/2026 14:53:37] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jan/2026 14:53:37] "GET /style.css HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jan/2026 14:53:37] "GET /js/pixel_clash_offline.js?v=2 HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jan/2026 14:53:37] "GET /fonts/PressStart2P.ttf HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jan/2026 14:54:31] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jan/2026 14:54:31] "GET /style.css HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jan/2026 14:54:31] "GET /js/pixel_clash_offline.js?v=2 HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jan/2026 14:54:31] "GET /fonts/PressStart2P.ttf HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jan/2026 14:55:37] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jan/2026 14:55:37] "GET /style.css HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jan/2026 14:55:37] "GET /js/pixel_clash_offline.js?v=2 HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jan/2026 14:55:37] "GET /fonts/PressStart2P.ttf HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jan/2026 14:57:41] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jan/2026 14:57:41] "GET /style.css HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jan/2026 14:57:41] "GET /js/pixel_clash_offline.js?v=2 HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jan/2026 14:57:41] "GET /fonts/PressStart2P.ttf HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jan/2026 14:58:17] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jan/2026 14:58:17] "GET /style.css HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jan/2026 14:58:17] "GET /js/pixel_clash_offline.js?v=2 HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jan/2026 14:58:17] "GET /fonts/PressStart2P.ttf HTTP/1.1" 200 -

@@ -677,6 +677,81 @@ const SKINS = {
 
 // --- END OF js/data/skins.js ---
 
+// --- START OF js/data/skins_16bit.js ---
+const SKINS_16BIT_DATA = {
+    // --- ARENA SKINS ---
+    arena: {
+        forest_16bit: {
+            name: "Forest 16-Bit",
+            bg: "#27ae60",
+            ground: "grass_16bit",
+            liquid: "water_16bit",
+            bridge: "bridge_16bit",
+            music: 'battle',
+            // Define the tile sprites directly here.
+            // The sprite loader will need to pick these up.
+            sprites: {
+                grass_16bit: ["GDGD","DGDG","GDGD","DGDG"],
+                water_16bit: ["AZAZ","ZAZA","AZAZ","ZAZA"],
+                bridge_16bit: ["OOOO","OKOO","OOOO","OOKO"]
+            }
+        },
+        lava_16bit: {
+            name: "Magma 16-Bit",
+            bg: "#c0392b",
+            ground: "obsidian_16bit",
+            liquid: "lava_16bit",
+            bridge: "metal_16bit",
+            music: 'battle',
+            sprites: {
+                obsidian_16bit: ["KIKIKI","IKIKIK","KIKIKI","IKIKIK"],
+                lava_16bit: ["RXMX","XRXR","RXMX","XRXR"],
+                metal_16bit: ["IIII","IKII","IIII","IIKI"]
+            }
+        }
+    },
+
+    // --- UNIT SKINS ---
+    // These keys match the original unit keys (e.g., 'archer', 'knight')
+    // The system will look for unlocked 16-bit skins for these units.
+    units: {
+        archer: {
+            name: "Archer 16-Bit",
+            // A slightly modified 'HD' version (using 'W' for highlights)
+            sprite: [
+                [".....II.....","....IYYI....","...IYYYYI...","...IYYYYI...","...ITTTTI...","..ITTTTTTI..","..ITTTTTTI..",".ITTTTTTTTI.","...WWWWWW...","...W.WW.W...","..W..WW..W..",".....WW....."],
+                [".....II.....","....IYYI....","...IYYYYI...","...IYYYYI...","...ITTTTI...","..ITTTTTTI..","..ITTTTTTI..",".ITTTTTTTTI.","...WWWWWW...","..W..W..W...","...W...W....",".....WW....."]
+            ]
+        },
+        knight: {
+            name: "Knight 16-Bit",
+            sprite: [
+                [".....WW.....","....WWWW....","...IITTII...","..IIITTIII..",".IITTTTTTII.","..ITTTTTTI..",".IIIITTIIII.",".IIIITTIIII.","...IITTII...","...WWWWWW...","..WW.WW.WW..",".....WW....."],
+                [".....WW.....","....WWWW....","...IITTII...","..IIITTIII..",".IITTTTTTII.","..ITTTTTTI..",".IIIITTIIII.",".IIIITTIIII.","...IITTII...","...WWWWWW...","..W..WW..W..",".....WW....."]
+            ]
+        },
+        giant: {
+            name: "Giant 16-Bit",
+            sprite: [
+                [".....HH.....","....HHHH....","...HHHHHH...","...HKHKHH...","..ITTTTTTI..","..ITTTTTTI..","..ITTTTTTI..","..ITTTTTTI..","..ITTTTTTI..","...HHHHHH...","...H.HH.H...","..HH....HH.."],
+                [".....HH.....","....HHHH....","...HHHHHH...","...HKHKHH...","..ITTTTTTI..","..ITTTTTTI..","..ITTTTTTI..","..ITTTTTTI..","..ITTTTTTI..","...HHHHHH...","...H.HH.H...","..H..HH..H.."]
+            ]
+        }
+    },
+
+    // --- UI SKINS ---
+    ui: {
+        retro_hd: { name: "Retro HD", desc: "Sharper UI Borders" }
+    },
+
+    // --- DECK SKINS ---
+    deck: {
+        gold_trim: { name: "Gold Trim", desc: "Golden Card Borders" }
+    }
+};
+
+// --- END OF js/data/skins_16bit.js ---
+
 // --- START OF js/engine/audio.js ---
 // --- AUDIO ENGINE ---
 const AUDIO = {
@@ -863,7 +938,16 @@ const DEFAULT_PLAYER = {
     tutorial_levelup: false,
     tutorial_inspect: false,
     tutorial_brain_ui: false,
-    tutorial_brain_drag: false
+    tutorial_brain_drag: false,
+
+    // 16-BIT TRANSITION SYSTEM
+    unlocked_16bit: [],
+    active_16bit: {
+        arena: null,
+        units: [],
+        ui: false,
+        deck: false
+    }
 };
 
 let LANG = 'fr';
@@ -931,10 +1015,8 @@ const SPRITE_CACHE = {};
 
 function initSprites() {
     const teams = { blue: '#3498db', red: '#e74c3c' };
-    Object.keys(SPRITES_ASCII).forEach(key => {
-        const entry = SPRITES_ASCII[key];
-        
-        // Normalize: if entry is array of strings -> single frame. If array of arrays -> animation
+
+    const generate = (key, entry, keySuffix = '') => {
         let frames = [];
         if(Array.isArray(entry) && typeof entry[0] === 'string') frames = [entry];
         else frames = entry;
@@ -954,22 +1036,46 @@ function initSprites() {
                         ctx.fillStyle = color; ctx.fillRect(x, y, 1, 1);
                     }
                 }
+
+                const finalKey = key + keySuffix;
+
                 // Key format: unit_blue_0 (for frame 0)
-                // Also keep legacy format unit_blue for backward compat (uses frame 0)
-                const baseKey = key + '_' + team;
+                const baseKey = finalKey + '_' + team;
                 SPRITE_CACHE[baseKey + '_' + frameIdx] = cvs;
                 if(frameIdx === 0) SPRITE_CACHE[baseKey] = cvs; // Default
 
                 // Neutral/Blue default shortcut
                 if(team === 'blue') {
-                    SPRITE_CACHE[key + '_' + frameIdx] = cvs;
-                    if(frameIdx === 0) SPRITE_CACHE[key] = cvs;
+                    SPRITE_CACHE[finalKey + '_' + frameIdx] = cvs;
+                    if(frameIdx === 0) SPRITE_CACHE[finalKey] = cvs;
                 }
             });
         });
-        // Store frame count
-        SPRITE_CACHE[key + '_frames'] = frames.length;
-    });
+        SPRITE_CACHE[key + keySuffix + '_frames'] = frames.length;
+    };
+
+    // Standard ASCII
+    Object.keys(SPRITES_ASCII).forEach(key => generate(key, SPRITES_ASCII[key]));
+
+    // 16-BIT Units
+    if(SKINS_16BIT_DATA && SKINS_16BIT_DATA.units) {
+        Object.keys(SKINS_16BIT_DATA.units).forEach(key => {
+            const entry = SKINS_16BIT_DATA.units[key];
+            if(entry.sprite) generate(key, entry.sprite, '_16bit');
+        });
+    }
+
+    // 16-BIT Arena Tiles
+    if(SKINS_16BIT_DATA && SKINS_16BIT_DATA.arena) {
+        Object.keys(SKINS_16BIT_DATA.arena).forEach(skinKey => {
+            const skin = SKINS_16BIT_DATA.arena[skinKey];
+            if(skin.sprites) {
+                Object.keys(skin.sprites).forEach(tileKey => {
+                    generate(tileKey, skin.sprites[tileKey]);
+                });
+            }
+        });
+    }
 }
 
 // --- END OF js/engine/sprites.js ---
@@ -1012,6 +1118,10 @@ function loadData() {
             if(typeof window.PLAYER.tutorial_inspect === 'undefined') window.PLAYER.tutorial_inspect = false;
             if(typeof window.PLAYER.tutorial_brain_ui === 'undefined') window.PLAYER.tutorial_brain_ui = false;
             if(typeof window.PLAYER.tutorial_brain_drag === 'undefined') window.PLAYER.tutorial_brain_drag = false;
+
+            // 16-BIT SYSTEM INIT
+            if(!window.PLAYER.unlocked_16bit) window.PLAYER.unlocked_16bit = [];
+            if(!window.PLAYER.active_16bit) window.PLAYER.active_16bit = { arena: null, units: [], ui: false, deck: false };
             
         } catch(e) {
             console.error("Save Error", e);
@@ -1240,6 +1350,15 @@ const PIXEL_MAPS = {
         "0110110",
         "1111111"
     ],
+    book: [
+        "0011100",
+        "0101010",
+        "0101010",
+        "1111111",
+        "1111111",
+        "1111111",
+        "0111110"
+    ],
     circle: [
         "0011100",
         "0111110",
@@ -1271,6 +1390,7 @@ const COLORS = {
     flag: '#fff',
     clan: '#e67e22',
     construction: '#f39c12',
+    book: '#A1887F',
     white: '#ffffff',
     blue: '#3498db',
     purple: '#9b59b6',
@@ -2837,6 +2957,152 @@ function showSkinResult(key) {
     ctx.fillRect(0,0,64,64);
 }
 
+function start16BitRoulette() {
+    const modal = document.getElementById('roulette-modal');
+    const tape = document.getElementById('roulette-tape');
+    const resultDiv = document.getElementById('roulette-result');
+    const title = document.getElementById('roulette-title');
+
+    modal.style.display = 'flex';
+    resultDiv.style.display = 'none';
+    tape.style.transition = 'none';
+    tape.style.transform = 'translateX(0px)';
+    tape.innerHTML = '';
+    title.textContent = "EVOLUTION...";
+
+    // Collect all possible keys and check which are unlocked
+    let pool = [];
+
+    ['arena', 'units', 'ui', 'deck'].forEach(cat => {
+        if(SKINS_16BIT_DATA[cat]) {
+            Object.keys(SKINS_16BIT_DATA[cat]).forEach(key => {
+                if(!window.PLAYER.unlocked_16bit.includes(key)) {
+                    pool.push({ key: key, cat: cat, data: SKINS_16BIT_DATA[cat][key] });
+                }
+            });
+        }
+    });
+
+    // Fallback if complete
+    if(pool.length === 0) {
+        showNotif("EVOLUTION", "COLLECTION COMPLÈTE !");
+        window.PLAYER.gems += 50;
+        saveData();
+        closeRoulette();
+        return;
+    }
+
+    const winnerItem = pool[Math.floor(Math.random() * pool.length)];
+    const winnerKey = winnerItem.key;
+
+    // Fill Tape
+    const WIN_INDEX = 45;
+    const TOTAL_ITEMS = 55;
+    const CARD_WIDTH = 90;
+
+    for(let i=0; i < TOTAL_ITEMS; i++) {
+        let item = (i === WIN_INDEX) ? winnerItem : pool[Math.floor(Math.random() * pool.length)];
+        const cardDiv = document.createElement('div');
+        cardDiv.className = 'roulette-card';
+        cardDiv.setAttribute('data-rarity', 'legendary');
+
+        const preview = document.createElement('div');
+        preview.style.cssText = "width:48px; height:48px; border:2px solid #fff; box-shadow:0 0 5px rgba(0,0,0,0.5); display:flex; justify-content:center; align-items:center; background:#222;";
+
+        // Render preview based on cat
+        if(item.cat === 'arena') {
+            preview.style.background = item.data.bg;
+        } else if(item.cat === 'units') {
+            // Draw sprite
+            const c = document.createElement('canvas'); c.width=48; c.height=48;
+            const cx = c.getContext('2d');
+            // Try to find sprite
+            const s = SPRITE_CACHE[item.key + '_16bit_blue_0'] || SPRITE_CACHE[item.key + '_16bit_blue'] || SPRITE_CACHE[item.key + '_16bit'] || SPRITE_CACHE[item.key];
+            if(s) {
+                 // Calculate aspect ratio fit
+                 cx.drawImage(s, 0, 0, s.width, s.height, 0, 0, 48, 48);
+            }
+            preview.appendChild(c);
+        } else {
+             preview.innerHTML = `<span style="font-size:20px; color:white;">?</span>`;
+        }
+
+        cardDiv.appendChild(preview);
+        tape.appendChild(cardDiv);
+    }
+
+    const jitter = Math.floor(Math.random() * 60) - 30;
+    const targetPos = (WIN_INDEX * CARD_WIDTH) + (CARD_WIDTH/2) + jitter;
+    const centerOffset = document.querySelector('.roulette-container').clientWidth / 2;
+    const finalTranslate = -(targetPos - centerOffset);
+
+    tape.offsetHeight;
+    if(AUDIO.isOn) AUDIO.playSFX('spawn');
+
+    setTimeout(() => {
+        tape.style.transition = 'transform 5s cubic-bezier(0.1, 0, 0.2, 1)';
+        tape.style.transform = `translateX(${finalTranslate}px)`;
+        let ticks = 0;
+        const tickInt = setInterval(() => {
+            ticks++;
+            if(ticks > 25) clearInterval(tickInt);
+            if(AUDIO.isOn) AUDIO.playSFX('tick');
+        }, 150 + (ticks*10));
+    }, 100);
+
+    setTimeout(() => {
+        show16BitResult(winnerItem);
+    }, 5500);
+}
+
+function show16BitResult(item) {
+    const resultDiv = document.getElementById('roulette-result');
+    const title = document.getElementById('roulette-title');
+
+    window.PLAYER.unlocked_16bit.push(item.key);
+    title.innerHTML = `EVOLUTION !`;
+    spawnConfetti(window.innerWidth/2, window.innerHeight/2);
+    if(AUDIO.isOn) AUDIO.playMusic('victory', () => AUDIO.playMusic('menu'));
+
+    // Check Total Completion
+    let totalItems = 0;
+    ['arena', 'units', 'ui', 'deck'].forEach(cat => {
+        if(SKINS_16BIT_DATA[cat]) totalItems += Object.keys(SKINS_16BIT_DATA[cat]).length;
+    });
+
+    if(window.PLAYER.unlocked_16bit.length >= totalItems) {
+        setTimeout(() => {
+            showNotif("16-BIT UNIVERSE", "TRANSITION COMPLÈTE !");
+        }, 1000);
+    }
+
+    saveData();
+    if(window.updateMetaUI) window.updateMetaUI();
+
+    resultDiv.style.display = 'flex';
+    document.getElementById('roulette-name').textContent = item.data.name;
+    document.getElementById('roulette-rarity').textContent = item.cat.toUpperCase();
+    document.getElementById('roulette-rarity').style.color = "#f1c40f";
+
+    const c = document.getElementById('roulette-canvas');
+    const ctx = c.getContext('2d');
+    ctx.clearRect(0,0,64,64);
+
+    if(item.cat === 'arena') {
+        ctx.fillStyle = item.data.bg;
+        ctx.fillRect(0,0,64,64);
+    } else if(item.cat === 'units') {
+        const s = SPRITE_CACHE[item.key + '_16bit_blue_0'] || SPRITE_CACHE[item.key + '_16bit_blue'] || SPRITE_CACHE[item.key + '_16bit'];
+        if(s) ctx.drawImage(s, 0, 0, s.width, s.height, 0, 0, 64, 64);
+    } else {
+        ctx.fillStyle = '#555';
+        ctx.fillRect(0,0,64,64);
+        ctx.fillStyle = '#fff';
+        ctx.font = '30px Arial';
+        ctx.fillText("?", 20, 42);
+    }
+}
+
 window.closeRoulette = closeRoulette;
 
 function spawnConfetti(x, y) {
@@ -2879,31 +3145,219 @@ function openGachaDraw() {
     startSkinRoulette();
 }
 
+function open16BitGacha() {
+    if(!window.PLAYER) return;
+    if(window.PLAYER.gems < 50) { showNotif("EVOLUTION", "Pas assez de gemmes !"); return; }
+    window.PLAYER.gems -= 50;
+    saveData();
+    if(window.updateMetaUI) window.updateMetaUI();
+    start16BitRoulette();
+}
+window.open16BitGacha = open16BitGacha;
+
 function renderSkins() {
     const l = document.getElementById('skin-list');
     if(!l) return;
     l.innerHTML = '';
     if(!window.PLAYER) return;
     
-    Object.keys(SKINS).forEach(key => {
-        if(window.PLAYER.unlockedSkins.includes(key)) {
-            const isActive = window.PLAYER.currentSkin === key;
-            const d = document.createElement('div');
-            d.className = 'skin-item ' + (isActive?'active':'');
-            const icon = `<div style="width:20px; height:20px; background:${SKINS[key].bg}; border:1px solid white;"></div>`;
-            d.innerHTML = `${icon} <span style="flex:1;">${SKINS[key].name}</span> ${isActive ? `<img src="${ICONS.check}" class="pixel-icon">` : ''}`;
-            d.onclick = () => {
-                window.PLAYER.currentSkin = key;
-                if(AUDIO.isOn) AUDIO.playSFX('spawn');
-                saveData();
-                if(window.updateMetaUI) window.updateMetaUI();
-            };
-            l.appendChild(d);
-        }
+    // Container for Books
+    const shelf = document.createElement('div');
+    shelf.className = 'bookshelf';
+    shelf.style.cssText = "display:flex; flex-wrap:wrap; gap:15px; justify-content:center; padding:10px;";
+
+    const books = [
+        { id: 'arena', name: "ARÈNE", icon: 'book' },
+        { id: 'units', name: "UNITÉS", icon: 'book' },
+        { id: 'ui',    name: "INTERFACE",    icon: 'book' },
+        { id: 'deck',  name: "DECK",  icon: 'book' }
+    ];
+
+    books.forEach(b => {
+        const div = document.createElement('div');
+        div.className = 'pixel-btn';
+        div.style.cssText = "display:flex; flex-direction:column; align-items:center; width:80px; height:80px; justify-content:center; padding:0;";
+        div.innerHTML = `
+            <img src="${window.ICONS[b.icon]}" class="pixel-icon" style="width:32px; height:32px;">
+            <span style="font-size:0.6rem; margin-top:5px;">${b.name}</span>
+        `;
+        div.onclick = () => openBook(b.id);
+        shelf.appendChild(div);
     });
+
+    l.appendChild(shelf);
+
+    // Roulette Buttons Container
+    const btnContainer = document.createElement('div');
+    btnContainer.style.cssText = "display:flex; flex-direction:column; gap:10px; margin-top:20px; width:100%; align-items:center;";
+
+    // Old Roulette (8-bit Arena)
+    const oldBtn = document.createElement('button');
+    oldBtn.className = 'pixel-btn blue';
+    oldBtn.innerHTML = `ARÈNE 8-BIT (10 <img src="${window.ICONS.gem}" class="pixel-icon">)`;
+    oldBtn.onclick = openGachaDraw;
+    btnContainer.appendChild(oldBtn);
+
+    // New Roulette (16-bit)
+    const newBtn = document.createElement('button');
+    newBtn.className = 'pixel-btn purple';
+    newBtn.innerHTML = `EVOLUTION 16-BIT (50 <img src="${window.ICONS.gem}" class="pixel-icon">)`;
+    newBtn.onclick = open16BitGacha;
+    btnContainer.appendChild(newBtn);
+
+    l.appendChild(btnContainer);
 }
 
-window.openGachaDraw = openGachaDraw;
+function openBook(category) {
+    let overlay = document.getElementById('book-overlay');
+    if(!overlay) {
+        overlay = document.createElement('div');
+        overlay.id = 'book-overlay';
+        overlay.style.cssText = "position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:2000; display:flex; justify-content:center; align-items:center;";
+        overlay.onclick = (e) => { if(e.target === overlay) closeBook(); };
+        document.body.appendChild(overlay);
+    }
+    overlay.style.display = 'flex';
+
+    const content = document.createElement('div');
+    content.className = 'book-content';
+    content.style.cssText = "width:300px; max-height:80%; background:#8d6e63; border:4px solid #5d4037; padding:10px; overflow-y:auto; position:relative; box-shadow: 0 0 10px #000; color:white; font-family:'Press Start 2P', monospace;";
+
+    // Close Btn
+    const closeBtn = document.createElement('div');
+    closeBtn.innerHTML = `<img src="${window.ICONS.cross}" class="pixel-icon">`;
+    closeBtn.style.cssText = "position:absolute; top:5px; right:5px; cursor:pointer; z-index:10;";
+    closeBtn.onclick = closeBook;
+    content.appendChild(closeBtn);
+
+    const title = document.createElement('div');
+    title.textContent = category.toUpperCase();
+    title.style.cssText = "text-align:center; margin-bottom:15px; text-decoration:underline;";
+    content.appendChild(title);
+
+    const list = document.createElement('div');
+    list.style.cssText = "display:flex; flex-direction:column; gap:8px;";
+
+    // 1. ARENA BOOK
+    if(category === 'arena') {
+        // 8-Bit Header
+        const h8 = document.createElement('div'); h8.innerHTML = "--- 8-BIT ---"; h8.style.textAlign='center'; list.appendChild(h8);
+
+        Object.keys(SKINS).forEach(key => {
+            if(window.PLAYER.unlockedSkins.includes(key)) {
+                const isActive = window.PLAYER.currentSkin === key;
+                const d = createItemRow(SKINS[key].name, isActive, () => {
+                    window.PLAYER.currentSkin = key;
+                    refreshBook(category);
+                }, SKINS[key].bg);
+                list.appendChild(d);
+            }
+        });
+
+        // 16-Bit Header
+        const h16 = document.createElement('div'); h16.innerHTML = "--- 16-BIT ---"; h16.style.textAlign='center'; h16.style.marginTop='10px'; list.appendChild(h16);
+
+        Object.keys(SKINS_16BIT_DATA.arena).forEach(key => {
+            const unlocked = window.PLAYER.unlocked_16bit.includes(key);
+            if(unlocked) {
+                const isActive = window.PLAYER.active_16bit.arena === key;
+                const d = createItemRow(SKINS_16BIT_DATA.arena[key].name, isActive, () => {
+                    // Toggle
+                    if(window.PLAYER.active_16bit.arena === key) window.PLAYER.active_16bit.arena = null;
+                    else window.PLAYER.active_16bit.arena = key;
+                    refreshBook(category);
+                }, SKINS_16BIT_DATA.arena[key].bg);
+                list.appendChild(d);
+            }
+        });
+    }
+
+    // 2. UNITS BOOK
+    else if(category === 'units') {
+        Object.keys(SKINS_16BIT_DATA.units).forEach(key => {
+            const unlocked = window.PLAYER.unlocked_16bit.includes(key);
+            if(unlocked) {
+                const isActive = window.PLAYER.active_16bit.units.includes(key);
+                const d = createItemRow(SKINS_16BIT_DATA.units[key].name, isActive, () => {
+                    const idx = window.PLAYER.active_16bit.units.indexOf(key);
+                    if(idx >= 0) window.PLAYER.active_16bit.units.splice(idx, 1);
+                    else window.PLAYER.active_16bit.units.push(key);
+                    refreshBook(category);
+                });
+                list.appendChild(d);
+            }
+        });
+    }
+
+    // 3. UI BOOK
+    else if(category === 'ui') {
+        Object.keys(SKINS_16BIT_DATA.ui).forEach(key => {
+            const unlocked = window.PLAYER.unlocked_16bit.includes(key);
+            if(unlocked) {
+                const isSelected = window.PLAYER.active_16bit.ui === key;
+
+                const d = createItemRow(SKINS_16BIT_DATA.ui[key].name, isSelected, () => {
+                    if(window.PLAYER.active_16bit.ui === key) window.PLAYER.active_16bit.ui = false;
+                    else window.PLAYER.active_16bit.ui = key;
+                    refreshBook(category);
+                });
+                list.appendChild(d);
+            }
+        });
+    }
+
+    // 4. DECK BOOK
+    else if(category === 'deck') {
+        Object.keys(SKINS_16BIT_DATA.deck).forEach(key => {
+            const unlocked = window.PLAYER.unlocked_16bit.includes(key);
+            if(unlocked) {
+                const isSelected = window.PLAYER.active_16bit.deck === key;
+                const d = createItemRow(SKINS_16BIT_DATA.deck[key].name, isSelected, () => {
+                    if(window.PLAYER.active_16bit.deck === key) window.PLAYER.active_16bit.deck = false;
+                    else window.PLAYER.active_16bit.deck = key;
+                    refreshBook(category);
+                });
+                list.appendChild(d);
+            }
+        });
+    }
+
+    content.appendChild(list);
+    overlay.innerHTML = '';
+    overlay.appendChild(content);
+}
+
+function createItemRow(name, isActive, onClick, color=null) {
+    const d = document.createElement('div');
+    d.className = 'skin-item ' + (isActive?'active':'');
+    d.style.cssText = "display:flex; align-items:center; background:rgba(0,0,0,0.3); padding:5px; border:1px solid #5d4037; cursor:pointer;";
+    if(isActive) d.style.background = 'rgba(255,255,255,0.2)';
+
+    let icon = '';
+    if(color) {
+         icon = `<div style="width:20px; height:20px; background:${color}; border:1px solid white; margin-right:10px;"></div>`;
+    } else {
+         icon = `<div style="width:20px; height:20px; border:1px solid white; margin-right:10px; display:flex; align-items:center; justify-content:center;">?</div>`;
+    }
+
+    d.innerHTML = `${icon} <span style="flex:1;">${name}</span> ${isActive ? `<img src="${window.ICONS.check}" class="pixel-icon">` : ''}`;
+    d.onclick = () => {
+        onClick();
+        if(AUDIO.isOn) AUDIO.playSFX('spawn');
+        saveData();
+    };
+    return d;
+}
+
+function refreshBook(category) {
+    openBook(category); // Re-render
+}
+
+function closeBook() {
+    const o = document.getElementById('book-overlay');
+    if(o) o.style.display = 'none';
+}
+
 function closeSkinModal() { document.getElementById('skin-modal').style.display='none'; };
 window.closeSkinModal = closeSkinModal;
 
@@ -5605,7 +6059,13 @@ function showGameMsg(txt) { const el = document.getElementById('g-msg'); if(el) 
 function draw() {
     if(!ctx) return;
     const GAME = window.GAME;
-    const skin = SKINS[window.PLAYER.currentSkin] || SKINS.grass;
+    let skin = SKINS[window.PLAYER.currentSkin] || SKINS.grass;
+
+    // 16-BIT ARENA OVERRIDE
+    if(window.PLAYER.active_16bit.arena && SKINS_16BIT_DATA.arena[window.PLAYER.active_16bit.arena]) {
+        skin = SKINS_16BIT_DATA.arena[window.PLAYER.active_16bit.arena];
+    }
+
     ctx.fillStyle = skin.bg; ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.save();
     ctx.scale(SCALE, SCALE);
@@ -5637,6 +6097,11 @@ all.forEach(obj => {
         let spriteKey = obj.key || 'tower';
         if(isTower) spriteKey = 'tower';
         
+        // 16-BIT UNIT OVERRIDE
+        if(!isTower && window.PLAYER.active_16bit.units.includes(obj.key)) {
+            spriteKey += '_16bit';
+        }
+
         let frame = 0;
         if(!isTower && !obj.type) { 
             const frameCount = SPRITE_CACHE[spriteKey + '_frames'] || 1;

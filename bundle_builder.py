@@ -7,6 +7,7 @@ ORDERED_FILES = [
     'js/data/cards.js',
     'js/data/modules.js',
     'js/data/skins.js',
+    'js/data/skins_16bit.js',
     'js/engine/audio.js',
     'js/core/state.js',
     'js/core/utils.js',

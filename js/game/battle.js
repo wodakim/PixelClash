@@ -2,6 +2,7 @@ import { AUDIO } from '../engine/audio.js';
 import { SPRITE_CACHE } from '../engine/sprites.js';
 import { CARDS, getUnitStats } from '../data/cards.js';
 import { SKINS } from '../data/skins.js';
+import { SKINS_16BIT_DATA } from '../data/skins_16bit.js';
 import { MODULES } from '../data/modules.js';
 import { GAME_W, GAME_H } from '../data/config.js';
 import { t } from '../core/utils.js';
@@ -716,7 +717,13 @@ function showGameMsg(txt) { const el = document.getElementById('g-msg'); if(el) 
 function draw() {
     if(!ctx) return;
     const GAME = window.GAME;
-    const skin = SKINS[window.PLAYER.currentSkin] || SKINS.grass;
+    let skin = SKINS[window.PLAYER.currentSkin] || SKINS.grass;
+
+    // 16-BIT ARENA OVERRIDE
+    if(window.PLAYER.active_16bit.arena && SKINS_16BIT_DATA.arena[window.PLAYER.active_16bit.arena]) {
+        skin = SKINS_16BIT_DATA.arena[window.PLAYER.active_16bit.arena];
+    }
+
     ctx.fillStyle = skin.bg; ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.save();
     ctx.scale(SCALE, SCALE);
@@ -748,6 +755,11 @@ all.forEach(obj => {
         let spriteKey = obj.key || 'tower';
         if(isTower) spriteKey = 'tower';
         
+        // 16-BIT UNIT OVERRIDE
+        if(!isTower && window.PLAYER.active_16bit.units.includes(obj.key)) {
+            spriteKey += '_16bit';
+        }
+
         let frame = 0;
         if(!isTower && !obj.type) { 
             const frameCount = SPRITE_CACHE[spriteKey + '_frames'] || 1;
