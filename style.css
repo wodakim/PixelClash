@@ -46,6 +46,7 @@ body, html {
     color: var(--text-main);
     font-size: 10px;
     transition: background-color 0.3s, color 0.3s;
+    overscroll-behavior: none;
 }
 
 /* Effet CRT (Scanlines) */
