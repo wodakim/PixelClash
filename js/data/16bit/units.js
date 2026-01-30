@@ -1,7 +1,7 @@
 export const SKINS_16BIT_UNITS = {
     // --- COMMON ---
     archer: {
-        name: "Archer", // Name aligned with card name
+        name: "Pixie Bow", // Name aligned with card name
         sprite: [[
             "..........TTTT..........",
             "........TTYYYYTT........",
@@ -30,7 +30,7 @@ export const SKINS_16BIT_UNITS = {
         ]]
     },
     knight: {
-        name: "Knight",
+        name: "Voxel Guard",
         sprite: [[
             "..........IIII..........",
             "........IIIIIIII........",
@@ -59,7 +59,7 @@ export const SKINS_16BIT_UNITS = {
         ]]
     },
     goblin: {
-        name: "Goblin",
+        name: "Data Gremlins",
         sprite: [[
             "........................",
             "........................",
@@ -88,7 +88,7 @@ export const SKINS_16BIT_UNITS = {
         ]]
     },
     spear_gob: {
-        name: "Spear Gob",
+        name: "Spear Bugs",
         sprite: [[
             "........................",
             "............I...........",
@@ -117,7 +117,7 @@ export const SKINS_16BIT_UNITS = {
         ]]
     },
     bat: {
-        name: "Bat",
+        name: "Byte Bats",
         sprite: [[
             "........................",
             ".......P........P.......",
@@ -146,7 +146,7 @@ export const SKINS_16BIT_UNITS = {
         ]]
     },
     minion: {
-        name: "Minion",
+        name: "Flying Glitch",
         sprite: [[
             "........................",
             "..........BBBB..........",
@@ -175,7 +175,7 @@ export const SKINS_16BIT_UNITS = {
         ]]
     },
     bomber: {
-        name: "Bomber",
+        name: "Bit Bomber",
         sprite: [[
             "..........TTTT..........",
             "........TTTTTTTT........",
@@ -206,7 +206,7 @@ export const SKINS_16BIT_UNITS = {
 
     // --- RARE ---
     musketeer: {
-        name: "Musketeer",
+        name: "Sniper.dll",
         sprite: [[
             "..........PPPP..........",
             "........PPPPPPPP........",
@@ -235,7 +235,7 @@ export const SKINS_16BIT_UNITS = {
         ]]
     },
     giant: {
-        name: "Giant",
+        name: "Mega Block",
         sprite: [[
             "..........HHHH..........",
             "........HHHHHHHH........",
@@ -264,7 +264,7 @@ export const SKINS_16BIT_UNITS = {
         ]]
     },
     valkyrie: {
-        name: "Valkyrie",
+        name: "Spin Bot",
         sprite: [[
             ".........OOOOOO.........",
             ".......OOOOOOOOOO.......",
@@ -293,7 +293,7 @@ export const SKINS_16BIT_UNITS = {
         ]]
     },
     hog: {
-        name: "Hog",
+        name: "Turbo Tusk",
         sprite: [[
             "...........KKK..........",
             ".........KKKKKKK........",
@@ -322,7 +322,7 @@ export const SKINS_16BIT_UNITS = {
         ]]
     },
     barbarian: {
-        name: "Barbarian",
+        name: "Barbarian.exe",
         sprite: [[
             "..........YYYY..........",
             "........YYYYYYYY........",
@@ -351,7 +351,7 @@ export const SKINS_16BIT_UNITS = {
         ]]
     },
     wizard: {
-        name: "Wizard",
+        name: "Code Mage",
         sprite: [[
             "..........TTTT..........",
             ".........TTTTTT.........",
@@ -380,7 +380,7 @@ export const SKINS_16BIT_UNITS = {
         ]]
     },
     miniteetra: {
-        name: "Mini P.E.K.K.A",
+        name: "Mini Mecha",
         sprite: [[
             "..........IIII..........",
             ".........IIIIII.........",
@@ -411,7 +411,7 @@ export const SKINS_16BIT_UNITS = {
 
     // --- EPIC ---
     baby_dragon: {
-        name: "Baby Dragon",
+        name: "Nanosaur",
         sprite: [[
             "..........GGGG..........",
             "........GGGGGGGG........",
@@ -440,7 +440,7 @@ export const SKINS_16BIT_UNITS = {
         ]]
     },
     witch: {
-        name: "Witch",
+        name: "Necro Chip",
         sprite: [[
             "..........KKKK..........",
             ".........KKKKKK.........",
@@ -469,7 +469,7 @@ export const SKINS_16BIT_UNITS = {
         ]]
     },
     ninja: {
-        name: "Ninja",
+        name: "Shadow Sprite",
         sprite: [[
             "..........KKKK..........",
             ".........KKKKKK.........",
@@ -498,7 +498,7 @@ export const SKINS_16BIT_UNITS = {
         ]]
     },
     paladin: {
-        name: "Paladin",
+        name: "Holo Knight",
         sprite: [[
             "..........YYYY..........",
             ".........YYYYYY.........",
@@ -527,7 +527,7 @@ export const SKINS_16BIT_UNITS = {
         ]]
     },
     golem: {
-        name: "Golem",
+        name: "Tera Golem",
         sprite: [[
             "..........IIII..........",
             ".........IIIIII.........",
@@ -556,8 +556,7 @@ export const SKINS_16BIT_UNITS = {
         ]]
     },
     teetra: {
-        name: "Teetra",
-        name: "Mini Teetra",
+        name: "Mecha Byte",
         sprite: [[
             "..........IIII..........",
             ".........IIIIII.........",
@@ -586,7 +585,7 @@ export const SKINS_16BIT_UNITS = {
         ]]
     },
     angel: {
-        name: "Healer",
+        name: "Medic Drone",
         sprite: [[
             "..........WWWW..........",
             ".........WWWWWW.........",
@@ -617,7 +616,7 @@ export const SKINS_16BIT_UNITS = {
 
     // --- BUILDINGS ---
     cannon: {
-        name: "Cannon",
+        name: "Turret V1",
         sprite: [[
             "........................",
             "........................",
@@ -646,7 +645,7 @@ export const SKINS_16BIT_UNITS = {
         ]]
     },
     xbow: {
-        name: "X-Bow",
+        name: "Auto-Blaster",
         sprite: [[
             "........................",
             "........................",
@@ -677,7 +676,7 @@ export const SKINS_16BIT_UNITS = {
 
     // --- SPELLS ---
     fireball: {
-        name: "Fireball",
+        name: "Pixel Burn",
         sprite: [[
             "........................",
             "...........RRR..........",
@@ -706,7 +705,7 @@ export const SKINS_16BIT_UNITS = {
         ]]
     },
     lightning: {
-        name: "Lightning",
+        name: "System Shock",
         sprite: [[
             "........................",
             "..........CCCC..........",
@@ -735,7 +734,7 @@ export const SKINS_16BIT_UNITS = {
         ]]
     },
     freeze: {
-        name: "Freeze",
+        name: "Lag Spell",
         sprite: [[
             "........................",
             "...........C............",

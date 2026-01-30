@@ -4,6 +4,7 @@ import { AUDIO } from '../engine/audio.js';
 import { saveData } from '../core/storage.js';
 import { showNotif } from './notifications.js';
 import { startSkinRoulette, start16BitRoulette } from './roulette.js';
+import { t } from '../core/utils.js';
 
 export function openGachaDraw() {
     if(!window.PLAYER) return;
@@ -36,11 +37,11 @@ export function renderSkins() {
     shelf.style.cssText = "display:flex; flex-wrap:wrap; gap:15px; justify-content:center; padding:10px;";
 
     const books = [
-        { id: 'arena', name: "ARÈNE", icon: 'book' }, 
-        { id: 'units', name: "UNITÉS", icon: 'book' },
-        { id: 'kingdom', name: "ROYAUME", icon: 'book' },
-        { id: 'ui',    name: "INTERFACE",    icon: 'book' },
-        { id: 'deck',  name: "DECK",  icon: 'book' }
+        { id: 'arena', name: t('cat_arena'), icon: 'book' },
+        { id: 'units', name: t('cat_units'), icon: 'book' },
+        { id: 'kingdom', name: t('cat_kingdom'), icon: 'book' },
+        { id: 'ui',    name: t('cat_ui'),    icon: 'book' },
+        { id: 'deck',  name: t('cat_deck'),  icon: 'book' }
     ];
 
     books.forEach(b => {
@@ -108,6 +109,13 @@ function openBook(category) {
     const list = document.createElement('div');
     list.style.cssText = "display:flex; flex-direction:column; gap:8px;";
 
+    // Helper for names
+    const getName = (key) => {
+        if(category === 'units') return t(key + '_name');
+        if(category === 'arena') return t('arena_' + key + '_name');
+        return t('skin_' + key + '_name');
+    };
+
     // 1. ARENA BOOK
     if(category === 'arena') {
         // 8-Bit Header
@@ -116,7 +124,7 @@ function openBook(category) {
         Object.keys(SKINS).forEach(key => {
             if(window.PLAYER.unlockedSkins.includes(key)) {
                 const isActive = window.PLAYER.currentSkin === key;
-                const d = createItemRow(SKINS[key].name, isActive, () => {
+                const d = createItemRow(getName(key), isActive, () => {
                     window.PLAYER.currentSkin = key;
                     refreshBook(category);
                 }, SKINS[key].bg);
@@ -131,7 +139,7 @@ function openBook(category) {
             const unlocked = window.PLAYER.unlocked_16bit.includes(key);
             if(unlocked) {
                 const isActive = window.PLAYER.active_16bit.arena === key;
-                const d = createItemRow(SKINS_16BIT_DATA.arena[key].name, isActive, () => {
+                const d = createItemRow(getName(key), isActive, () => {
                     // Toggle
                     if(window.PLAYER.active_16bit.arena === key) window.PLAYER.active_16bit.arena = null;
                     else window.PLAYER.active_16bit.arena = key;
@@ -147,18 +155,10 @@ function openBook(category) {
         Object.keys(SKINS_16BIT_DATA.kingdom).forEach(key => {
             const unlocked = window.PLAYER.unlocked_16bit.includes(key);
             if(unlocked) {
-                // For Kingdom, we can assume 'active' if checking the list, 
-                // but actually we need a place to store "active kingdom skins".
-                // Currently state.js active_16bit has: arena, units, ui, deck.
-                // We should add 'kingdom' array or object to active_16bit in state.js 
-                // BUT since I can't edit state.js in this step, I'll assume we use a general toggle 
-                // or just check against the key presence in a new property if I could add it.
-                // WORKAROUND: Use window.PLAYER.active_16bit.kingdom (array of keys)
-                
                 if(!window.PLAYER.active_16bit.kingdom) window.PLAYER.active_16bit.kingdom = [];
                 
                 const isSelected = window.PLAYER.active_16bit.kingdom.includes(key);
-                const d = createItemRow(SKINS_16BIT_DATA.kingdom[key].name, isSelected, () => {
+                const d = createItemRow(getName(key), isSelected, () => {
                     if(!window.PLAYER.active_16bit.kingdom) window.PLAYER.active_16bit.kingdom = [];
                     
                     const idx = window.PLAYER.active_16bit.kingdom.indexOf(key);
@@ -178,7 +178,7 @@ function openBook(category) {
             const unlocked = window.PLAYER.unlocked_16bit.includes(key);
             if(unlocked) {
                 const isActive = window.PLAYER.active_16bit.units.includes(key);
-                const d = createItemRow(SKINS_16BIT_DATA.units[key].name, isActive, () => {
+                const d = createItemRow(getName(key), isActive, () => {
                     const idx = window.PLAYER.active_16bit.units.indexOf(key);
                     if(idx >= 0) window.PLAYER.active_16bit.units.splice(idx, 1);
                     else window.PLAYER.active_16bit.units.push(key);
@@ -196,7 +196,7 @@ function openBook(category) {
             if(unlocked) {
                 const isSelected = window.PLAYER.active_16bit.ui === key;
                 
-                const d = createItemRow(SKINS_16BIT_DATA.ui[key].name, isSelected, () => {
+                const d = createItemRow(getName(key), isSelected, () => {
                     if(window.PLAYER.active_16bit.ui === key) window.PLAYER.active_16bit.ui = false;
                     else window.PLAYER.active_16bit.ui = key;
                     refreshBook(category);
@@ -212,7 +212,7 @@ function openBook(category) {
             const unlocked = window.PLAYER.unlocked_16bit.includes(key);
             if(unlocked) {
                 const isSelected = window.PLAYER.active_16bit.deck === key;
-                const d = createItemRow(SKINS_16BIT_DATA.deck[key].name, isSelected, () => {
+                const d = createItemRow(getName(key), isSelected, () => {
                     if(window.PLAYER.active_16bit.deck === key) window.PLAYER.active_16bit.deck = false;
                     else window.PLAYER.active_16bit.deck = key;
                     refreshBook(category);

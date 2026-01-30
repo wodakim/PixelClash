@@ -111,6 +111,51 @@ const TEXTS = {
         angel_name: "Medic Drone", angel_desc: "Unité volante qui soigne.",
         xbow_name: "Auto-Blaster", xbow_desc: "Portée immense, cadence infernale.",
 
+        // --- ARENAS (SKINS) ---
+        arena_grass_name: "Forêt",
+        arena_desert_name: "Désert",
+        arena_snow_name: "Glace",
+        arena_volcano_name: "Volcan",
+        arena_cyber_name: "Cyber",
+        arena_graveyard_name: "Cimetière",
+        arena_space_name: "Espace",
+        arena_beach_name: "Plage",
+
+        arena_forest_16bit_name: "Forêt 16-Bit",
+        arena_desert_16bit_name: "Désert 16-Bit",
+        arena_snow_16bit_name: "Glace 16-Bit",
+        arena_volcano_16bit_name: "Volcan 16-Bit",
+        arena_cyber_16bit_name: "Cyber 16-Bit",
+        arena_graveyard_16bit_name: "Cimetière 16-Bit",
+        arena_space_16bit_name: "Espace 16-Bit",
+        arena_beach_16bit_name: "Plage 16-Bit",
+
+        // --- CATEGORIES ---
+        cat_arena: "ARÈNES",
+        cat_units: "UNITÉS",
+        cat_kingdom: "ROYAUME",
+        cat_ui: "INTERFACE",
+        cat_deck: "DECK",
+
+        // --- SKINS UI/DECK/KINGDOM ---
+        skin_retro_hd_name: "Rétro HD",
+        skin_neon_ui_name: "Néon UI",
+        skin_cyber_dark_name: "Cyber Sombre",
+        skin_glass_ui_name: "Verre Rétro",
+
+        skin_gold_trim_name: "Bordure Dorée",
+        skin_diamond_trim_name: "Bordure Diamant",
+
+        skin_structure_castle_16bit_name: "Château 16-Bit",
+        skin_structure_mine_16bit_name: "Mine 16-Bit",
+        skin_structure_farm_16bit_name: "Ferme 16-Bit",
+        skin_structure_forge_16bit_name: "Forge 16-Bit",
+        skin_background_16bit_name: "Ciel Rétro",
+        skin_grass_16bit_name: "Herbe Rétro",
+        skin_prop_tree_16bit_name: "Arbre 16-Bit",
+        skin_prop_rock_16bit_name: "Rocher 16-Bit",
+        skin_prop_bush_16bit_name: "Buisson 16-Bit",
+
         // --- MODULES EXISTANTS ---
         block_v1_name: "Bloc Basique", block_v1_desc: "PV +5%",
         line_2_name: "Double Lien", line_2_desc: "Dégâts +5%",
@@ -124,7 +169,7 @@ const TEXTS = {
         tank_hull_name: "Coque Tank", tank_hull_desc: "PV +25% / Vitesse -10%",
         snake_bus_name: "Bus Données", snake_bus_desc: "Elixir +5%",
         zig_zag_name: "ZigZag", zig_zag_desc: "Vitesse +10%",
-        pod_plus_name: "Pod Plus", pod_plus_desc: "PV +10% / Dégâts +5%",
+        pod_plus_name: "Pod Plus", pod_plus_desc: "HP +10% / Dégâts +5%",
         reactor_name: "Réacteur Noir", reactor_desc: "Elixir +10%",
         vampire_name: "Puce Vampire", vampire_desc: "Vol de Vie 20%",
         berserk_name: "IA Berserk", berserk_desc: "Dégâts +40% / PV -20%",
@@ -241,6 +286,51 @@ const TEXTS = {
         angel_name: "Medic Drone", angel_desc: "Heals friendly units.",
         xbow_name: "Auto-Blaster", xbow_desc: "Rapid fire siege.",
 
+        // --- ARENAS (SKINS) ---
+        arena_grass_name: "Forest",
+        arena_desert_name: "Desert",
+        arena_snow_name: "Frozen",
+        arena_volcano_name: "Volcano",
+        arena_cyber_name: "Cyber",
+        arena_graveyard_name: "Cemetery",
+        arena_space_name: "Space",
+        arena_beach_name: "Beach",
+
+        arena_forest_16bit_name: "Forest 16-Bit",
+        arena_desert_16bit_name: "Desert 16-Bit",
+        arena_snow_16bit_name: "Frozen 16-Bit",
+        arena_volcano_16bit_name: "Volcano 16-Bit",
+        arena_cyber_16bit_name: "Cyber 16-Bit",
+        arena_graveyard_16bit_name: "Cemetery 16-Bit",
+        arena_space_16bit_name: "Space 16-Bit",
+        arena_beach_16bit_name: "Beach 16-Bit",
+
+        // --- CATEGORIES ---
+        cat_arena: "ARENAS",
+        cat_units: "UNITS",
+        cat_kingdom: "KINGDOM",
+        cat_ui: "INTERFACE",
+        cat_deck: "DECK",
+
+        // --- SKINS UI/DECK/KINGDOM ---
+        skin_retro_hd_name: "Retro HD",
+        skin_neon_ui_name: "Neon UI",
+        skin_cyber_dark_name: "Cyber Dark",
+        skin_glass_ui_name: "Glass Retro",
+
+        skin_gold_trim_name: "Gold Trim",
+        skin_diamond_trim_name: "Diamond Trim",
+
+        skin_structure_castle_16bit_name: "Castle 16-Bit",
+        skin_structure_mine_16bit_name: "Mine 16-Bit",
+        skin_structure_farm_16bit_name: "Farm 16-Bit",
+        skin_structure_forge_16bit_name: "Forge 16-Bit",
+        skin_background_16bit_name: "Retro Sky",
+        skin_grass_16bit_name: "Retro Grass",
+        skin_prop_tree_16bit_name: "Tree 16-Bit",
+        skin_prop_rock_16bit_name: "Rock 16-Bit",
+        skin_prop_bush_16bit_name: "Bush 16-Bit",
+
         // --- EXISTING MODULES ---
         block_v1_name: "Basic Block", block_v1_desc: "HP +5%",
         line_2_name: "Dual Link", line_2_desc: "DMG +5%",
@@ -264,7 +354,7 @@ const TEXTS = {
         swarm_core_name: "Swarm Core", swarm_core_desc: "Elixir +20% / HP -10%",
         omega_brain_name: "OMEGA BRAIN", omega_brain_desc: "ALL +20%",
         nano_cloud_name: "Nano Cloud", nano_cloud_desc: "HP Regen (Lifesteal 50%)",
-        doomsday_name: "DOOMSDAY", doomsday_desc: "DMG +100% / HP +100% / SLOW",
+        doomsday_name: "DOOMSDAY", doomsday_desc: "Dégâts +100% / HP +100% / SLOW",
         tutorial_square_6x6_name: "Frame 6x6", tutorial_square_6x6_desc: "+1 Enemy Tower / +1 Trophy",
         tutorial_square_4x4_name: "Frame 4x4", tutorial_square_4x4_desc: "x2 Enemy King / x2 Roulette",
 
@@ -299,6 +389,181 @@ const TEXTS = {
         shape_o_big_name: "Mega O", shape_o_big_desc: "HP +10%",
         shape_i_long_name: "Long I", shape_i_long_desc: "Speed +10%",
         shape_random_name: "Glitch Block", shape_random_desc: "Elixir +10%"
+    },
+    pl: {
+        deck_title: "MÓJ TALIA", deck_subtitle: "Wybierz 5-6 kart",
+        deck_error: "Błąd talii! Wymagane 5-6 kart.",
+        shop_title: "SKLEP", skins_title: "ARENY", my_collection: "KOLEKCJA",
+        settings: "USTAWIENIA", reset_data: "RESETUJ DANE", close: "ZAMKNIJ",
+        gold: "Złoto", summoning: "OTWIERANIE...", awesome: "SUPER!", battle: "WALKA!",
+        update_title: "WERSJA 0.0.90", update_desc: "ALFA WKRÓTCE!\n- Modułowe AI (Puzzle Brain)\n- 50+ Modułów\n- System Ryzyka/Nagrody",
+        nav_home: "DOM", nav_deck: "TALIA", nav_shop: "SKLEP", nav_skins: "SKINY",
+        summon_skin: "PRZYWOŁAJ", open_chest: "OTWÓRZ SKRZYNIĘ", open_module_chest: "SKRZYNIA MODUŁÓW", chest_price: "1000 ZŁOTA",
+        paused: "PAUZA", resume: "WZNÓW", surrender: "PODDAJ SIĘ",
+        close_hint: "DOTKNIJ ABY ZAMKNĄĆ", continue: "KONTYNUUJ", locked_trophy: "Odblokuj przy",
+        searching: "SZUKANIE...",
+        tuto_combat_win: "ZWYCIĘSTWO! Dobra robota!",
+        tuto_kingdom: "Witaj w swoim KRÓLESTWIE! Przypisz karty (Kopalnia, Farma, Kuźnia) aby produkować ZŁOTO.",
+        tuto_brain: "To jest MÓZG AI! Umieść moduły, aby zmodyfikować wroga. Wypróbuj nowe moduły!",
+        tuto_skins: "Dostosuj swoją ARENĘ tutaj! Odblokuj skiny za KLEJNOTY.",
+        tuto_deck_intro: "Witaj w swojej TALII! Tutaj wybierasz swoje karty bojowe.",
+        tuto_deck_levelup: "PRZYTRZYMAJ kartę, gdy pasek jest zielony, aby ULEPSZYĆ!",
+        tuto_deck_brain: "Przycisk MÓZG AI pozwala modyfikować inteligencję twoich wojsk!",
+        tuto_deck_shop: "Kup nowe MODUŁY w SKLEPIE, aby dostosować swoją strategię!",
+        tuto_inspect: "PRZYTRZYMAJ kartę, aby zobaczyć jej statystyki!",
+        tuto_shop_inspect: "PRZYTRZYMAJ ofertę, aby zobaczyć szczegóły!",
+        tuto_levelup_action: "Kliknij tutaj, aby potwierdzić ulepszenie!",
+        tuto_skip_confirm: "Pominąć samouczek?",
+        restart_tuto: "RESTART TUTO",
+        tuto_restart_confirm: "Zrestartować samouczek?",
+
+        // KINGDOM SPEECH
+        k_idle_1: "Miły dzień!", k_idle_2: "Kocham mój piksel.", k_idle_3: "Kiedy walczymy?",
+        k_idle_4: "Mam przerwę.", k_idle_5: "Cicho tu...", k_idle_6: "Zzz...", k_idle_7: "Cześć!",
+        k_idle_8: "Król w toalecie?", k_idle_9: "Jestem głodny...",
+
+        k_work_1: "Do pracy...", k_work_2: "Więcej złota!", k_work_3: "Stuk, stuk, stuk.",
+        k_work_4: "Ciężkie.", k_work_5: "Za Króla!", k_work_6: "Uwielbiam kopać.", k_work_7: "Przejście!",
+        k_work_8: "Więcej pracy...", k_work_9: "Lśniące złoto!",
+
+        k_drag_1: "Hej!", k_drag_2: "Postaw mnie!", k_drag_3: "Latam!", k_drag_4: "Woohoo!", k_drag_5: "Gdzie idziemy?",
+        k_drag_6: "Puść!", k_drag_7: "Kręci mi się w głowie!",
+
+        notif_elixir: "Za mało eliksiru!", notif_gold: "Za mało złota!",
+        notif_deck_full: "Talia pełna (6 max)!", notif_deck_min: "Talia za mała (5 min)!",
+        notif_buy: "Karta odblokowana!", notif_skin: "Nowy Skin!", notif_duplicate: "Duplikat -> Złoto",
+
+        archer_name: "Pixie Łuk", archer_desc: "Cyfrowe strzały.",
+        knight_name: "Voxel Straż", knight_desc: "Wytrzymały pikselowy tank.",
+        giant_name: "Mega Blok", giant_desc: "Celuje w budynki.",
+        skeleton_name: "Glitch Kości", skeleton_desc: "Kruchy rój błędów.",
+        baby_dragon_name: "Nanosaur", baby_dragon_desc: "Latający binarny ogień.",
+        bomber_name: "Bit Bomber", bomber_desc: "Obrażenia obszarowe.",
+        fireball_name: "Piksel Ogień", fireball_desc: "Obrażenia obszarowe.",
+        paladin_name: "Holo Rycerz", paladin_desc: "Leczy sojuszników.",
+        ninja_name: "Cień Sprite", ninja_desc: "Szybki i ukryty.",
+        golem_name: "Tera Golem", golem_desc: "Ostateczny Tank.",
+        lightning_name: "System Szok", lightning_desc: "Obrażenia + Ogłuszenie.",
+        wizard_name: "Kod Mag", wizard_desc: "Magia źródłowa.",
+        goblin_name: "Data Gremlins", goblin_desc: "Szybka walka wręcz.",
+        spear_gob_name: "Włócznia Bug", spear_gob_desc: "Atak z dystansu.",
+        bat_name: "Bajt Nietoperz", bat_desc: "Rój powietrzny.",
+        minion_name: "Latający Glitch", minion_desc: "Latająca bestia.",
+        barbarian_name: "Barbarzyńca.exe", barbarian_desc: "Średnia walka wręcz.",
+        cannon_name: "Wieżyczka V1", cannon_desc: "Obrona statyczna.",
+        hog_name: "Turbo Kieł", hog_desc: "Skacze przez rzekę. Celuje w budynki.",
+        valkyrie_name: "Spin Bot", valkyrie_desc: "Obrażenia obszarowe wręcz.",
+        musketeer_name: "Snajper.dll", musketeer_desc: "Strzelec dalekiego zasięgu.",
+        miniteetra_name: "Mini Mecha", miniteetra_desc: "Ciężkie uderzenie.",
+        witch_name: "Nekro Chip", witch_desc: "Przywołuje Glitch Kości.",
+        freeze_name: "Lag Zaklęcie", freeze_desc: "Zatrzymuje jednostki w miejscu.",
+        teetra_name: "Mecha Bajt", teetra_desc: "Ciężki Tank. Wolny, ale zabójczy.",
+        angel_name: "Medyk Dron", angel_desc: "Leczy sojusznicze jednostki.",
+        xbow_name: "Auto-Blaster", xbow_desc: "Szybki ogień oblężniczy.",
+
+        // --- ARENAS (SKINS) ---
+        arena_grass_name: "Las",
+        arena_desert_name: "Pustynia",
+        arena_snow_name: "Lód",
+        arena_volcano_name: "Wulkan",
+        arena_cyber_name: "Cyber",
+        arena_graveyard_name: "Cmentarz",
+        arena_space_name: "Kosmos",
+        arena_beach_name: "Plaża",
+
+        arena_forest_16bit_name: "Las 16-Bit",
+        arena_desert_16bit_name: "Pustynia 16-Bit",
+        arena_snow_16bit_name: "Lód 16-Bit",
+        arena_volcano_16bit_name: "Wulkan 16-Bit",
+        arena_cyber_16bit_name: "Cyber 16-Bit",
+        arena_graveyard_16bit_name: "Cmentarz 16-Bit",
+        arena_space_16bit_name: "Kosmos 16-Bit",
+        arena_beach_16bit_name: "Plaża 16-Bit",
+
+        // --- CATEGORIES ---
+        cat_arena: "ARENY",
+        cat_units: "JEDNOSTKI",
+        cat_kingdom: "KRÓLESTWO",
+        cat_ui: "INTERFEJS",
+        cat_deck: "TALIA",
+
+        // --- SKINS UI/DECK/KINGDOM ---
+        skin_retro_hd_name: "Retro HD",
+        skin_neon_ui_name: "Neon UI",
+        skin_cyber_dark_name: "Cyber Ciemny",
+        skin_glass_ui_name: "Szkło Retro",
+
+        skin_gold_trim_name: "Złota Ramka",
+        skin_diamond_trim_name: "Diamentowa Ramka",
+
+        skin_structure_castle_16bit_name: "Zamek 16-Bit",
+        skin_structure_mine_16bit_name: "Kopalnia 16-Bit",
+        skin_structure_farm_16bit_name: "Farma 16-Bit",
+        skin_structure_forge_16bit_name: "Kuźnia 16-Bit",
+        skin_background_16bit_name: "Retro Niebo",
+        skin_grass_16bit_name: "Retro Trawa",
+        skin_prop_tree_16bit_name: "Drzewo 16-Bit",
+        skin_prop_rock_16bit_name: "Skała 16-Bit",
+        skin_prop_bush_16bit_name: "Krzak 16-Bit",
+
+        // --- MODULES ---
+        block_v1_name: "Podst. Blok", block_v1_desc: "HP +5%",
+        line_2_name: "Podw. Łącze", line_2_desc: "DMG +5%",
+        corner_sm_name: "Chip Róg", corner_sm_desc: "Szybkość +5%",
+        cpu_v1_name: "Główny CPU", cpu_v1_desc: "HP +10%",
+        line_3_name: "Potrójne Łącze", line_3_desc: "Eliksir +5%",
+        square_hole_name: "Pusty Rdzeń", square_hole_desc: "HP +15%",
+        overclock_name: "Podkręcanie", overclock_desc: "Szybkość +15%",
+        titan_plate_name: "Płyta Tytan", titan_plate_desc: "HP +20%",
+        lancer_mod_name: "Mod Lansjer", lancer_mod_desc: "DMG +15%",
+        tank_hull_name: "Kadłub Czołgu", tank_hull_desc: "HP +25% / Szybkość -10%",
+        snake_bus_name: "Szyna Danych", snake_bus_desc: "Eliksir +5%",
+        zig_zag_name: "Zygzak", zig_zag_desc: "Szybkość +10%",
+        pod_plus_name: "Pod Plus", pod_plus_desc: "HP +10% / DMG +5%",
+        reactor_name: "Ciemny Reaktor", reactor_desc: "Eliksir +10%",
+        vampire_name: "Chip Wampir", vampire_desc: "Kradzież Życia 20%",
+        berserk_name: "AI Berserk", berserk_desc: "DMG +40% / HP -20%",
+        fortress_name: "OS Twierdza", fortress_desc: "HP +50% / Szybkość -20%",
+        glass_cannon_name: "Szklane Działo", glass_cannon_desc: "DMG +50% / HP -30%",
+        sentry_name: "Bot Strażnik", sentry_desc: "+1 Wieża Centralna",
+        swarm_core_name: "Rdzeń Roju", swarm_core_desc: "Eliksir +20% / HP -10%",
+        omega_brain_name: "OMEGA MÓZG", omega_brain_desc: "WSZYSTKO +20%",
+        nano_cloud_name: "Nano Chmura", nano_cloud_desc: "Regen HP (Kradzież 50%)",
+        doomsday_name: "DOOMSDAY", doomsday_desc: "DMG +100% / HP +100% / WOLNY",
+        tutorial_square_6x6_name: "Rama 6x6", tutorial_square_6x6_desc: "+1 Wieża Wroga / +1 Trofeum",
+        tutorial_square_4x4_name: "Rama 4x4", tutorial_square_4x4_desc: "x2 Król Wroga / x2 Ruletka",
+
+        // --- NEW MODULES (30) ---
+        chal_hp_1_name: "Wyzwanie Witalności I", chal_hp_1_desc: "Wróg HP +20%",
+        chal_dmg_1_name: "Wyzwanie Mocy I", chal_dmg_1_desc: "Wróg DMG +20%",
+        chal_spd_1_name: "Wyzwanie Pośpiechu I", chal_spd_1_desc: "Wróg Szybkość +10%",
+        chal_elix_1_name: "Wyzwanie Many I", chal_elix_1_desc: "Wróg Eliksir +10%",
+        chal_all_1_name: "Wyzwanie Globalne I", chal_all_1_desc: "Wszystkie Stat. +10%",
+        chal_hp_2_name: "Wyzwanie Witalności II", chal_hp_2_desc: "Wróg HP +50%",
+        chal_dmg_2_name: "Wyzwanie Mocy II", chal_dmg_2_desc: "Wróg DMG +50%",
+        chal_spd_2_name: "Wyzwanie Pośpiechu II", chal_spd_2_desc: "Wróg Szybkość +20%",
+        chal_god_mode_name: "TRYB BOGA", chal_god_mode_desc: "WSZYSTKO +50% (Nagroda x3)",
+        chal_vampire_name: "Wyzwanie Wampira", chal_vampire_desc: "Wróg Kradzież Życia 20%",
+        assist_weak_1_name: "Pomoc Osłabienie I", assist_weak_1_desc: "Wróg HP -10%",
+        assist_dull_1_name: "Pomoc Tępienie I", assist_dull_1_desc: "Wróg DMG -10%",
+        assist_slow_1_name: "Pomoc Spowolnienie I", assist_slow_1_desc: "Wróg Szybkość -10%",
+        assist_leak_1_name: "Pomoc Wyciek I", assist_leak_1_desc: "Wróg Eliksir -10%",
+        assist_weak_2_name: "Pomoc Osłabienie II", assist_weak_2_desc: "Wróg HP -30%",
+        assist_dull_2_name: "Pomoc Tępienie II", assist_dull_2_desc: "Wróg DMG -30%",
+        assist_slow_2_name: "Pomoc Spowolnienie II", assist_slow_2_desc: "Wróg Szybkość -30%",
+        assist_freeze_name: "Zamrożenie Systemu", assist_freeze_desc: "Wróg Szybkość -50%",
+        assist_fragile_name: "Kruchy Kod", assist_fragile_desc: "Wróg HP -50%",
+        assist_pacifist_name: "Tryb Pacyfisty", assist_pacifist_desc: "Wróg DMG -50%",
+        mix_berserk_name: "Mix Berserk", mix_berserk_desc: "DMG +50% / HP -20%",
+        mix_tank_name: "Mix Tank", mix_tank_desc: "HP +50% / Szybkość -20%",
+        mix_rush_name: "Mix Rush", mix_rush_desc: "Szybkość +50% / HP -20%",
+        mix_swarm_name: "Mix Rój", mix_swarm_desc: "Eliksir +30% / HP -30%",
+        mix_glass_name: "Mix Szkło", mix_glass_desc: "DMG +100% / HP -50%",
+        shape_t_sm_name: "Mikro T", shape_t_sm_desc: "HP +5%",
+        shape_x_sm_name: "Mikro X", shape_x_sm_desc: "DMG +5%",
+        shape_o_big_name: "Mega O", shape_o_big_desc: "HP +10%",
+        shape_i_long_name: "Długie I", shape_i_long_desc: "Szybkość +10%",
+        shape_random_name: "Glitch Blok", shape_random_desc: "Eliksir +10%"
     }
 };
 
@@ -1188,7 +1453,7 @@ const SKINS_16BIT_ARENAS = {
 const SKINS_16BIT_UNITS = {
     // --- COMMON ---
     archer: {
-        name: "Archer", // Name aligned with card name
+        name: "Pixie Bow", // Name aligned with card name
         sprite: [[
             "..........TTTT..........",
             "........TTYYYYTT........",
@@ -1217,7 +1482,7 @@ const SKINS_16BIT_UNITS = {
         ]]
     },
     knight: {
-        name: "Knight",
+        name: "Voxel Guard",
         sprite: [[
             "..........IIII..........",
             "........IIIIIIII........",
@@ -1246,7 +1511,7 @@ const SKINS_16BIT_UNITS = {
         ]]
     },
     goblin: {
-        name: "Goblin",
+        name: "Data Gremlins",
         sprite: [[
             "........................",
             "........................",
@@ -1275,7 +1540,7 @@ const SKINS_16BIT_UNITS = {
         ]]
     },
     spear_gob: {
-        name: "Spear Gob",
+        name: "Spear Bugs",
         sprite: [[
             "........................",
             "............I...........",
@@ -1304,7 +1569,7 @@ const SKINS_16BIT_UNITS = {
         ]]
     },
     bat: {
-        name: "Bat",
+        name: "Byte Bats",
         sprite: [[
             "........................",
             ".......P........P.......",
@@ -1333,7 +1598,7 @@ const SKINS_16BIT_UNITS = {
         ]]
     },
     minion: {
-        name: "Minion",
+        name: "Flying Glitch",
         sprite: [[
             "........................",
             "..........BBBB..........",
@@ -1362,7 +1627,7 @@ const SKINS_16BIT_UNITS = {
         ]]
     },
     bomber: {
-        name: "Bomber",
+        name: "Bit Bomber",
         sprite: [[
             "..........TTTT..........",
             "........TTTTTTTT........",
@@ -1393,7 +1658,7 @@ const SKINS_16BIT_UNITS = {
 
     // --- RARE ---
     musketeer: {
-        name: "Musketeer",
+        name: "Sniper.dll",
         sprite: [[
             "..........PPPP..........",
             "........PPPPPPPP........",
@@ -1422,7 +1687,7 @@ const SKINS_16BIT_UNITS = {
         ]]
     },
     giant: {
-        name: "Giant",
+        name: "Mega Block",
         sprite: [[
             "..........HHHH..........",
             "........HHHHHHHH........",
@@ -1451,7 +1716,7 @@ const SKINS_16BIT_UNITS = {
         ]]
     },
     valkyrie: {
-        name: "Valkyrie",
+        name: "Spin Bot",
         sprite: [[
             ".........OOOOOO.........",
             ".......OOOOOOOOOO.......",
@@ -1480,7 +1745,7 @@ const SKINS_16BIT_UNITS = {
         ]]
     },
     hog: {
-        name: "Hog",
+        name: "Turbo Tusk",
         sprite: [[
             "...........KKK..........",
             ".........KKKKKKK........",
@@ -1509,7 +1774,7 @@ const SKINS_16BIT_UNITS = {
         ]]
     },
     barbarian: {
-        name: "Barbarian",
+        name: "Barbarian.exe",
         sprite: [[
             "..........YYYY..........",
             "........YYYYYYYY........",
@@ -1538,7 +1803,7 @@ const SKINS_16BIT_UNITS = {
         ]]
     },
     wizard: {
-        name: "Wizard",
+        name: "Code Mage",
         sprite: [[
             "..........TTTT..........",
             ".........TTTTTT.........",
@@ -1567,7 +1832,7 @@ const SKINS_16BIT_UNITS = {
         ]]
     },
     miniteetra: {
-        name: "Mini P.E.K.K.A",
+        name: "Mini Mecha",
         sprite: [[
             "..........IIII..........",
             ".........IIIIII.........",
@@ -1598,7 +1863,7 @@ const SKINS_16BIT_UNITS = {
 
     // --- EPIC ---
     baby_dragon: {
-        name: "Baby Dragon",
+        name: "Nanosaur",
         sprite: [[
             "..........GGGG..........",
             "........GGGGGGGG........",
@@ -1627,7 +1892,7 @@ const SKINS_16BIT_UNITS = {
         ]]
     },
     witch: {
-        name: "Witch",
+        name: "Necro Chip",
         sprite: [[
             "..........KKKK..........",
             ".........KKKKKK.........",
@@ -1656,7 +1921,7 @@ const SKINS_16BIT_UNITS = {
         ]]
     },
     ninja: {
-        name: "Ninja",
+        name: "Shadow Sprite",
         sprite: [[
             "..........KKKK..........",
             ".........KKKKKK.........",
@@ -1685,7 +1950,7 @@ const SKINS_16BIT_UNITS = {
         ]]
     },
     paladin: {
-        name: "Paladin",
+        name: "Holo Knight",
         sprite: [[
             "..........YYYY..........",
             ".........YYYYYY.........",
@@ -1714,7 +1979,7 @@ const SKINS_16BIT_UNITS = {
         ]]
     },
     golem: {
-        name: "Golem",
+        name: "Tera Golem",
         sprite: [[
             "..........IIII..........",
             ".........IIIIII.........",
@@ -1743,8 +2008,7 @@ const SKINS_16BIT_UNITS = {
         ]]
     },
     teetra: {
-        name: "Teetra",
-        name: "Mini Teetra",
+        name: "Mecha Byte",
         sprite: [[
             "..........IIII..........",
             ".........IIIIII.........",
@@ -1773,7 +2037,7 @@ const SKINS_16BIT_UNITS = {
         ]]
     },
     angel: {
-        name: "Healer",
+        name: "Medic Drone",
         sprite: [[
             "..........WWWW..........",
             ".........WWWWWW.........",
@@ -1804,7 +2068,7 @@ const SKINS_16BIT_UNITS = {
 
     // --- BUILDINGS ---
     cannon: {
-        name: "Cannon",
+        name: "Turret V1",
         sprite: [[
             "........................",
             "........................",
@@ -1833,7 +2097,7 @@ const SKINS_16BIT_UNITS = {
         ]]
     },
     xbow: {
-        name: "X-Bow",
+        name: "Auto-Blaster",
         sprite: [[
             "........................",
             "........................",
@@ -1864,7 +2128,7 @@ const SKINS_16BIT_UNITS = {
 
     // --- SPELLS ---
     fireball: {
-        name: "Fireball",
+        name: "Pixel Burn",
         sprite: [[
             "........................",
             "...........RRR..........",
@@ -1893,7 +2157,7 @@ const SKINS_16BIT_UNITS = {
         ]]
     },
     lightning: {
-        name: "Lightning",
+        name: "System Shock",
         sprite: [[
             "........................",
             "..........CCCC..........",
@@ -1922,7 +2186,7 @@ const SKINS_16BIT_UNITS = {
         ]]
     },
     freeze: {
-        name: "Freeze",
+        name: "Lag Spell",
         sprite: [[
             "........................",
             "...........C............",
@@ -3481,15 +3745,10 @@ function toggleSettings() {
         btn.id = 'btn-restart-tuto';
         btn.className = 'pixel-btn';
         btn.style.cssText = "width:100%; margin:10px 0; background:#e67e22;";
-        // btn.setAttribute('data-lang', 'restart_tuto'); 
-        // We set text content directly with translation to be safe, or use attribute if system supports it dynamic
         btn.textContent = t('restart_tuto'); 
         btn.onclick = confirmRestartTutorial;
         
-        // Insert before Close button (last child usually) or Reset Data
         const container = el.children[0];
-        // Find Reset Data button to insert before, or just before last child (Close)
-        // Let's insert before the "FERMER" button which is likely the last one
         const closeBtn = container.lastElementChild;
         container.insertBefore(btn, closeBtn);
     }
@@ -3498,17 +3757,31 @@ function toggleSettings() {
     const btn = document.getElementById('btn-restart-tuto');
     if(btn) btn.textContent = t('restart_tuto');
 
+    updateLangButtons();
+
     el.style.display = (el.style.display === 'flex') ? 'none' : 'flex';
 }
 
-function switchLanguage() {
-    const newLang = (LANG === 'fr') ? 'en' : 'fr';
+function switchLanguage(newLang) {
+    if (!newLang) newLang = (LANG === 'fr') ? 'en' : 'fr'; // Fallback if no arg
     setLang(newLang);
     if(window.PLAYER) window.PLAYER.settings.lang = newLang;
     
+    updateLangButtons();
+
     // Call global update
     if(window.updateAllText) window.updateAllText();
     saveData();
+}
+
+function updateLangButtons() {
+    ['fr','en','pl'].forEach(l => {
+        const btn = document.getElementById('btn-lang-'+l);
+        if(btn) {
+            if(l === LANG) btn.classList.add('blue');
+            else btn.classList.remove('blue');
+        }
+    });
 }
 
 function toggleDayNight() {
@@ -4803,11 +5076,11 @@ function renderSkins() {
     shelf.style.cssText = "display:flex; flex-wrap:wrap; gap:15px; justify-content:center; padding:10px;";
 
     const books = [
-        { id: 'arena', name: "ARÈNE", icon: 'book' }, 
-        { id: 'units', name: "UNITÉS", icon: 'book' },
-        { id: 'kingdom', name: "ROYAUME", icon: 'book' },
-        { id: 'ui',    name: "INTERFACE",    icon: 'book' },
-        { id: 'deck',  name: "DECK",  icon: 'book' }
+        { id: 'arena', name: t('cat_arena'), icon: 'book' },
+        { id: 'units', name: t('cat_units'), icon: 'book' },
+        { id: 'kingdom', name: t('cat_kingdom'), icon: 'book' },
+        { id: 'ui',    name: t('cat_ui'),    icon: 'book' },
+        { id: 'deck',  name: t('cat_deck'),  icon: 'book' }
     ];
 
     books.forEach(b => {
@@ -4875,6 +5148,13 @@ function openBook(category) {
     const list = document.createElement('div');
     list.style.cssText = "display:flex; flex-direction:column; gap:8px;";
 
+    // Helper for names
+    const getName = (key) => {
+        if(category === 'units') return t(key + '_name');
+        if(category === 'arena') return t('arena_' + key + '_name');
+        return t('skin_' + key + '_name');
+    };
+
     // 1. ARENA BOOK
     if(category === 'arena') {
         // 8-Bit Header
@@ -4883,7 +5163,7 @@ function openBook(category) {
         Object.keys(SKINS).forEach(key => {
             if(window.PLAYER.unlockedSkins.includes(key)) {
                 const isActive = window.PLAYER.currentSkin === key;
-                const d = createItemRow(SKINS[key].name, isActive, () => {
+                const d = createItemRow(getName(key), isActive, () => {
                     window.PLAYER.currentSkin = key;
                     refreshBook(category);
                 }, SKINS[key].bg);
@@ -4898,7 +5178,7 @@ function openBook(category) {
             const unlocked = window.PLAYER.unlocked_16bit.includes(key);
             if(unlocked) {
                 const isActive = window.PLAYER.active_16bit.arena === key;
-                const d = createItemRow(SKINS_16BIT_DATA.arena[key].name, isActive, () => {
+                const d = createItemRow(getName(key), isActive, () => {
                     // Toggle
                     if(window.PLAYER.active_16bit.arena === key) window.PLAYER.active_16bit.arena = null;
                     else window.PLAYER.active_16bit.arena = key;
@@ -4914,18 +5194,10 @@ function openBook(category) {
         Object.keys(SKINS_16BIT_DATA.kingdom).forEach(key => {
             const unlocked = window.PLAYER.unlocked_16bit.includes(key);
             if(unlocked) {
-                // For Kingdom, we can assume 'active' if checking the list, 
-                // but actually we need a place to store "active kingdom skins".
-                // Currently state.js active_16bit has: arena, units, ui, deck.
-                // We should add 'kingdom' array or object to active_16bit in state.js 
-                // BUT since I can't edit state.js in this step, I'll assume we use a general toggle 
-                // or just check against the key presence in a new property if I could add it.
-                // WORKAROUND: Use window.PLAYER.active_16bit.kingdom (array of keys)
-                
                 if(!window.PLAYER.active_16bit.kingdom) window.PLAYER.active_16bit.kingdom = [];
                 
                 const isSelected = window.PLAYER.active_16bit.kingdom.includes(key);
-                const d = createItemRow(SKINS_16BIT_DATA.kingdom[key].name, isSelected, () => {
+                const d = createItemRow(getName(key), isSelected, () => {
                     if(!window.PLAYER.active_16bit.kingdom) window.PLAYER.active_16bit.kingdom = [];
                     
                     const idx = window.PLAYER.active_16bit.kingdom.indexOf(key);
@@ -4945,7 +5217,7 @@ function openBook(category) {
             const unlocked = window.PLAYER.unlocked_16bit.includes(key);
             if(unlocked) {
                 const isActive = window.PLAYER.active_16bit.units.includes(key);
-                const d = createItemRow(SKINS_16BIT_DATA.units[key].name, isActive, () => {
+                const d = createItemRow(getName(key), isActive, () => {
                     const idx = window.PLAYER.active_16bit.units.indexOf(key);
                     if(idx >= 0) window.PLAYER.active_16bit.units.splice(idx, 1);
                     else window.PLAYER.active_16bit.units.push(key);
@@ -4963,7 +5235,7 @@ function openBook(category) {
             if(unlocked) {
                 const isSelected = window.PLAYER.active_16bit.ui === key;
                 
-                const d = createItemRow(SKINS_16BIT_DATA.ui[key].name, isSelected, () => {
+                const d = createItemRow(getName(key), isSelected, () => {
                     if(window.PLAYER.active_16bit.ui === key) window.PLAYER.active_16bit.ui = false;
                     else window.PLAYER.active_16bit.ui = key;
                     refreshBook(category);
@@ -4979,7 +5251,7 @@ function openBook(category) {
             const unlocked = window.PLAYER.unlocked_16bit.includes(key);
             if(unlocked) {
                 const isSelected = window.PLAYER.active_16bit.deck === key;
-                const d = createItemRow(SKINS_16BIT_DATA.deck[key].name, isSelected, () => {
+                const d = createItemRow(getName(key), isSelected, () => {
                     if(window.PLAYER.active_16bit.deck === key) window.PLAYER.active_16bit.deck = false;
                     else window.PLAYER.active_16bit.deck = key;
                     refreshBook(category);
